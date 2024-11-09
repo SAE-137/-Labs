@@ -21,33 +21,71 @@ node* binaryTree::getRoot()
  
 void binaryTree::setMas(int* mas, int amountOfValues)
 {
-	node* root = new node;
-	this->setRoot(root);
-	int value = mas[0];
-	this->getRoot()->setKey(value);
+    if (amountOfValues <= 0) return;
 
-	for (int i = 1; i < amountOfValues; ++i)
-	{
-		if (mas[i] < value) {
-			node* newNode = new node;
-			newNode->setKey(mas[i]);
-			root->setLeft(newNode);
-			root = newNode;
-		}
-		else
-		{
-			node* newNode = new node;
-			newNode->setKey(mas[i]);
-			root->setRight(newNode);
-			root = newNode;
-		}
-		
-	}
+   
+    node* root = new node;
+    root->setKey(mas[0]);
+    this->setRoot(root);
+
+   
+    for (int i = 1; i < amountOfValues; ++i)
+    {
+        insertNode(this->getRoot(), mas[i]);
+    }
 }
 
-void binaryTree::show()
+
+void binaryTree::insertNode(node* root, int value)
 {
-	std::cout << this->getRoot()->get();
+    if (value < root->getKey())
+    {
+        if (root->getLeft() == nullptr)
+        {
+            node* newNode = new node;
+            newNode->setKey(value);
+            root->setLeft(newNode);
+        }
+        else
+        {
+            insertNode(root->getLeft(), value);
+        }
+    }
+    else
+    {
+        if (root->getRight() == nullptr)
+        {
+            node* newNode = new node;
+            newNode->setKey(value);
+            root->setRight(newNode);
+        }
+        else
+        {
+            insertNode(root->getRight(), value);
+        }
+    }
+}
+
+void binaryTree::show(node* root, int space, int indent)
+{
+	if (root == nullptr) {
+		return;
+	}
+
+	space += indent;
+
+	
+	show(root->m_right, space);
+
+	
+	std::cout << std::endl;
+	for (int i = indent; i < space; i++) {
+		std::cout << " ";
+	}
+	std::cout << root->getKey() << "\n";
+
+	
+	show(root->m_left, space);
 
 }
 
@@ -70,8 +108,8 @@ int main()
 	binaryTree testTree;
 
 	testTree.setMas(mas, n);
-
-	testTree.show();
+	std::cout << std::endl;
+	testTree.show(testTree.getRoot());
 
 	return 0;
 }

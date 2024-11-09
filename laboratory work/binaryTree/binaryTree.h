@@ -9,7 +9,9 @@ public:
 
 	void setMas(int* mas, int amountOfValues);
 	void setRoot(node* newRoot);
-	void show();
+	void show(node* root, int space = 0, int indentv = 4);
+	void insertNode(node* root, int value);
+
 	node* getRoot();
 
 private:

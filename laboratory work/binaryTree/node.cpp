@@ -15,9 +15,19 @@ node::node(int newKey)
 	m_key = newKey;
 }
 
-int node::get()
+int node::getKey()
 {
 	return m_key;
+}
+
+node* node::getLeft()
+{
+	return m_left;
+}
+
+node* node::getRight()
+{
+	return m_right;
 }
 
 void node::setKey(int newKey)

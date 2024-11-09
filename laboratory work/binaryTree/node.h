@@ -10,14 +10,15 @@ public:
 	void setLeft(node* newLeft);
 	void setRight(node* newRight);
 
-	int get();
+	int getKey();
 
+	node* getRight();
+	node* getLeft();
 
-
-
-private:
 	node* m_left = nullptr;
 	node* m_right = nullptr;
+private:
+	
 
 	int m_key = 0;
 };
