@@ -10,6 +10,7 @@ int main()
 {
 	
 	int n;
+	int newn;
 
 	
 
@@ -28,9 +29,11 @@ int main()
 			std::cout << std::endl;
 		}
 
-		testTree.deleteTree(testTree.getRoot()->getLeft());
+		
 
-		std::cout << " 555555";
+		testTree.deleteTree(testTree.getRoot());
+		std::cout << "    --->" << testTree.isEmpty();
+		
 	
 	
 	

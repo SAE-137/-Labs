@@ -8,12 +8,12 @@ public:
 	~binaryTree();
 
 
-	void setMas(int* mas, int amountOfValues);
+
 	void setRoot(node* newRoot);
 	void show(node* root, int space = 0, int indentv = 4);
 	
 	void deleteTree(node* newNode);
-	void addNode(node* newNode, int key);
+	
 	void insert(int key);
 
 	node* insertRec(node* newNode, int value);

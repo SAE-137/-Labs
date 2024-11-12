@@ -68,40 +68,16 @@ bool binaryTree::isEmpty()
 
 void binaryTree::deleteTree(node* newNode)
 {
-    if (newNode == nullptr)
+    if (newNode != nullptr)
     {
-        return;
+        deleteTree(newNode->getLeft());
+        deleteTree(newNode->getRight());
+
+        delete newNode;
     }
 
-    deleteTree(newNode->getLeft());
-    deleteTree(newNode->getRight());
-
-    delete newNode;
+    newNode = nullptr;
     
-}
-
-void binaryTree::addNode(node* newNode, int key)
-{
-    node* Node;
-    newNode->setKey(key);
-    if (newNode == nullptr)
-    {
-        node* node;
-
-        m_root = newNode;
-        m_root->setKey(key);
-        return;
-    }
-    if (newNode->getKey() > key)
-    {
-        addNode(newNode->getLeft(), key);
-    }
-    else 
-    {
-        addNode(newNode->getRight(), key);
-    }
-    
-
 }
 
 node* binaryTree::insertRec(node* newNode, int key) {
@@ -109,7 +85,7 @@ node* binaryTree::insertRec(node* newNode, int key) {
         return new node(key);
     }
 
-    if (key < newNode->getKey()) 
+    if (key <= newNode->getKey()) 
     {
         newNode->setLeft(insertRec(newNode->getLeft(), key));
     }
@@ -122,4 +98,24 @@ node* binaryTree::insertRec(node* newNode, int key) {
 
 void binaryTree::insert(int key) {
     m_root = insertRec(m_root, key);
+}
+
+binaryTree* binaryTree::copy(node* otherNode)
+{
+    if (this->getRoot() == nullptr)
+    {
+        node* newNode = new node;
+        newNode->setKey(otherNode->getKey());
+        this->setRoot(newNode);
+    }
+
+    copy(otherNode->getLeft());
+    node* newNode = new node(otherNode->getKey());
+    this->getRoot()->setLeft(newNode);
+
+    copy(otherNode->getRight());
+    node* newNode = new node(otherNode->getKey());
+    this->getRoot()->setRight(newNode);
+
+    return this;
 }
