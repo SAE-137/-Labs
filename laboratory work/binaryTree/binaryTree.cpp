@@ -113,3 +113,13 @@ int main()
 
 	return 0;
 }
+
+
+bool binaryTree::isEmpty()
+{
+    if (this->getRoot() == nullptr)
+    {
+        return false;
+    }
+    return true;
+}
