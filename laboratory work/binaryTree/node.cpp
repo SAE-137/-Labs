@@ -13,6 +13,13 @@ node::node()
 node::node(int newKey)
 {
 	m_key = newKey;
+	m_left = nullptr;
+	m_right = nullptr;
+}
+
+node::~node()
+{
+
 }
 
 int node::getKey()

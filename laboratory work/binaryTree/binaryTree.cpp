@@ -4,6 +4,15 @@
 
 
 
+binaryTree::~binaryTree()
+{
+    if (this->getRoot() != nullptr) {
+        deleteTree(this->getRoot());
+    }
+    
+    return;
+}
+
 binaryTree::binaryTree()
 {
 	m_root = nullptr;
@@ -19,52 +28,9 @@ node* binaryTree::getRoot()
 	return m_root;
 }
  
-void binaryTree::setMas(int* mas, int amountOfValues)
-{
-    if (amountOfValues <= 0) return;
-
-   
-    node* root = new node;
-    root->setKey(mas[0]);
-    this->setRoot(root);
-
-   
-    for (int i = 1; i < amountOfValues; ++i)
-    {
-        insertNode(this->getRoot(), mas[i]);
-    }
-}
 
 
-void binaryTree::insertNode(node* root, int value)
-{
-    if (value < root->getKey())
-    {
-        if (root->getLeft() == nullptr)
-        {
-            node* newNode = new node;
-            newNode->setKey(value);
-            root->setLeft(newNode);
-        }
-        else
-        {
-            insertNode(root->getLeft(), value);
-        }
-    }
-    else
-    {
-        if (root->getRight() == nullptr)
-        {
-            node* newNode = new node;
-            newNode->setKey(value);
-            root->setRight(newNode);
-        }
-        else
-        {
-            insertNode(root->getRight(), value);
-        }
-    }
-}
+
 
 void binaryTree::show(node* root, int space, int indent)
 {
@@ -75,7 +41,7 @@ void binaryTree::show(node* root, int space, int indent)
 	space += indent;
 
 	
-	show(root->m_right, space);
+	show(root->getRight(), space);
 
 	
 	std::cout << std::endl;
@@ -85,41 +51,75 @@ void binaryTree::show(node* root, int space, int indent)
 	std::cout << root->getKey() << "\n";
 
 	
-	show(root->m_left, space);
+	show(root->getLeft(), space);
 
 }
 
-int main()
-{
-	int n;
-	std::cin >> n;
-
-	int* mas = new int [n];
-	for (int i = 0; i < n; ++i)
-	{
-		mas[i] = std::rand() % 100;
-	}
-
-	for (int i = 0; i < n; ++i)
-	{
-		std::cout << mas[i] << " ";
-	}
-
-	binaryTree testTree;
-
-	testTree.setMas(mas, n);
-	std::cout << std::endl;
-	testTree.show(testTree.getRoot());
-
-	return 0;
-}
 
 
 bool binaryTree::isEmpty()
 {
-    if (this->getRoot() == nullptr)
+    if (m_root == nullptr)
     {
-        return false;
+        return true;
     }
-    return true;
+    return false;
+}
+
+void binaryTree::deleteTree(node* newNode)
+{
+    if (newNode == nullptr)
+    {
+        return;
+    }
+
+    deleteTree(newNode->getLeft());
+    deleteTree(newNode->getRight());
+
+    delete newNode;
+    
+}
+
+void binaryTree::addNode(node* newNode, int key)
+{
+    node* Node;
+    newNode->setKey(key);
+    if (newNode == nullptr)
+    {
+        node* node;
+
+        m_root = newNode;
+        m_root->setKey(key);
+        return;
+    }
+    if (newNode->getKey() > key)
+    {
+        addNode(newNode->getLeft(), key);
+    }
+    else 
+    {
+        addNode(newNode->getRight(), key);
+    }
+    
+
+}
+
+node* binaryTree::insertRec(node* newNode, int key) {
+    if (newNode == nullptr) {
+        return new node(key);
+    }
+
+    if (key < newNode->getKey()) 
+    {
+        newNode->setLeft(insertRec(newNode->getLeft(), key));
+    }
+    else if (key > newNode->getKey()) {
+        newNode->setRight(insertRec(newNode->getRight(), key));
+    }
+
+    return newNode;
+}
+
+void binaryTree::insert(int key) {
+    m_root = insertRec(m_root, key);
 }

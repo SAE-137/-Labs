@@ -4,6 +4,7 @@ class node
 public:
 	node();
 	node(int newKey);
+	~node();
 
 
 	void setKey(int newKey);
@@ -15,11 +16,11 @@ public:
 	node* getRight();
 	node* getLeft();
 
-	node* m_left = nullptr;
-	node* m_right = nullptr;
-private:
 	
+private:
+	node* m_left;
+	node* m_right;
 
-	int m_key = 0;
+	int m_key;
 };
 
