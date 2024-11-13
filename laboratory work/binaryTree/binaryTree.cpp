@@ -8,7 +8,7 @@
 
 binaryTree::binaryTree()
 {
-    m_root = new node;
+    
     m_root = nullptr;
 }
 
@@ -166,20 +166,33 @@ int binaryTree::getNodeLvl(int key)
 
 
 
-binaryTree* binaryTree::copy(node* newNode)
+node* binaryTree::copy(node* currentNode) 
 {
-    if (newNode == nullptr) return nullptr;
+    if (currentNode == nullptr) {
+        return nullptr;
+    }
 
-    if(this->getRoot() == nullptr)
-        this->getRoot()->setKey(newNode->getKey());
-
-
-
-    return this;
-
-
+   
+    node* newNode = new node(currentNode->getKey());
 
     
+    newNode->setLeft(copy(currentNode->getLeft()));
+    newNode->setRight(copy(currentNode->getRight()));
+
+    return newNode;
+}
+
+binaryTree* binaryTree::copy(binaryTree* otherTree)
+{
+    if (otherTree->getRoot() == nullptr) {
+        return nullptr;
+    }
+
+    
+    binaryTree* newTree = new binaryTree();
+    newTree->setRoot(copy(otherTree->getRoot()));
+
+    return newTree;
 }
 
 int binaryTree::getDepth(node* newNode)
@@ -200,4 +213,32 @@ int binaryTree::getDepth(node* newNode)
 
     }
     return 0;
+}
+
+int binaryTree::findNodeLevel(node* root, int key, int level) 
+{
+    
+    if (root == nullptr) {
+        return -1;
+    }
+
+    
+    if (root->getKey() == key) {
+        return level;
+    }
+
+    
+    int leftLevel = findNodeLevel(root->getLeft(), key, level + 1);
+
+    if (leftLevel != -1) {
+        return leftLevel;
+    }
+
+    
+    return findNodeLevel(root->getRight(), key, level + 1);
+}
+
+int binaryTree::findNodeLevel(int key)
+{
+    return findNodeLevel(m_root, key, 0);
 }

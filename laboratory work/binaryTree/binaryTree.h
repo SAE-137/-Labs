@@ -10,7 +10,7 @@ public:
 	int getAmountOfNodes(node* newNode);
 	int getNodeLvl(int key);
 	int getDepth(node* newNode);
-	int findNodeLevel(node* root, int key, int level = 0);
+	int findNodeLevel(node* root, int key, int level);
 	int findNodeLevel(int key);
 
 	void setRoot(node* newRoot);
@@ -26,8 +26,8 @@ public:
 	node* insertRec(node* newNode, int value);
 	node* getRoot();
 
-	binaryTree* copy(node* newNode);
-
+	node* copy(node* currentNode);
+	binaryTree* copy(binaryTree* newTree);
 	bool isEmpty();
 
 	
@@ -52,7 +52,7 @@ private:
 - удаление узла из дерева по ключу (возвращает true, если узел был удалён);
 
 - проверка дерева на сбалансированность (возвращает true, если дерево является сбалансированным: высоты правого и левого поддеревьев отличаются не более, чем на единицу, и сами поддеревья также являются сбалансированными);
-- получение уровня вершины по ключу (возвращает индекс уровня или -1, если вершина не найдена);
+
 - получение вектора (std::vector<int>), содержащего все ключи дерева по возрастанию (обход вершин производить любым способом);
 
 - вывод в консоль дерева по уровням (на форму (в этом случае данный метод принадлежит классу GUI, а не дерева) или в консоль при помощи итератора);

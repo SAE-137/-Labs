@@ -57,11 +57,12 @@ int main()
 {
 	int n = 10;
 	binaryTree a;
+	binaryTree b;
 	for (int i = 0; i < n; i++)
 	{
 		a.insert(rand() % 50);
 	}
-	a.show(a.getRoot());
-	a.deleteSubTree(a.getRoot()->getLeft());
+	
+
 
 }
