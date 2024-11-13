@@ -4,18 +4,18 @@
 
 
 
-binaryTree::~binaryTree()
-{
-    if (this->getRoot() != nullptr) {
-        deleteTree(this->getRoot());
-    }
-    
-    return;
-}
+
 
 binaryTree::binaryTree()
 {
 	m_root = nullptr;
+}
+
+binaryTree::~binaryTree()
+{
+
+    deleteTree(m_root);
+
 }
 
 void binaryTree::setRoot(node* newRoot)
@@ -68,7 +68,7 @@ bool binaryTree::isEmpty()
 
 void binaryTree::deleteTree(node* newNode)
 {
-    if (newNode != nullptr)
+    if (newNode)
     {
         deleteTree(newNode->getLeft());
         deleteTree(newNode->getRight());
@@ -100,22 +100,48 @@ void binaryTree::insert(int key) {
     m_root = insertRec(m_root, key);
 }
 
-binaryTree* binaryTree::copy(node* otherNode)
+
+node* binaryTree::search(node* root, int key)
 {
-    if (this->getRoot() == nullptr)
+    if (root)
     {
-        node* newNode = new node;
-        newNode->setKey(otherNode->getKey());
-        this->setRoot(newNode);
+        if (root->getKey() == key) return root;
+        search(root->getLeft(), key);
+        search(root->getRight(), key);
     }
+    return nullptr;
+}
 
-    copy(otherNode->getLeft());
-    node* newNode = new node(otherNode->getKey());
-    this->getRoot()->setLeft(newNode);
+void binaryTree::deleteNode(int key)
+{
+    node* newNode = new node;
+    newNode = search(m_root, key);
 
-    copy(otherNode->getRight());
-    node* newNode = new node(otherNode->getKey());
-    this->getRoot()->setRight(newNode);
 
-    return this;
+}
+
+void binaryTree::printLeafs(node* newNode)
+{
+    if (newNode != nullptr)
+    {
+        if (newNode->getLeft() == nullptr && newNode->getRight() == nullptr) {
+            std::cout << newNode->getKey() << " ";
+            return;
+        }
+        printLeafs(newNode->getLeft());
+        printLeafs(newNode->getRight());
+    }
+}
+
+int binaryTree::getAmountOfNodes(node* newNode, int static value = 0)
+{
+
+    if (newNode)
+    {
+
+        getAmountOfNodes(newNode->getLeft(),value++);
+        
+        getAmountOfNodes(newNode->getRight(),value++);
+
+    }
 }

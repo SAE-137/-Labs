@@ -7,15 +7,16 @@ public:
 	binaryTree();
 	~binaryTree();
 
-
+	int getAmountOfNodes(node* newNode, int static value = 0);
 
 	void setRoot(node* newRoot);
 	void show(node* root, int space = 0, int indentv = 4);
-	
+	void printLeafs(node* newNode);
 	void deleteTree(node* newNode);
-	
+	void deleteNode(int key);
 	void insert(int key);
 
+	node* search(node* root, int key);
 	node* insertRec(node* newNode, int value);
 	node* getRoot();
 
@@ -45,5 +46,5 @@ private:
 - получение вектора (std::vector<int>), содержащего все ключи дерева по возрастанию (обход вершин производить любым способом);
 - вывод в консоль дерева в горизонтальном виде (самый правый потомок находится на первой строке, самый левый - на нижней);
 - вывод в консоль дерева по уровням (на форму (в этом случае данный метод принадлежит классу GUI, а не дерева) или в консоль при помощи итератора);
-- вывод в консоль листьев дерева;
+
 - оператор присваивания.*/
