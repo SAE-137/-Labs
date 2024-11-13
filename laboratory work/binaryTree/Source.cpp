@@ -13,7 +13,7 @@ void space(int amount)
 	}
 }
 
-int main()
+int main1()
 {
 	
 	int n;
@@ -36,7 +36,7 @@ int main()
 			std::cout << std::endl;
 		}
 		
-		std::cout << "--> " <<testTree.getAmountOfNodes(testTree.getRoot());
+		std::cout << "--> ";
 		while (true)
 		{
 			space(3);
@@ -49,5 +49,31 @@ int main()
 	
 	
 	
+	return 0;
+}
+
+
+int main()
+{
+	int n = 1;
+	binaryTree a;
+	for (int i = 0; i < n; ++i)
+	{
+		a.insert(rand() % 20);
+	}
+	while (true)
+	{
+		a.show(a.getRoot());
+		space(1);
+
+		std::cout << "--> " << a.getDepth(a.getRoot()) << std::endl;
+		int value;
+		std::cin >> value;
+
+		a.insert(value);
+		space(3);
+
+	}
+
 	return 0;
 }

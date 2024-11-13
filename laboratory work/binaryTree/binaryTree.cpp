@@ -157,3 +157,41 @@ int binaryTree::getNodeLvl(int key)
 {
     return 0;
 }
+
+
+
+binaryTree* binaryTree::copy(node* newNode)
+{
+    if (newNode == nullptr) return nullptr;
+
+    if(this->getRoot() == nullptr)
+        this->getRoot()->setKey(newNode->getKey());
+
+
+
+    return this;
+
+
+
+    
+}
+
+int binaryTree::getDepth(node* newNode)
+{
+    if (newNode)
+    {
+        int l = getDepth(newNode->getLeft());
+        int r = getDepth(newNode->getRight());
+
+        if (l < r) {
+            return r + 1;
+
+        }
+        else
+        {
+            return l + 1;
+        }
+
+    }
+    return 0;
+}
