@@ -7,7 +7,7 @@ public:
 	binaryTree();
 	~binaryTree();
 
-	int getAmountOfNodes(node* newNode, int static value = 0);
+	int getAmountOfNodes(node* newNode);
 
 	void setRoot(node* newRoot);
 	void show(node* root, int space = 0, int indentv = 4);

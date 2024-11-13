@@ -1,6 +1,5 @@
 #include <iostream>
-#include <random>    // std::random_device, std::mt19937
-#include <ctime> 
+
 #include "binaryTree.h"
 #include "node.h"
 
@@ -30,13 +29,9 @@ int main()
 		{
 			std::cout << std::endl;
 		}
-
-		testTree.printLeafs(testTree.getRoot());
 		
-		
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		
+		std::cout << "--> " <<testTree.getAmountOfNodes(testTree.getRoot());
+	
 	
 	
 	

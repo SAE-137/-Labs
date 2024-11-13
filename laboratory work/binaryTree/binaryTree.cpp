@@ -133,15 +133,13 @@ void binaryTree::printLeafs(node* newNode)
     }
 }
 
-int binaryTree::getAmountOfNodes(node* newNode, int static value = 0)
+int binaryTree::getAmountOfNodes(node* newNode)
 {
+    if (newNode == nullptr) return 0;
 
-    if (newNode)
-    {
 
-        getAmountOfNodes(newNode->getLeft(),value++);
-        
-        getAmountOfNodes(newNode->getRight(),value++);
+        return getAmountOfNodes(newNode->getLeft()) + getAmountOfNodes(newNode->getRight()) + 1;
+  
+       
 
-    }
 }
