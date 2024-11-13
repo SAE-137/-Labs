@@ -103,14 +103,26 @@ void binaryTree::insert(int key) {
 
 node* binaryTree::search(node* root, int key)
 {
-    if (root)
+    if (root == nullptr)
     {
-        if (root->getKey() == key) return root;
-        search(root->getLeft(), key);
-        search(root->getRight(), key);
+        return nullptr; 
     }
-    return nullptr;
+
+    if (root->getKey() == key)
+    {
+        return root; 
+    }
+
+   
+    node* leftResult = search(root->getLeft(), key);
+    if (leftResult != nullptr)
+    {
+        return leftResult; 
+    }
+
+    return search(root->getRight(), key);
 }
+
 
 void binaryTree::deleteNode(int key)
 {
@@ -137,9 +149,11 @@ int binaryTree::getAmountOfNodes(node* newNode)
 {
     if (newNode == nullptr) return 0;
 
+        return getAmountOfNodes(newNode->getLeft()) + getAmountOfNodes(newNode->getRight()) + 1; 
 
-        return getAmountOfNodes(newNode->getLeft()) + getAmountOfNodes(newNode->getRight()) + 1;
-  
-       
+}
 
+int binaryTree::getNodeLvl(int key)
+{
+    return 0;
 }

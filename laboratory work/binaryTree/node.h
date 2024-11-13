@@ -16,11 +16,11 @@ public:
 	node* getRight();
 	node* getLeft();
 
-	
+	int m_key = 0;
 private:
 	node* m_left;
 	node* m_right;
 
-	int m_key;
+	
 };
 

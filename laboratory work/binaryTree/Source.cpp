@@ -5,7 +5,13 @@
 
 
 
-
+void space(int amount)
+{
+	for (int i = 0; i < amount; ++i)
+	{
+		std::cout << std::endl;
+	}
+}
 
 int main()
 {
@@ -31,6 +37,14 @@ int main()
 		}
 		
 		std::cout << "--> " <<testTree.getAmountOfNodes(testTree.getRoot());
+		while (true)
+		{
+			space(3);
+			std::cin >> n;
+			testTree.search(testTree.getRoot(), n)->setKey(137);
+			testTree.show(testTree.getRoot());
+			if (n == -1) break;
+		}
 	
 	
 	
