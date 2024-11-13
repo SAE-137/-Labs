@@ -55,25 +55,13 @@ int main1()
 
 int main()
 {
-	int n = 1;
+	int n = 10;
 	binaryTree a;
-	for (int i = 0; i < n; ++i)
+	for (int i = 0; i < n; i++)
 	{
-		a.insert(rand() % 20);
+		a.insert(rand() % 50);
 	}
-	while (true)
-	{
-		a.show(a.getRoot());
-		space(1);
+	a.show(a.getRoot());
+	a.deleteSubTree(a.getRoot()->getLeft());
 
-		std::cout << "--> " << a.getDepth(a.getRoot()) << std::endl;
-		int value;
-		std::cin >> value;
-
-		a.insert(value);
-		space(3);
-
-	}
-
-	return 0;
 }

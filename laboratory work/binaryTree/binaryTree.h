@@ -10,12 +10,14 @@ public:
 	int getAmountOfNodes(node* newNode);
 	int getNodeLvl(int key);
 	int getDepth(node* newNode);
-	
+	int findNodeLevel(node* root, int key, int level = 0);
+	int findNodeLevel(int key);
 
 	void setRoot(node* newRoot);
 	void show(node* root, int space = 0, int indentv = 4);
 	void printLeafs(node* newNode);
-	void deleteTree(node* newNode);
+	void deleteTree();
+	void deleteSubTree(node* newNode);
 	void deleteNode(int key);
 	void insert(int key);
 
@@ -29,10 +31,10 @@ public:
 	bool isEmpty();
 
 	
+
 private:
 
-
-	node* m_root = nullptr;
+	node* m_root ;
 };
 
 
@@ -43,7 +45,7 @@ private:
 - удаление поддеревьев узла;
 
 - копирование поддерева узла (возвращает новый объект класса);
-- получение высоты дерева;
+
 
 - получение минимального/максимального ключа дерева;
 - добавление узла в дерево (методом случайного выбора поддерева);

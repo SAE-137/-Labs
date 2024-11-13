@@ -8,13 +8,13 @@
 
 binaryTree::binaryTree()
 {
-	m_root = nullptr;
+    m_root = new node;
+    m_root = nullptr;
 }
 
 binaryTree::~binaryTree()
 {
-
-    deleteTree(m_root);
+    if(m_root) deleteTree();
 
 }
 
@@ -66,17 +66,23 @@ bool binaryTree::isEmpty()
     return false;
 }
 
-void binaryTree::deleteTree(node* newNode)
+void binaryTree::deleteTree()
 {
-    if (newNode)
-    {
-        deleteTree(newNode->getLeft());
-        deleteTree(newNode->getRight());
+    deleteSubTree(m_root);
+    m_root = nullptr;
+}
+
+void binaryTree::deleteSubTree(node* newNode)
+{
+    if (!newNode) return;
+    
+        deleteSubTree(newNode->getLeft());
+        deleteSubTree(newNode->getRight());
 
         delete newNode;
-    }
-
+    
     newNode = nullptr;
+
     
 }
 
@@ -97,7 +103,7 @@ node* binaryTree::insertRec(node* newNode, int key) {
 }
 
 void binaryTree::insert(int key) {
-    m_root = insertRec(m_root, key);
+    if(m_root) m_root = insertRec(m_root, key);
 }
 
 
