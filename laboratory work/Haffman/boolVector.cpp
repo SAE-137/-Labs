@@ -30,7 +30,7 @@ boolVector::boolVector(std::string txt) {
 
 boolVector::~boolVector()
 {
-	delete m_vector;
+	
 }
 
 

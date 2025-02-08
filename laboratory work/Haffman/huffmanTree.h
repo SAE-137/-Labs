@@ -11,7 +11,7 @@ public:
 	void setFrequensy(int frequency);
 	void setBoolVector(boolVector vector);
 	void setNext(node* otherNode);
-	
+	void getSimbol();
 	node* getNext();
 
 	int getFrequency();
@@ -30,14 +30,15 @@ class huffmanTree
 {
 public:
 	
-
+	huffmanTree();
 	huffmanTree(std::string txt);
 	~huffmanTree();
 
 	node* getHead();
 
-	void build(const std::string &txt);
-	void insert(std::string simbol, int frequensy);
+	void testShow();
+	void build(const std::string txt);
+	void insert(boolVector value, int frequensy);
 private:
 	
 	node* root = nullptr;
