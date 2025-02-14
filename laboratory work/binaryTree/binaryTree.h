@@ -20,10 +20,12 @@ public:
     void deleteTree();
     void deleteSubTree(node* newNode);
     void insert(int key);
+    void insertRandom(int key);
 
     node* search(node* root, int key);
     node* insertRec(node* newNode, int value);
     node* getRoot();
+    node* insertRandomRec(node* newNode, int key);
 
     node* copy(node* currentNode);
     binaryTree* copy(binaryTree* newTree);
@@ -38,17 +40,16 @@ private:
 
 
 /*- конструкторы (по умолчанию, копировани€);
-- деструктор;
 
-- очистка дерева (удаление всех узлов);
-- удаление поддеревьев узла;
+
+
 
 - копирование поддерева узла (возвращает новый объект класса);
 
 
 
-- добавление узла в дерево (методом случайного выбора поддерева);
-- удаление узла из дерева по ключу (возвращает true, если узел был удалЄн);
+
+
 
 - проверка дерева на сбалансированность (возвращает true, если дерево €вл€етс€ сбалансированным: высоты правого и левого поддеревьев отличаютс€ не более, чем на единицу, и сами поддеревь€ также €вл€ютс€ сбалансированными);
 

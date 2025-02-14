@@ -24,32 +24,26 @@ void space(int amount)
 
 int main()
 {
-	
-	int n = 30;
+    int n = 20;
 
+    binaryTree testTree;
 
-	
+    for (int i = 0; i < n; ++i)
+    {
+        testTree.insert(randomValue());
+    }
 
+    testTree.show(testTree.getRoot(), 0, 3);
 
+    node* leftSubtree = testTree.getRoot()->getLeft();
+    testTree.deleteSubTree(leftSubtree);
 
-		binaryTree testTree;
+    testTree.show(testTree.getRoot(), 0, 3);
 
-		for (int i = 0; i < n; ++i)
-		{
-			testTree.insert(randomValue());
-		}
-		testTree.show(testTree.getRoot(), 0 ,3);
+  
+    testTree.deleteTree();
 
-		
-		space(2);
-		int value;
-		while (true)
-		{
-			std::cin >> value; 
-			testTree.deleteNode(value);
-			testTree.show(testTree.getRoot(), 0, 3);
-		}
-	
-	return 0;
+    return 0;
 }
+
 

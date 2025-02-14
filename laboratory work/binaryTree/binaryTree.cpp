@@ -42,10 +42,14 @@ void binaryTree::deleteTree() {
 
 void binaryTree::deleteSubTree(node* newNode) {
     if (!newNode) return;
+
     deleteSubTree(newNode->getLeft());
     deleteSubTree(newNode->getRight());
+
     delete newNode;
+    newNode = nullptr; // “еперь указатель обнул€етс€ правильно
 }
+
 
 node* binaryTree::insertRec(node* newNode, int key) {
     if (newNode == nullptr) {
@@ -208,4 +212,24 @@ node* binaryTree::deleteNodeRec(node* root, int key) {
 bool binaryTree::deleteNode(int key) {
     m_root = deleteNodeRec(m_root, key);
     return true;
+}
+
+node* binaryTree::insertRandomRec(node* newNode, int key) {
+    if (newNode == nullptr) {
+        return new node(key);
+    }
+
+    
+    if (rand() % 2 == 0) {
+        newNode->setLeft(insertRandomRec(newNode->getLeft(), key));
+    }
+    else {
+        newNode->setRight(insertRandomRec(newNode->getRight(), key));
+    }
+
+    return newNode;
+}
+
+void binaryTree::insertRandom(int key) {
+    m_root = insertRandomRec(m_root, key);
 }
