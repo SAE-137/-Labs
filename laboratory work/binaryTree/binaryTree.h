@@ -12,6 +12,8 @@ public:
 	int getDepth(node* newNode);
 	int findNodeLevel(node* root, int key, int level);
 	int findNodeLevel(int key);
+	int getMin();
+	int getMax();
 
 	void setRoot(node* newRoot);
 	void show(node* root, int space = 0, int indentv = 4);

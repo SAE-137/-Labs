@@ -1,9 +1,18 @@
 #include <iostream>
-
+#include<random>
 #include "binaryTree.h"
 #include "node.h"
 
+int randomValue(int min = 0, int max = 1000)
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dist(min, max);
 
+	
+		return dist(gen);
+	
+}
 
 void space(int amount)
 {
@@ -13,7 +22,7 @@ void space(int amount)
 	}
 }
 
-int main1()
+int main()
 {
 	
 	int n;
@@ -27,42 +36,16 @@ int main1()
 
 		for (int i = 0; i < n; ++i)
 		{
-			testTree.insert(rand() % 1000);
+			testTree.insert(randomValue());
 		}
 		testTree.show(testTree.getRoot());
 
-		for (int i = 0; i < 4; ++i)
-		{
-			std::cout << std::endl;
-		}
 		
-		std::cout << "--> ";
-		while (true)
-		{
-			space(3);
-			std::cin >> n;
-			testTree.search(testTree.getRoot(), n)->setKey(137);
-			testTree.show(testTree.getRoot());
-			if (n == -1) break;
-		}
-	
-	
+		space(5);
+
+		std::cout << "max ->" << testTree.getMax();
 	
 	
 	return 0;
 }
 
-
-int main()
-{
-	int n = 10;
-	binaryTree a;
-	binaryTree b;
-	for (int i = 0; i < n; i++)
-	{
-		a.insert(rand() % 50);
-	}
-	
-
-
-}

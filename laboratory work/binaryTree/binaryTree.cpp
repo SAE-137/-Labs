@@ -103,7 +103,7 @@ node* binaryTree::insertRec(node* newNode, int key) {
 }
 
 void binaryTree::insert(int key) {
-    if(m_root) m_root = insertRec(m_root, key);
+    m_root = insertRec(m_root, key);
 }
 
 
@@ -241,4 +241,22 @@ int binaryTree::findNodeLevel(node* root, int key, int level)
 int binaryTree::findNodeLevel(int key)
 {
     return findNodeLevel(m_root, key, 0);
+}
+
+int binaryTree::getMax() {
+    if (m_root == nullptr) {
+        throw std::runtime_error("Дерево пустое");
+    }
+
+    node* current = m_root;
+    while (current->getRight()) {
+        current = current->getRight();
+    }
+    return current->getKey();
+}
+
+
+int binaryTree::getMin()
+{
+    return 0;
 }
