@@ -25,12 +25,12 @@ void space(int amount)
 int main()
 {
 	
-	int n;
-	int newn;
+	int n = 30;
+
 
 	
 
-		std::cin >> n;
+
 
 		binaryTree testTree;
 
@@ -43,7 +43,8 @@ int main()
 		
 		space(5);
 
-		std::cout << "max ->" << testTree.getMax();
+		std::cout << "max ->" << testTree.getMax() <<std::endl;
+		std::cout << "min ->" << testTree.getMin();
 	
 	
 	return 0;

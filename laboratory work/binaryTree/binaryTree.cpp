@@ -258,5 +258,13 @@ int binaryTree::getMax() {
 
 int binaryTree::getMin()
 {
-    return 0;
+    if (m_root == nullptr) {
+        throw std::runtime_error("Дерево пустое");
+    }
+
+    node* current = m_root;
+    while (current->getLeft()) {
+        current = current->getLeft();
+    }
+    return current->getKey();
 }
