@@ -1,42 +1,39 @@
 #pragma once
 #include "node.h"
 
-class binaryTree
-{
+class binaryTree {
 public:
-	binaryTree();
-	~binaryTree();
+    binaryTree();
+    ~binaryTree();
 
-	int getAmountOfNodes(node* newNode);
-	int getNodeLvl(int key);
-	int getDepth(node* newNode);
-	int findNodeLevel(node* root, int key, int level);
-	int findNodeLevel(int key);
-	int getMin();
-	int getMax();
+    int getAmountOfNodes(node* newNode);
+    int getNodeLvl(int key); 
+    int getDepth(node* newNode);
+    int findNodeLevel(node* root, int key, int level);
+    int findNodeLevel(int key);
+    int getMin();
+    int getMax();
 
-	void setRoot(node* newRoot);
-	void show(node* root, int space = 0, int indentv = 4);
-	void printLeafs(node* newNode);
-	void deleteTree();
-	void deleteSubTree(node* newNode);
-	void deleteNode(int key);
-	void insert(int key);
+    void setRoot(node* newRoot);
+    void show(node* root, int space = 0, int indent = 4);
+    void printLeafs(node* newNode);
+    void deleteTree();
+    void deleteSubTree(node* newNode);
+    void insert(int key);
 
+    node* search(node* root, int key);
+    node* insertRec(node* newNode, int value);
+    node* getRoot();
 
-	node* search(node* root, int key);
-	node* insertRec(node* newNode, int value);
-	node* getRoot();
-
-	node* copy(node* currentNode);
-	binaryTree* copy(binaryTree* newTree);
-	bool isEmpty();
-
-	
+    node* copy(node* currentNode);
+    binaryTree* copy(binaryTree* newTree);
+    bool isEmpty();
+    bool deleteNode(int key);
 
 private:
-
-	node* m_root ;
+    node* m_root;
+    node* deleteNodeRec(node* root, int key);
+    node* findMin(node* root);
 };
 
 

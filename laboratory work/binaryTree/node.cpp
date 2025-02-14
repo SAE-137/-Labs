@@ -1,6 +1,9 @@
 #include "node.h"
 
-
+node::~node() {
+	
+	
+}
 
 node::node()
 {
@@ -17,10 +20,7 @@ node::node(int newKey)
 	m_right = nullptr;
 }
 
-node::~node()
-{
 
-}
 
 int node::getKey()
 {

@@ -38,14 +38,17 @@ int main()
 		{
 			testTree.insert(randomValue());
 		}
-		testTree.show(testTree.getRoot());
+		testTree.show(testTree.getRoot(), 0 ,3);
 
 		
-		space(5);
-
-		std::cout << "max ->" << testTree.getMax() <<std::endl;
-		std::cout << "min ->" << testTree.getMin();
-	
+		space(2);
+		int value;
+		while (true)
+		{
+			std::cin >> value; 
+			testTree.deleteNode(value);
+			testTree.show(testTree.getRoot(), 0, 3);
+		}
 	
 	return 0;
 }
