@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "binaryTree", "binaryTree\bi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Haffman", "Haffman\Haffman.vcxproj", "{6A5F9633-E916-48B5-AE71-345C95F4AE7C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileSort", "FileSort\FileSort.vcxproj", "{843501C6-32D8-4CA6-8A0E-7895253065F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{6A5F9633-E916-48B5-AE71-345C95F4AE7C}.Release|x64.Build.0 = Release|x64
 		{6A5F9633-E916-48B5-AE71-345C95F4AE7C}.Release|x86.ActiveCfg = Release|Win32
 		{6A5F9633-E916-48B5-AE71-345C95F4AE7C}.Release|x86.Build.0 = Release|Win32
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Debug|x64.ActiveCfg = Debug|x64
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Debug|x64.Build.0 = Debug|x64
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Debug|x86.ActiveCfg = Debug|Win32
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Debug|x86.Build.0 = Debug|Win32
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Release|x64.ActiveCfg = Release|x64
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Release|x64.Build.0 = Release|x64
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Release|x86.ActiveCfg = Release|Win32
+		{843501C6-32D8-4CA6-8A0E-7895253065F9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
