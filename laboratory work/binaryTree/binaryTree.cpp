@@ -93,25 +93,25 @@ void binaryTree::printLeafs(node* newNode) {
     printLeafs(newNode->getRight());
 }
 
-int binaryTree::getAmountOfNodes(node* newNode) {
+int binaryTree::getAmountOfNodes(node* newNode) const {
     if (newNode == nullptr) return 0;
     return 1 + getAmountOfNodes(newNode->getLeft()) + getAmountOfNodes(newNode->getRight());
 }
 
-int binaryTree::getNodeLvl(int key) {
+int binaryTree::getNodeLvl(int key) const {
     return findNodeLevel(m_root, key, 0);
 }
 
 
 
-int binaryTree::getDepth(node* newNode) {
+int binaryTree::getDepth(node* newNode) const {
     if (newNode == nullptr) return 0;
     int leftDepth = getDepth(newNode->getLeft());
     int rightDepth = getDepth(newNode->getRight());
     return std::max(leftDepth, rightDepth) + 1;
 }
 
-int binaryTree::findNodeLevel(node* root, int key, int level) {
+int binaryTree::findNodeLevel(node* root, int key, int level) const {
     if (root == nullptr) return -1;
     if (root->getKey() == key) return level;
 
@@ -121,11 +121,11 @@ int binaryTree::findNodeLevel(node* root, int key, int level) {
     return findNodeLevel(root->getRight(), key, level + 1);
 }
 
-int binaryTree::findNodeLevel(int key) {
+int binaryTree::findNodeLevel(int key) const {
     return findNodeLevel(m_root, key, 0);
 }
 
-int binaryTree::getMax() {
+int binaryTree::getMax() const {
     if (m_root == nullptr) {
         throw std::runtime_error("Дерево пустое");
     }
@@ -137,7 +137,7 @@ int binaryTree::getMax() {
     return current->getKey();
 }
 
-int binaryTree::getMin() {
+int binaryTree::getMin() const {
     if (m_root == nullptr) {
         throw std::runtime_error("Дерево пустое");
     }
@@ -225,7 +225,7 @@ int height(node* root) {
     return std::max(height(root->getLeft()), height(root->getRight())) + 1;
 }
 
-bool binaryTree::isBalanced(node* root) {
+bool binaryTree::isBalanced(node* root)  {
     if (root == nullptr) return true;
 
     int leftHeight = height(root->getLeft());
@@ -236,7 +236,7 @@ bool binaryTree::isBalanced(node* root) {
     return isBalanced(root->getLeft()) && isBalanced(root->getRight());
 }
 
-bool binaryTree::isBalanced() {
+bool binaryTree::isBalanced()  {
     return isBalanced(m_root);
 }
 
@@ -300,4 +300,26 @@ binaryTree* binaryTree::copySubTree(int key) {
     return newTree;
 }
 
+binaryTree::binaryTree(const binaryTree& other) {
+    if (other.m_root == nullptr) {
+        m_root = nullptr;
+    }
+    else {
+        m_root = copy(other.m_root); 
+    }
+}
 
+binaryTree& binaryTree::operator=(const binaryTree& other) {
+    if (this == &other) return *this; 
+
+    deleteTree();
+
+    if (other.m_root != nullptr) {
+        m_root = copy(other.m_root);
+    }
+    else {
+        m_root = nullptr;
+    }
+
+    return *this;
+}

@@ -5,15 +5,18 @@
 class binaryTree {
 public:
     binaryTree();
+    binaryTree(const binaryTree& other);
     ~binaryTree();
 
-    int getAmountOfNodes(node* newNode);
-    int getNodeLvl(int key); 
-    int getDepth(node* newNode);
-    int findNodeLevel(node* root, int key, int level);
-    int findNodeLevel(int key);
-    int getMin();
-    int getMax();
+
+
+    int getAmountOfNodes(node* newNode) const;
+    int getNodeLvl(int key) const;
+    int getDepth(node* newNode) const;
+    int findNodeLevel(node* root, int key, int level) const;
+    int findNodeLevel(int key) const;
+    int getMin() const;
+    int getMax() const;
 
     void setRoot(node* newRoot);
     void show(node* root, int space = 0, int indent = 4);
@@ -32,16 +35,18 @@ public:
     node* insertRandomRec(node* newNode, int key);
 
    
-    bool isEmpty();
+    bool isEmpty() ;
     bool deleteNode(int key);
-    bool isBalanced(node* root);
-    bool isBalanced();
+    bool isBalanced(node* root) ;
+    bool isBalanced() ;
 
     std::vector<int> getSortedKeys();
 
 
     binaryTree* copySubTree(int key);
     node* copy(node* currentNode);
+
+    binaryTree& operator=(const binaryTree& other);
 private:
     node* m_root;
     node* deleteNodeRec(node* root, int key);
@@ -49,12 +54,12 @@ private:
 };
 
 
-/*- конструкторы (по умолчанию, копирования);
+/*
 
 
 
 
-- копирование поддерева узла (возвращает новый объект класса);
+
 
 
 
