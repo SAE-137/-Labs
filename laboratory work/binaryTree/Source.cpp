@@ -2,6 +2,7 @@
 #include<random>
 #include "binaryTree.h"
 #include "node.h"
+#include<vector>
 
 int randomValue(int min = 0, int max = 1000)
 {
@@ -12,6 +13,12 @@ int randomValue(int min = 0, int max = 1000)
 	
 		return dist(gen);
 	
+}
+
+void vectorShow(std::vector<int> sortedKeys)
+{
+	for (int key : sortedKeys)
+		std::cout << key << " ";
 }
 
 void space(int amount)
@@ -37,6 +44,9 @@ int main()
 
 	space(5);
 	testTree.printByLevels();
+	space(5);
+	std::vector<int> treeKeys = testTree.getSortedKeys();
+	vectorShow(treeKeys);
 
     return 0;
 }

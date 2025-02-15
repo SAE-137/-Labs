@@ -1,5 +1,6 @@
 #pragma once
 #include "node.h"
+#include<vector>
 
 class binaryTree {
 public:
@@ -23,6 +24,7 @@ public:
     void insertRandom(int key);
     void printCurrentLevel(node* root, int level);
     void printByLevels();
+    void inOrderTraversal(node* root, std::vector<int>& keys);
 
     node* search(node* root, int key);
     node* insertRec(node* newNode, int value);
@@ -35,6 +37,8 @@ public:
     bool deleteNode(int key);
     bool isBalanced(node* root);
     bool isBalanced();
+
+    std::vector<int> getSortedKeys();
 
 private:
     node* m_root;
@@ -58,7 +62,5 @@ private:
 
 
 - получение вектора (std::vector<int>), содержащего все ключи дерева по возрастанию (обход вершин производить любым способом);
-
-- вывод в консоль дерева по уровням (на форму (в этом случае данный метод принадлежит классу GUI, а не дерева) или в консоль при помощи итератора);
 
 - оператор присваивания.*/

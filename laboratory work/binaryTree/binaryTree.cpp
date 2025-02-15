@@ -274,3 +274,17 @@ void binaryTree::printByLevels() {
         std::cout << std::endl;
     }
 }
+
+void binaryTree::inOrderTraversal(node* root, std::vector<int>& keys) {
+    if (root == nullptr) return;
+
+    inOrderTraversal(root->getLeft(), keys);  
+    keys.push_back(root->getKey());           
+    inOrderTraversal(root->getRight(), keys); 
+}
+
+std::vector<int> binaryTree::getSortedKeys() {
+    std::vector<int> keys;
+    inOrderTraversal(m_root, keys);
+    return keys;
+}
