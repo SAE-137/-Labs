@@ -35,13 +35,8 @@ int main()
 
     testTree.show(testTree.getRoot(), 0, 3);
 
-    node* leftSubtree = testTree.getRoot()->getLeft();
-    testTree.deleteSubTree(leftSubtree);
-
-    testTree.show(testTree.getRoot(), 0, 3);
-
-  
-    testTree.deleteTree();
+	space(5);
+	testTree.printByLevels();
 
     return 0;
 }

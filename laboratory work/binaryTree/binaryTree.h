@@ -21,6 +21,8 @@ public:
     void deleteSubTree(node* newNode);
     void insert(int key);
     void insertRandom(int key);
+    void printCurrentLevel(node* root, int level);
+    void printByLevels();
 
     node* search(node* root, int key);
     node* insertRec(node* newNode, int value);

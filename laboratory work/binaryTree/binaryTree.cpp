@@ -255,3 +255,22 @@ bool binaryTree::isBalanced(node* root) {
 bool binaryTree::isBalanced() {
     return isBalanced(m_root);
 }
+
+void binaryTree::printCurrentLevel(node* root, int level) {
+    if (root == nullptr) return;
+    if (level == 1) {
+        std::cout << root->getKey() << " ";
+    }
+    else if (level > 1) {
+        printCurrentLevel(root->getLeft(), level - 1);
+        printCurrentLevel(root->getRight(), level - 1);
+    }
+}
+
+void binaryTree::printByLevels() {
+    int h = getDepth(m_root); 
+    for (int i = 1; i <= h; i++) {
+        printCurrentLevel(m_root, i);
+        std::cout << std::endl;
+    }
+}
