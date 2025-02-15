@@ -44,10 +44,14 @@ int main()
 
 	space(5);
 	testTree.printByLevels();
-	space(5);
-	std::vector<int> treeKeys = testTree.getSortedKeys();
-	vectorShow(treeKeys);
 
+	int value;
+	std::cin >> n;
+
+	binaryTree* newTree;
+	newTree = testTree.copySubTree(n);
+	space(5);
+	newTree->show(newTree->getRoot(), 0, 3);
     return 0;
 }
 

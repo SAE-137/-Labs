@@ -31,8 +31,7 @@ public:
     node* getRoot();
     node* insertRandomRec(node* newNode, int key);
 
-    node* copy(node* currentNode);
-    binaryTree* copy(binaryTree* newTree);
+   
     bool isEmpty();
     bool deleteNode(int key);
     bool isBalanced(node* root);
@@ -40,6 +39,9 @@ public:
 
     std::vector<int> getSortedKeys();
 
+
+    binaryTree* copySubTree(int key);
+    node* copy(node* currentNode);
 private:
     node* m_root;
     node* deleteNodeRec(node* root, int key);
@@ -55,12 +57,5 @@ private:
 - копирование поддерева узла (возвращает новый объект класса);
 
 
-
-
-
-
-
-
-- получение вектора (std::vector<int>), содержащего все ключи дерева по возрастанию (обход вершин производить любым способом);
 
 - оператор присваивания.*/

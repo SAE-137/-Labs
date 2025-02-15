@@ -47,7 +47,7 @@ void binaryTree::deleteSubTree(node* newNode) {
     deleteSubTree(newNode->getRight());
 
     delete newNode;
-    newNode = nullptr; // “еперь указатель обнул€етс€ правильно
+    newNode = nullptr; 
 }
 
 
@@ -102,23 +102,7 @@ int binaryTree::getNodeLvl(int key) {
     return findNodeLevel(m_root, key, 0);
 }
 
-node* binaryTree::copy(node* currentNode) {
-    if (currentNode == nullptr) return nullptr;
 
-    node* newNode = new node(currentNode->getKey());
-    newNode->setLeft(copy(currentNode->getLeft()));
-    newNode->setRight(copy(currentNode->getRight()));
-
-    return newNode;
-}
-
-binaryTree* binaryTree::copy(binaryTree* otherTree) {
-    if (otherTree->getRoot() == nullptr) return nullptr;
-
-    binaryTree* newTree = new binaryTree();
-    newTree->setRoot(copy(otherTree->getRoot()));
-    return newTree;
-}
 
 int binaryTree::getDepth(node* newNode) {
     if (newNode == nullptr) return 0;
@@ -288,3 +272,32 @@ std::vector<int> binaryTree::getSortedKeys() {
     inOrderTraversal(m_root, keys);
     return keys;
 }
+
+
+node* binaryTree::copy(node* currentNode) {
+    if (currentNode == nullptr) {
+        return nullptr;
+    }
+    
+    node* newNode = new node(currentNode->getKey());
+
+    newNode->setLeft(copy(currentNode->getLeft()));
+    newNode->setRight(copy(currentNode->getRight()));
+
+    return newNode;
+}
+
+binaryTree* binaryTree::copySubTree(int key) {
+    node* subRoot = search(m_root, key);
+
+    if (subRoot == nullptr) {
+        std::cerr << "Error: node with key " << key << " not found" << std::endl;
+        return new binaryTree(); 
+    }
+
+    binaryTree* newTree = new binaryTree();
+    newTree->setRoot(copy(subRoot)); 
+    return newTree;
+}
+
+
