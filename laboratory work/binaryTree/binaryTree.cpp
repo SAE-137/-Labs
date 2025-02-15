@@ -233,3 +233,25 @@ node* binaryTree::insertRandomRec(node* newNode, int key) {
 void binaryTree::insertRandom(int key) {
     m_root = insertRandomRec(m_root, key);
 }
+
+
+
+int height(node* root) {
+    if (root == nullptr) return 0;
+    return std::max(height(root->getLeft()), height(root->getRight())) + 1;
+}
+
+bool binaryTree::isBalanced(node* root) {
+    if (root == nullptr) return true;
+
+    int leftHeight = height(root->getLeft());
+    int rightHeight = height(root->getRight());
+
+    if (std::abs(leftHeight - rightHeight) > 1) return false;
+
+    return isBalanced(root->getLeft()) && isBalanced(root->getRight());
+}
+
+bool binaryTree::isBalanced() {
+    return isBalanced(m_root);
+}
