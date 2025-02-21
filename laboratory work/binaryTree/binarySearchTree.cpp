@@ -61,3 +61,67 @@ node* binarySearchTree::search(node* root, int key) {
 node* binarySearchTree::search(int key)  {
     return search(getRoot(), key); 
 }
+
+bool binarySearchTree::deleteNode(int key) {
+    node* parent = nullptr;
+    node* current = getRoot();
+
+    while (current != nullptr && current->getKey() != key) {
+        parent = current;
+        if (key < current->getKey()) {
+            current = current->getLeft();
+        }
+        else {
+            current = current->getRight();
+        }
+    }
+
+    if (current == nullptr) {
+        return false;
+    }
+
+    if (current->getLeft() == nullptr && current->getRight() == nullptr) {
+        if (current != getRoot()) {
+            if (parent->getLeft() == current) {
+                parent->setLeft(nullptr);
+            }
+            else {
+                parent->setRight(nullptr);
+            }
+        }
+        else {
+            setRoot(nullptr); 
+        }
+        delete current;
+    }
+   
+    else if (current->getLeft() == nullptr || current->getRight() == nullptr) {
+        node* child = (current->getLeft() != nullptr) ? current->getLeft() : current->getRight();
+
+        if (current != getRoot()) {
+            if (parent->getLeft() == current) {
+                parent->setLeft(child);
+            }
+            else {
+                parent->setRight(child);
+            }
+        }
+        else {
+            setRoot(child); 
+        }
+        delete current;
+    }
+  
+    else {
+       
+        node* successor = findMin(current->getRight());
+
+        
+        current->setKey(successor->getKey());
+
+        
+        deleteNodeRec(current->getRight(), successor->getKey());
+    }
+
+    return true; 
+}

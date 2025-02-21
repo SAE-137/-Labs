@@ -16,7 +16,7 @@ public:
 	node* search(node* root, int key) override;
 	node* search(int key);
 		
-	
+	bool deleteNode(int key) override;
 
 
 	node* insertRec(node* node, int key);

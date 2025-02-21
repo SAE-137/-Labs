@@ -38,7 +38,7 @@ public:
     
    
     bool isEmpty() ;
-    bool deleteNode(int key);
+    virtual bool deleteNode(int key);
     bool isBalanced(node* root) ;
     bool isBalanced() ;
 
