@@ -1,37 +1,37 @@
 #include "huffmanTree.h"
 #include<iostream>
 
-node::node()
+Node::Node()
 {
 
 }
 
-int node::getFrequency()
+int Node::getFrequency()
 {
 	return m_frequency;
 }
 
-void node::setFrequensy(int frequency)
+void Node::setFrequensy(int frequency)
 {
 	m_frequency = frequency;
 }
 
-void node::getSimbol()
+void Node::getSimbol()
 {
      m_simbols.show();
 }
 
-void node::setBoolVector(boolVector simbols)
+void Node::setBoolVector(boolVector simbols)
 {
 	m_simbols = simbols;
 }
 
-void node::setNext(node* otherNode)
+void Node::setNext(Node* otherNode)
 {
 	next = otherNode;
 }
 
-node* node::getNext()
+Node* Node::getNext()
 {
 	return next;
 }
@@ -53,45 +53,42 @@ huffmanTree::~huffmanTree()
 }
 
 
-void huffmanTree::insert(boolVector vector, int frequency) {
-    node* newNode = new node;
+void huffmanTree::insert(Node* node) {
+    Node** p = &front_;
+
+    while (*p != nullptr && (*p)->frequency < node->frequency)
+    {
+        p = &(*p)->next;
+    }
+
+    node->next = *p;
+
+    *p = node;
+}
+
+
+void huffmanTree::build(const std::string text) {
+   
+    deleteTree(root);
+    root = nullptr;
+    codes.clear();
 
    
+    std::unordered_map<char, int> frequencies;
+    for (char ch : text) {
+        frequencies[ch]++;
+    }
+
     
-    newNode->setBoolVector(vector);
-    newNode->setFrequensy(frequency);
+    root = buildTree(frequencies);
 
    
-    if (this->getHead() == nullptr) {
-        head = newNode;
-        return;
-    }
-
-   
-    if (newNode->getFrequency() < head->getFrequency()) {
-        newNode->setNext(head);
-        head = newNode;
-        return;
-    }
-
-    node* otherNode = head;
-    while (otherNode->getNext() != nullptr && otherNode->getNext()->getFrequency() <= newNode->getFrequency()) {
-        otherNode = otherNode->getNext();
-    }
-
-   
-    newNode->setNext(otherNode->getNext());
-    otherNode->setNext(newNode);
+    buildCodes(root, "");
 }
 
-void huffmanTree::build(const std::string txt)
-{
 
-    for (uint8_t ch : txt) {
-		insert(ch, 1);
-        
-	}
-}
+
+
 
 void huffmanTree::testShow()
 {

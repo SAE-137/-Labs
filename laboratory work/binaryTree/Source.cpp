@@ -4,6 +4,8 @@
 #include "node.h"
 #include<vector>
 #include "binarySearchTree.h"
+#include "AVLTree.h"
+
 
 int randomValue(int min = 0, int max = 1000)
 {
@@ -32,13 +34,29 @@ void space(int amount)
 
 int main()
 {
+	int amount = 20;
+	AVLTree at;
 	binarySearchTree bst;
-	bst.insert(10);
-	bst.insert(5);
-	bst.insert(15);
+
+	for (int i = 0; i < amount; ++i)
+	{
+		int value = randomValue(0, 1000);
+		bst.insert(value);
+		at.insert(value);
+	}
+	
 
 	if (!bst.isEmpty()) {
 		bst.show(bst.getRoot());
+	}
+	else {
+		std::cout << "The tree is empty." << std::endl;
+	}
+
+	space(5);
+
+	if (!at.isEmpty()) {
+		at.show(at.getRoot());
 	}
 	else {
 		std::cout << "The tree is empty." << std::endl;

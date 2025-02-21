@@ -3,6 +3,30 @@
 
 
 
+binarySearchTree::~binarySearchTree() {
+    deleteTree(); 
+}
+
+
+binarySearchTree::binarySearchTree(const binarySearchTree& other) {
+    m_root = copyTree(other.m_root); 
+}
+
+node* binarySearchTree::copyTree(const node* root)  {
+    if (root == nullptr) {
+        return nullptr; 
+    }
+
+   
+    node* newNode = new node(getRoot()->getKey());
+
+   
+    newNode->setLeft(copyTree(getRoot()->getLeft()));
+    newNode->setRight(copyTree(getRoot()->getRight()));
+
+    return newNode;
+}
+
 int binarySearchTree::getMin() {
     if (getRoot() == nullptr) {
         throw std::runtime_error("The tree is empty");

@@ -6,15 +6,19 @@ class binarySearchTree : public binaryTree
 {
 public:
 	binarySearchTree() : binaryTree() { }
+	~binarySearchTree();
 
+	binarySearchTree(const binarySearchTree& other);
+	
 
-	void insert(int key) override;
+	virtual void insert(int key) override;
 
 	int getMin()  override;
 	int getMax()  override;
 
 	node* search(node* root, int key) override;
 	node* search(int key);
+	node* copyTree(const node* root) ;
 		
 	bool deleteNode(int key) override;
 
@@ -22,7 +26,7 @@ public:
 	int findNodeLevel(node* root, int key, int level) ;
 
 
-	node* insertRec(node* node, int key);
+	virtual node* insertRec(node* node, int key);
 private:
 
 };

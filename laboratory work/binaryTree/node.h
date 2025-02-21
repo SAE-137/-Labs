@@ -20,7 +20,7 @@ public:
 	int m_key = 0;
 	node* m_left;
 	node* m_right;
-
+	int height;
 private:
 	
 

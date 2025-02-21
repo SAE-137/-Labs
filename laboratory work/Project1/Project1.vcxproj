@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a6f3749e-a130-4654-bed5-c53c38bd379f}</ProjectGuid>
-    <RootNamespace>binaryTree</RootNamespace>
+    <ProjectGuid>{716a12e1-cac3-44cf-b8ef-273cf8a72beb}</ProjectGuid>
+    <RootNamespace>Project1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,16 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AVLTree.h" />
-    <ClInclude Include="binarySearchTree.h" />
-    <ClInclude Include="binaryTree.h" />
-    <ClInclude Include="node.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AVLTree.cpp" />
-    <ClCompile Include="binarySearchTree.cpp" />
-    <ClCompile Include="binaryTree.cpp" />
-    <ClCompile Include="node.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

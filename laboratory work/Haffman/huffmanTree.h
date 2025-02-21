@@ -2,7 +2,7 @@
 #include"boolVector.h"
 #include<string>
 
-class node
+class Node
 {
 public:
 
@@ -21,9 +21,9 @@ public:
 private:
 	int m_frequency = 1;
 	boolVector m_simbols;
-	node* left = nullptr;
-	node* right = nullptr;
-	node* next = nullptr;
+	Node* left = nullptr;
+	Node* right = nullptr;
+	Node* next = nullptr;
 };
 
 class huffmanTree
@@ -31,18 +31,18 @@ class huffmanTree
 public:
 	
 	huffmanTree();
-	huffmanTree(std::string txt);
+	huffmanTree(std::string text);
 	~huffmanTree();
 
-	node* getHead();
+	Node* getHead();
 
 	void testShow();
 	void build(const std::string txt);
-	void insert(boolVector value, int frequensy);
+	void insert(Node* node);
 private:
 	
-	node* root = nullptr;
-	node* head = nullptr;
+	Node* root = nullptr;
+	Node* head = nullptr;
 	
 };
 
