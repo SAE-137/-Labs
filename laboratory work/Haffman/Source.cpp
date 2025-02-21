@@ -1,17 +1,12 @@
 #include <iostream>
-#include <cstdint>
-#include "boolVector.h"
-#include"huffmanTree.h"
+#include "boolvector.h"
 
 int main() {
+    // Создание булева вектора из строки
+    boolVector vec("hello world");
+
+    vec.show();
    
-    std::string txt = "a";
-    huffmanTree a;
-    a.build(txt);
-    a.testShow();
-    boolVector b(txt);
-    b.show();
-    
 
     return 0;
 }

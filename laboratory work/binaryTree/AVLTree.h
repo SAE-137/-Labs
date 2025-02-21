@@ -4,6 +4,8 @@
 class AVLTree : public binarySearchTree
 {
 public:
+    AVLTree() : binarySearchTree() {}
+    ~AVLTree();
 
 	int height(node* newNode);
     int balanceFactor(node* newNode);

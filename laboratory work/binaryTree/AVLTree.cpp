@@ -1,6 +1,10 @@
 #include "AVLTree.h"
 
 
+AVLTree::~AVLTree()
+{
+    deleteTree();
+}
 
 int AVLTree::height(node* newNode) {
     return newNode ? newNode->height : 0;
