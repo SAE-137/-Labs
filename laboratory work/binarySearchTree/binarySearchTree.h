@@ -1,19 +1,19 @@
 
-
+#include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\node.h"
 #include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
 
-class binarySearchTree : public binaryTree
+class binarySearchTree 
 {
 public:
-	binarySearchTree() : binaryTree() {}
+	binarySearchTree();
 
-protected:
-	void insert(int key) override;
 
-	int getMin() const override;
-	int getMax() const override;
+	void insert(int key) ;
 
-	void insert(int key) override;
+	int getMin() const ;
+	int getMax() const;
+
+	
 
 	node* insertRec(node* node, int key);
 private:

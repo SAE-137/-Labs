@@ -3,6 +3,7 @@
 #include "binaryTree.h"
 #include "node.h"
 #include<vector>
+#include "binarySearchTree.h"
 
 int randomValue(int min = 0, int max = 1000)
 {
@@ -31,27 +32,9 @@ void space(int amount)
 
 int main()
 {
-    int n = 20;
-
-    binaryTree testTree;
-
-    for (int i = 0; i < n; ++i)
-    {
-        testTree.insert(randomValue());
-    }
-
-    testTree.show(testTree.getRoot(), 0, 3);
-
-	space(5);
-	testTree.printByLevels();
-
-	int value;
-	std::cin >> n;
-
-	binaryTree* newTree;
-	newTree = testTree.copySubTree(n);
-	space(5);
-	newTree->show(newTree->getRoot(), 0, 3);
+	binarySearchTree a;
+	a.insert(5);
+	a.show(a.getRoot());
     return 0;
 }
 

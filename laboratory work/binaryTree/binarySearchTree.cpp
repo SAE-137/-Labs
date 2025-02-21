@@ -1,5 +1,4 @@
-#include <iostream>
-#include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\node.h"
+#include<iostream>
 #include "binarySearchTree.h"
 
 binarySearchTree::binarySearchTree()
@@ -7,7 +6,7 @@ binarySearchTree::binarySearchTree()
 
 }
 
-int binarySearchTree::getMax() const  {
+int binarySearchTree::getMax() const {
     if (m_root == nullptr) {
         throw std::runtime_error("The tree is empty");
     }
@@ -17,11 +16,11 @@ int binarySearchTree::getMax() const  {
         current = current->getLeft();
     }
     return current->getKey();
-    
+
 }
 
-int binarySearchTree::getMin() const  {
-   
+int binarySearchTree::getMin() const {
+
     if (m_root == nullptr) {
         throw std::runtime_error("The tree is empty");
     }
@@ -47,4 +46,3 @@ node* binarySearchTree::insertRec(node* newNode, int key) {
 void binarySearchTree::insert(int key) {
     m_root = insertRec(m_root, key);
 }
-

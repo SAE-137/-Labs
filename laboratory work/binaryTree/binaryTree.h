@@ -14,9 +14,9 @@ public:
     int getNodeLvl(int key) const;
     int getDepth(node* newNode) const;
     int findNodeLevel(node* root, int key, int level) const;
-    virtual int findNodeLevel(int key) const;
-    virtual int getMin() const;
-    virtual int getMax() const;
+    int findNodeLevel(int key) const;
+    int getMin() const;
+    int getMax() const;
 
     void setRoot(node* newRoot);
     void show(node* root, int space = 0, int indent = 4);
@@ -29,24 +29,24 @@ public:
     void printByLevels();
     void inOrderTraversal(node* root, std::vector<int>& keys);
 
-    virtual node* search(node* root, int key);
+    node* search(node* root, int key);
     node* insertRec(node* newNode, int value);
     node* getRoot();
     node* insertRandomRec(node* newNode, int key);
-
+    
    
     bool isEmpty() ;
-    virtual bool deleteNode(int key);
+    bool deleteNode(int key);
     bool isBalanced(node* root) ;
     bool isBalanced() ;
 
-    virtual std::vector<int> getSortedKeys();
+    std::vector<int> getSortedKeys();
 
 
     binaryTree* copySubTree(int key);
     node* copy(node* currentNode);
 
-    virtual binaryTree& operator=(const binaryTree& other);
+    binaryTree& operator=(const binaryTree& other);
 private:
     node* m_root;
     node* deleteNodeRec(node* root, int key);

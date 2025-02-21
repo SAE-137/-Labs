@@ -2,7 +2,10 @@
 #include "binaryTree.h"
 #include "node.h"
 
-binaryTree::binaryTree() : m_root(nullptr) {}
+binaryTree::binaryTree() 
+{
+    m_root = nullptr;
+}
 
 binaryTree::~binaryTree() {
     if (m_root) deleteTree();
