@@ -31,7 +31,7 @@ public:
     void printByLevels();
     void inOrderTraversal(node* root, std::vector<int>& keys);
 
-    node* search(node* root, int key);
+    virtual node* search(node* root, int key);
     node* insertRec(node* newNode, int value);
     node* getRoot();
     node* insertRandomRec(node* newNode, int key);

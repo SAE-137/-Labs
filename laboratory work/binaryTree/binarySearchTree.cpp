@@ -45,3 +45,19 @@ node* binarySearchTree::insertRec(node* newNode, int key) {
 void binarySearchTree::insert(int key) {
     setRoot(insertRec(getRoot(), key)); 
 }
+
+node* binarySearchTree::search(node* root, int key) {
+    if (root == nullptr || root->getKey() == key) {
+        return root;
+    }
+
+    if (key < root->getKey()) {
+        return search(root->getLeft(), key);
+    }
+
+    return search(root->getRight(), key);
+}
+
+node* binarySearchTree::search(int key)  {
+    return search(getRoot(), key); 
+}

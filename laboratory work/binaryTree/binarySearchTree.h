@@ -13,6 +13,10 @@ public:
 	int getMin()  override;
 	int getMax()  override;
 
+	node* search(node* root, int key) override;
+	node* search(int key);
+		
+	
 
 
 	node* insertRec(node* node, int key);
