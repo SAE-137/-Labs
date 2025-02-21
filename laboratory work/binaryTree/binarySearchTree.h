@@ -5,17 +5,17 @@
 class binarySearchTree : public binaryTree
 {
 public:
-	binarySearchTree();
+	binarySearchTree() : binaryTree() { }
 
 
 	void insert(int key) override;
 
-	int getMin() const;
-	int getMax() const;
+	int getMin()  override;
+	int getMax()  override;
 
 
 
 	node* insertRec(node* node, int key);
 private:
-	node* m_root;
+
 };

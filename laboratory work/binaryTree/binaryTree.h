@@ -15,8 +15,10 @@ public:
     int getDepth(node* newNode) const;
     int findNodeLevel(node* root, int key, int level) const;
     int findNodeLevel(int key) const;
-    int getMin() const;
-    int getMax() const;
+    virtual int getMin() ;
+    virtual int getMax() ;
+
+    void test();
 
     void setRoot(node* newRoot);
     void show(node* root, int space = 0, int indent = 4);
@@ -47,7 +49,7 @@ public:
     node* copy(node* currentNode);
 
     binaryTree& operator=(const binaryTree& other);
-private:
+protected:
     node* m_root;
     node* deleteNodeRec(node* root, int key);
     node* findMin(node* root);

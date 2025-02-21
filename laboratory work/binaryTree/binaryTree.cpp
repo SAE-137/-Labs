@@ -128,7 +128,7 @@ int binaryTree::findNodeLevel(int key) const {
     return findNodeLevel(m_root, key, 0);
 }
 
-int binaryTree::getMax() const {
+int binaryTree::getMax()  {
     if (m_root == nullptr) {
         throw std::runtime_error("The tree is empty");
     }
@@ -140,7 +140,7 @@ int binaryTree::getMax() const {
     return current->getKey();
 }
 
-int binaryTree::getMin() const {
+int binaryTree::getMin()  {
     if (m_root == nullptr) {
         throw std::runtime_error("The tree is empty");
     }
@@ -325,4 +325,9 @@ binaryTree& binaryTree::operator=(const binaryTree& other) {
     }
 
     return *this;
+}
+
+void binaryTree::test()
+{
+    std::cout << "text for testing";
 }

@@ -1,31 +1,26 @@
 #include<iostream>
 #include "binarySearchTree.h"
 
-binarySearchTree::binarySearchTree()
-{
 
-}
 
-int binarySearchTree::getMax() const {
-    if (m_root == nullptr) {
+int binarySearchTree::getMin() {
+    if (getRoot() == nullptr) {
         throw std::runtime_error("The tree is empty");
     }
 
-    node* current = m_root;
+    node* current = getRoot();
     while (current->getLeft()) {
         current = current->getLeft();
     }
     return current->getKey();
-
 }
 
-int binarySearchTree::getMin() const {
-
-    if (m_root == nullptr) {
+int binarySearchTree::getMax()  {
+    if (getRoot() == nullptr) {
         throw std::runtime_error("The tree is empty");
     }
 
-    node* current = m_root;
+    node* current = getRoot();
     while (current->getRight()) {
         current = current->getRight();
     }
@@ -33,16 +28,20 @@ int binarySearchTree::getMin() const {
 }
 
 node* binarySearchTree::insertRec(node* newNode, int key) {
-    if (newNode == nullptr) return new node(key);
-    if (key < newNode->getKey()) {
-        newNode->m_left = insertRec(newNode->m_left, key);
+    if (newNode == nullptr) {
+        return new node(key);
     }
-    else if (key > newNode->m_key) {
-        newNode->m_right = insertRec(newNode->m_right, key);
+
+    if (key <= newNode->getKey()) {
+        newNode->setLeft(insertRec(newNode->getLeft(), key));
     }
+    else {
+        newNode->setRight(insertRec(newNode->getRight(), key));
+    }
+
     return newNode;
 }
 
 void binarySearchTree::insert(int key) {
-    m_root = insertRec(m_root, key);
+    setRoot(insertRec(getRoot(), key)); 
 }

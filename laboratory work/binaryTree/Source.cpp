@@ -32,10 +32,19 @@ void space(int amount)
 
 int main()
 {
-	binarySearchTree a;
-	a.insert(5);
-	a.show(a.getRoot());
-    return 0;
+	binarySearchTree bst;
+	bst.insert(10);
+	bst.insert(5);
+	bst.insert(15);
+
+	if (!bst.isEmpty()) {
+		bst.show(bst.getRoot());
+	}
+	else {
+		std::cout << "The tree is empty." << std::endl;
+	}
+
+
 }
 
 
