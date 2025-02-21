@@ -86,3 +86,41 @@ node* AVLTree::insertRec(node* newNode, int key) {
 void AVLTree::insert(int key) {
     setRoot(insertRec(getRoot(), key));
 }
+
+node* AVLTree::remove(node* newNode, int key) {
+    if (!newNode) return nullptr;
+
+    if (key < newNode->m_key) {
+        newNode->m_left = remove(newNode->m_left, key);
+    }
+    else if (key > newNode->m_key) {
+        newNode->m_right = remove(newNode->m_right, key);
+    }
+    else {
+        if (!newNode->m_left || !newNode->m_right) {
+            node* temp = newNode->m_left ? newNode->m_left : newNode->m_right;
+            if (!temp) {
+                temp = newNode;
+                newNode = nullptr;
+            }
+            else {
+                *newNode = *temp;
+            }
+            delete temp;
+        }
+        else {
+            node* temp = findMin(newNode->m_right);
+            newNode->m_key = temp->m_key;
+            newNode->m_right = remove(newNode->m_right, temp->m_key);
+        }
+    }
+
+    if (!newNode) return nullptr;
+
+    return balance(newNode);
+}
+
+void AVLTree::remove(int key)
+{
+    remove(getRoot(), key);
+}

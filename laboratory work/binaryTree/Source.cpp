@@ -41,27 +41,25 @@ int main()
 	for (int i = 0; i < amount; ++i)
 	{
 		int value = randomValue(0, 1000);
-		bst.insert(value);
+	
 		at.insert(value);
 	}
 	
 
-	if (!bst.isEmpty()) {
-		bst.show(bst.getRoot());
-	}
-	else {
-		std::cout << "The tree is empty." << std::endl;
-	}
+	while (true)
+	{
+		if (!at.isEmpty()) {
+			at.show(at.getRoot());
+		}
+		else {
+			std::cout << "The tree is empty." << std::endl;
+		}
 
-	space(5);
-
-	if (!at.isEmpty()) {
-		at.show(at.getRoot());
+		int value;
+		std::cin >> value;
+		at.remove(value);
+		space(5);
 	}
-	else {
-		std::cout << "The tree is empty." << std::endl;
-	}
-
 
 }
 

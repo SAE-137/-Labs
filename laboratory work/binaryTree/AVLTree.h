@@ -10,11 +10,13 @@ public:
    
     void insert(int key) override;
     void updateHeight(node* newNode);
+    void remove(int key);
 
     node* rightRotate(node* y);
     node* leftRotate(node* x);
     node* balance(node* newNode);
     node* insertRec(node* newNode, int key) override;
+    node* remove(node* newNode, int key);
 
 };
 
