@@ -18,6 +18,9 @@ public:
 		
 	bool deleteNode(int key) override;
 
+	int getNodeLevel(int key) ;
+	int findNodeLevel(node* root, int key, int level) ;
+
 
 	node* insertRec(node* node, int key);
 private:
