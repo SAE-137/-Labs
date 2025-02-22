@@ -20,13 +20,18 @@ public:
 	node* search(int key);
 	node* copyTree(const node* root) ;
 		
-	bool deleteNode(int key) override;
+	virtual bool deleteNode(int key) override;
 
 	int getNodeLevel(int key) ;
 	int findNodeLevel(node* root, int key, int level) ;
 
 
 	virtual node* insertRec(node* node, int key);
+
+	binarySearchTree& operator=(const binaryTree& other) override;
+
+	binarySearchTree* copySubTree(int key) override;
 private:
 
 };
+

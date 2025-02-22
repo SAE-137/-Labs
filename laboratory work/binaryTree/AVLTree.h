@@ -5,6 +5,7 @@ class AVLTree : public binarySearchTree
 {
 public:
     AVLTree() : binarySearchTree() {}
+    AVLTree(const AVLTree& other);
     ~AVLTree();
 
 	int height(node* newNode);
@@ -12,13 +13,16 @@ public:
    
     void insert(int key) override;
     void updateHeight(node* newNode);
-    void remove(int key);
+    bool deleteNode(int key) override;
 
     node* rightRotate(node* y);
     node* leftRotate(node* x);
     node* balance(node* newNode);
     node* insertRec(node* newNode, int key) override;
     node* remove(node* newNode, int key);
+
+private:
+   
 
 };
 

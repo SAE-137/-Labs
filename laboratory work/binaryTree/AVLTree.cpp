@@ -1,6 +1,10 @@
 #include "AVLTree.h"
 
 
+AVLTree::AVLTree(const AVLTree& other)  {
+   
+    m_root = copyTree(other.m_root);
+}
 AVLTree::~AVLTree()
 {
     deleteTree();
@@ -124,7 +128,9 @@ node* AVLTree::remove(node* newNode, int key) {
     return balance(newNode);
 }
 
-void AVLTree::remove(int key)
+bool AVLTree::deleteNode(int key)
 {
-    remove(getRoot(), key);
+    if (remove(getRoot(), key) == nullptr) return false;
+    return true;
 }
+

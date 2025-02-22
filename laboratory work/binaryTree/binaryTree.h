@@ -45,10 +45,10 @@ public:
     std::vector<int> getSortedKeys();
 
 
-    binaryTree* copySubTree(int key);
+    virtual binaryTree* copySubTree(int key);
     node* copy(node* currentNode);
 
-    binaryTree& operator=(const binaryTree& other);
+    virtual binaryTree& operator=(const binaryTree& other);
 protected:
     node* m_root;
     node* deleteNodeRec(node* root, int key);

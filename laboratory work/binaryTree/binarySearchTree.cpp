@@ -172,3 +172,26 @@ int binarySearchTree::findNodeLevel(node* root, int key, int level)  {
    
     return findNodeLevel(root->getRight(), key, level + 1);
 }
+
+
+binarySearchTree& binarySearchTree::operator=(const binarySearchTree& other) {
+    if (this != &other) { 
+        deleteTree(); 
+        m_root = copyTree(other.m_root); 
+    }
+    return *this;
+}
+
+
+binarySearchTree* binarySearchTree::copySubTree(int key) {
+    node* subRoot = search(m_root, key);
+
+    if (subRoot == nullptr) {
+        std::cerr << "Error: node with key " << key << " not found" << std::endl;
+        return new binarySearchTree(); 
+    }
+
+    binarySearchTree* newTree = new binarySearchTree();
+    newTree->setRoot(copy(subRoot)); 
+    return newTree;
+}

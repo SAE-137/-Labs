@@ -1,0 +1,81 @@
+# ninja log v5
+12	813	7619002213184139	build.ninja	fe076ced66e7ea75
+4	1565	7619002226784280	Trees_autogen/timestamp	d42be9f8cee0c6ae
+4	1565	7619002226784280	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+4	1565	7619002226784280	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+4	1565	7619002226784280	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+1584	1790	7619002232278987	CMakeFiles/Trees.dir/binarytree.cpp.obj	93f007a4302be458
+1569	4551	7619002259871697	CMakeFiles/Trees.dir/Trees_autogen/mocs_compilation.cpp.obj	8e689c8f22c241aa
+1653	4829	7619002262634468	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+1614	4836	7619002262716016	CMakeFiles/Trees.dir/mainwindow.cpp.obj	c9d527f15737e42a
+4837	5264	7619002266865242	Trees.exe	819392b5a55101fd
+34	1559	7619003023501863	Trees_autogen/timestamp	d42be9f8cee0c6ae
+34	1559	7619003023501863	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+34	1559	7619003023501863	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+34	1559	7619003023501863	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+1581	5368	7619003065422780	CMakeFiles/Trees.dir/Trees_autogen/mocs_compilation.cpp.obj	8e689c8f22c241aa
+1561	5390	7619003065797293	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+1599	5398	7619003065847888	CMakeFiles/Trees.dir/binarytree.cpp.obj	93f007a4302be458
+16	667	7619005809311585	Trees_autogen/timestamp	d42be9f8cee0c6ae
+16	667	7619005809311585	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+16	667	7619005809311585	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+16	667	7619005809311585	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+20	643	7619006695310185	Trees_autogen/timestamp	d42be9f8cee0c6ae
+20	643	7619006695310185	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+20	643	7619006695310185	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+20	643	7619006695310185	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+662	4324	7619006732181811	CMakeFiles/Trees.dir/mainwindow.cpp.obj	c9d527f15737e42a
+30	232	7619012473618370	Trees_autogen/timestamp	d42be9f8cee0c6ae
+30	232	7619012473618370	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+30	232	7619012473618370	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+30	232	7619012473618370	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+246	410	7619012475972161	CMakeFiles/Trees.dir/Trees_autogen/mocs_compilation.cpp.obj	8e689c8f22c241aa
+233	2765	7619012499434846	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+5	148	7619012802294643	Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	148	7619012802294643	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+5	148	7619012802294643	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	148	7619012802294643	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+150	219	7619012803058240	CMakeFiles/Trees.dir/mainwindow.cpp.obj	c9d527f15737e42a
+220	442	7619012805296337	Trees.exe	819392b5a55101fd
+5	172	7619014309268648	Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	172	7619014309268648	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+5	172	7619014309268648	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	172	7619014309268648	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+175	1944	7619014326954678	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+1945	2136	7619014328739826	Trees.exe	819392b5a55101fd
+5	149	7619014714336017	Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	149	7619014714336017	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+5	149	7619014714336017	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	149	7619014714336017	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+151	1716	7619014729926743	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+1717	1907	7619014731815697	Trees.exe	819392b5a55101fd
+8	238	7619015973798838	Trees_autogen/timestamp	d42be9f8cee0c6ae
+8	238	7619015973798838	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+8	238	7619015973798838	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+8	238	7619015973798838	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+241	2429	7619015995575720	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+2430	2629	7619015997553926	Trees.exe	819392b5a55101fd
+5	179	7619017674233999	Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	179	7619017674233999	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+5	179	7619017674233999	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	179	7619017674233999	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+182	2057	7619017692890229	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+2058	2251	7619017694898696	Trees.exe	819392b5a55101fd
+5	172	7619019544629457	Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	172	7619019544629457	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+5	172	7619019544629457	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	172	7619019544629457	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+174	1849	7619019561310082	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+1850	2036	7619019563152200	Trees.exe	819392b5a55101fd
+5	204	7619021429073921	Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	204	7619021429073921	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+5	204	7619021429073921	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+5	204	7619021429073921	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+207	2081	7619021447718849	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86
+13	1180	7619024536307874	Trees_autogen/timestamp	d42be9f8cee0c6ae
+13	1180	7619024536307874	Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+13	1180	7619024536307874	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/timestamp	d42be9f8cee0c6ae
+13	1180	7619024536307874	C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/mocs_compilation.cpp	d42be9f8cee0c6ae
+1181	3753	7619024564818650	CMakeFiles/Trees.dir/Trees_autogen/mocs_compilation.cpp.obj	8e689c8f22c241aa
+1231	3846	7619024565668666	CMakeFiles/Trees.dir/mainwindow.cpp.obj	c9d527f15737e42a
+1194	3855	7619024565826967	CMakeFiles/Trees.dir/main.cpp.obj	cafca3acd8272e86

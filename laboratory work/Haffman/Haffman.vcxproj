@@ -127,13 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="boolVector.cpp" />
+    <ClCompile Include="bit_array.cpp" />
     <ClCompile Include="huffmanTree.cpp" />
+    <ClCompile Include="set.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="boolVector.h" />
+    <ClInclude Include="bit_array.h" />
     <ClInclude Include="huffmanTree.h" />
+    <ClInclude Include="set.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
