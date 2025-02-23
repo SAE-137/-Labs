@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="bit_array.cpp" />
     <ClCompile Include="huffmanTree.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="set.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bit_array.h" />
     <ClInclude Include="huffmanTree.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="set.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
