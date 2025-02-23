@@ -82,10 +82,6 @@ node* binarySearchTree::search(node* root, int key) {
     return search(root->getRight(), key);
 }
 
-node* binarySearchTree::search(int key)  {
-    return search(getRoot(), key); 
-}
-
 bool binarySearchTree::deleteNode(int key) {
     node* parent = nullptr;
     node* current = getRoot();

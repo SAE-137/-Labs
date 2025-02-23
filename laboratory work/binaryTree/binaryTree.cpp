@@ -50,7 +50,6 @@ void binaryTree::deleteSubTree(node* newNode) {
     deleteSubTree(newNode->getRight());
 
     delete newNode;
-    newNode = nullptr; 
 }
 
 
@@ -83,6 +82,10 @@ node* binaryTree::search(node* root, int key) {
     }
 
     return search(root->getRight(), key);
+}
+
+node* binaryTree::search(int key) {
+    return search(getRoot(), key);
 }
 
 void binaryTree::printLeafs(node* newNode) {
@@ -146,6 +149,7 @@ int binaryTree::getMin()  {
     }
 
     node* current = m_root;
+    getRoot()->setKey(10);
     while (current->getLeft()) {
         current = current->getLeft();
     }
@@ -295,13 +299,19 @@ binaryTree* binaryTree::copySubTree(int key) {
 
     if (subRoot == nullptr) {
         std::cerr << "Error: node with key " << key << " not found" << std::endl;
-        return new binaryTree(); 
+        return newTree();
     }
 
-    binaryTree* newTree = new binaryTree();
+    binaryTree* newTree = newTree();
     newTree->setRoot(copy(subRoot)); 
     return newTree;
 }
+
+binaryTree* binaryTree::newTree() {
+    return new binaryTree();
+}
+
+
 
 binaryTree::binaryTree(const binaryTree& other) {
     if (other.m_root == nullptr) {

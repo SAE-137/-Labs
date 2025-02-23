@@ -47,12 +47,13 @@ public:
 
     virtual binaryTree* copySubTree(int key);
     node* copy(node* currentNode);
+    node* deleteNodeRec(node* root, int key);
+    node* findMin(node* root);
 
     virtual binaryTree& operator=(const binaryTree& other);
 protected:
     node* m_root;
-    node* deleteNodeRec(node* root, int key);
-    node* findMin(node* root);
+    
 };
 
 

@@ -11,10 +11,12 @@ public:
 	void setLeft(node* newLeft);
 	void setRight(node* newRight);
 
-	int getKey();
+	int getKey() const;
 
  node* getRight();
  node* getLeft();
+
+ const node* getRight() const;
 
 
 	int m_key = 0;
