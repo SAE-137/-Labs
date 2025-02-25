@@ -41,9 +41,20 @@ void node::setSimbols(const char* ch)
 void node::setLeft(node* left)
 {
 	m_left = left;
+	
 }
 
-void setRight(node* right)
+void node::setRight(node* right)
 {
 	m_right = right;
+}
+
+node* node::getLeft()
+{
+	return m_left;
+}
+
+node* node::getRight()
+{
+	return m_right;
 }

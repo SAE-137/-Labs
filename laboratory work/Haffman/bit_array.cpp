@@ -1,14 +1,13 @@
 #include "bit_array.h"
 
+
+
 BitArray::BitArray(int length)
 	: length_(length)
 	, size_((length_ + 7) / 8)
 	, array_(new uint8_t[size_])
 {
-	for (int i = 0; i < size_; i++)
-	{
-		array_[i] = 0;
-	}
+	
 }
 
 BitArray::BitArray(const char* string)
@@ -109,6 +108,20 @@ void BitArray::Set(int status, int key, int count)
 	}
 }
 
+void BitArray::addBit(int bit)
+{
+	
+	if (bit)
+	{
+		array_[length_ / 8] |= 0b1 << ((length_ - 0) % 8);
+	}
+	else
+	{
+		array_[length_ / 8] &= ~(0b1 << ((length_ - 0) % 8));
+	}
+	length_++;
+}
+
 void BitArray::Invert(int key, int count)
 {
 	if (key == -1)
@@ -121,6 +134,16 @@ void BitArray::Invert(int key, int count)
 	{
 		array_[i / 8] ^= 0b1 << (i % 8);
 	}
+}
+
+const int BitArray::getL() const
+{
+	return length_;
+}
+
+int BitArray::getL()
+{
+	return length_;
 }
 
 int BitArray::Weight()
@@ -304,3 +327,32 @@ ostream& operator<<(ostream& os, const BitArray& obj)
 
 	return os;
 }
+
+void BitArray::Append(int bit)
+{
+	if (length_ % 8 == 0 && length_ / 8 >= size_) 
+	{
+		uint8_t* newArray = new uint8_t[size_ + 1](); 
+		for (int i = 0; i < size_; i++)
+		{
+			newArray[i] = array_[i];
+		}
+		delete[] array_;
+		array_ = newArray;
+		size_++;
+	}
+
+	Set(bit, length_, 1); 
+	length_++;
+}
+
+
+void BitArray::Pop()
+{
+	if (length_ > 0)
+	{
+		length_--;
+		Set(0, length_, 1); 
+	}
+}
+

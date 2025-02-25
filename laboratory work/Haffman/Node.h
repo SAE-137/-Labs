@@ -20,12 +20,15 @@ public:
 	node* getNext();
 
 
-
+	void setChar(char ch) { character = ch; }
+	char getChar() const { return character; }
 private:
 
 	BitArray* m_simbols;
 	node* m_next;
 	int m_frequency;
+
+	char character;
 	node* m_left;  
 	node* m_right;
 };
