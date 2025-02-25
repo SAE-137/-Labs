@@ -24,7 +24,7 @@ public:
 	char getChar() const { return character; }
 private:
 
-	BitArray* m_simbols;
+	
 	node* m_next;
 	int m_frequency;
 

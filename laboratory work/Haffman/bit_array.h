@@ -4,93 +4,56 @@
 
 #include <iostream>
 
-using namespace std;
+#ifndef BITVECTOR_H
+#define BITVECTOR_H
 
-class BitArray
-{
+#include <iostream>
+#include <vector>
+
+class BitVector {
+private:
+    std::vector<uint8_t> data_;
+    int length_;
+
 public:
+    BitVector() : length_(0) {}
 
-	BitArray()
-		: length_(0), size_(1), array_(new uint8_t[1]())
-	{
-	}
+    void append(int bit) {
+        if (bit != 0 && bit != 1) return;
 
-	BitArray(int length);
-	BitArray(const char* string);
-	BitArray(const char* string, int length);
-	BitArray(const BitArray& obj);
-	~BitArray();
+        if (length_ % 8 == 0) {
+            data_.push_back(0); 
+        }
 
-	void addBit(int bit);
+        if (bit) {
+            data_.back() |= (1 << (length_ % 8));
+        }
 
-	void Set(int status, int key = -1, int count = 1);
-	void Invert(int key = -1, int count = 1);
+        length_++;
+    }
 
-	int Weight();
-	int getL();
-	const int getL() const;
+    void pop() {
+        if (length_ == 0) return;
+        length_--;
+        data_[length_ / 8] &= ~(1 << (length_ % 8));
+        if (length_ % 8 == 0 && !data_.empty()) {
+            data_.pop_back();
+        }
+    }
 
-	int operator[](int key) const;
-	BitArray& operator=(const BitArray& obj);
+    int operator[](int index) const {
+        if (index < 0 || index >= length_) return 0;
+        return (data_[index / 8] >> (index % 8)) & 1;
+    }
 
-	BitArray operator&(const BitArray& obj);
-	BitArray operator|(const BitArray& obj);
-	BitArray operator^(const BitArray& obj);
-	BitArray operator<<(int value);
-	BitArray operator>>(int value);
+    int size() const { return length_; }
 
-	BitArray& operator&=(const BitArray& obj);
-	BitArray& operator|=(const BitArray& obj);
-	BitArray& operator^=(const BitArray& obj);
-	BitArray& operator<<=(int value);
-	BitArray& operator>>=(int value);
-
-	bool operator==(const BitArray& obj);
-
-
-	void Append(const BitArray& other)
-	{
-		int oldLength = length_;
-		Resize(length_ + other.getL());
-
-		for (int i = 0; i < other.getL(); i++)
-		{
-			Set(other[i], oldLength + i);
-		}
-	}
-
-	void Resize(int newLength)
-	{
-		int newSize = (newLength + 7) / 8;
-		uint8_t* newArray = new uint8_t[newSize];
-
-		// Копируем старые данные
-		for (int i = 0; i < size_; i++)
-		{
-			newArray[i] = array_[i];
-		}
-
-		// Инициализируем новые биты нулями
-		for (int i = size_; i < newSize; i++)
-		{
-			newArray[i] = 0;
-		}
-
-		delete[] array_;
-		array_ = newArray;
-		size_ = newSize;
-		length_ = newLength;
-	}
-
-	void Append(int bit);
-	void Pop();
-
-protected:
-	int length_;
-	int size_;
-
-	uint8_t* array_;
-
-	friend istream& operator>>(istream& is, BitArray& obj);
-	friend ostream& operator<<(ostream& os, const BitArray& obj);
+    void print() const {
+        for (int i = length_ - 1; i >= 0; i--) {
+            std::cout << (*this)[i];
+        }
+        std::cout << std::endl;
+    }
 };
+
+#endif 

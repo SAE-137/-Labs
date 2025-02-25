@@ -5,7 +5,7 @@ node::node()
 {
 	m_frequency = 0;
 	m_next = nullptr;
-	m_simbols = nullptr;
+	
 }
 
 node::~node()

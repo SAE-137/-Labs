@@ -5,47 +5,29 @@
 #include <iostream>
 #include <fstream>
 
-int madin() {
-    std::string input = "hell";
 
-  
+
+
+
+
+
+
+int main() {
+    std::string text = "bfdbgb";
+
     huffman huff;
+    huff.build(text);
 
-    
+    std::cout << "Huffman Tree:" << std::endl;
+    huff.printTree(huff.getHead());
 
-    
-    BitArray encodedBits = huff.encode(input);
+    std::cout << "\nCharacter Codes:" << std::endl;
+    huff.printCodes();
 
-   
-    std::ofstream outFile("encoded.bin", std::ios::binary);
-    outFile << encodedBits;
-    outFile.close();
+    BitVector encoded = huff.encode(text);
 
-    std::cout << "Исходная строка: " << input << std::endl;
-    std::cout << "Закодированная строка: " << encodedBits << std::endl;
-
-   
-
-   
-
-    
-
-
-    return 0;
-}
-
-int main()
-{
-    BitArray a;
-    a.addBit(0);
-    a.addBit(0);
-    a.addBit(1);
-    
- 
-
-    std::cout << a;
-
-
+    std::cout << "\nEncoded bit sequence: ";
+    encoded.print();
 
     return 0;
 }

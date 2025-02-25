@@ -96,37 +96,51 @@ void huffman::build(std::string str)
     buildHuffmanTree();
 }
 
-void huffman::generateCodes(node* root, BitArray& code, std::unordered_map<char, BitArray>& codes)
-{
-    if (root == nullptr)
-        return;
+void huffman::printCodes() {
+    std::unordered_map<char, BitVector> codes;
+    BitVector code;
+    generateCodes(m_head, code, codes);
 
-    if (root->getLeft() == nullptr && root->getRight() == nullptr)
-    {
+    std::cout << "Huffman Codes:\n";
+    for (const auto& pair : codes) {
+        std::cout << "'" << pair.first << "' -> ";
+        pair.second.print();
+    }
+}
+
+
+void huffman::generateCodes(node* root, BitVector& code, std::unordered_map<char, BitVector>& codes) {
+    if (root == nullptr) return;
+
+    if (root->getLeft() == nullptr && root->getRight() == nullptr) {
         codes[root->getChar()] = code;
         return;
     }
-   
-    code.Append(0); 
-    generateCodes(root->getLeft(), code, codes);
-    code.Pop(); 
 
-   
-    code.Append(1);
+    code.append(0);
+    generateCodes(root->getLeft(), code, codes);
+    code.pop();
+
+    code.append(1);
     generateCodes(root->getRight(), code, codes);
-    code.Pop();
+    code.pop();
 }
 
-BitArray huffman::encode(const std::string& str)
-{
-    std::unordered_map<char, BitArray> codes;
-    BitArray code;
-    generateCodes(m_head, code, codes);
+BitVector huffman::encode(const std::string& str) {
+    std::unordered_map<char, BitVector> codes;
+    BitVector code;
 
-    BitArray encodedBits;
-    for (char ch : str)
-    {
-        encodedBits.Append(codes[ch]);
+    node* root = m_head;
+    while (root->getNext() != nullptr)
+        root = root->getNext();
+
+    generateCodes(root, code, codes);
+
+    BitVector encodedBits;
+    for (char ch : str) {
+        for (int i = 0; i < codes[ch].size(); i++) {
+            encodedBits.append(codes[ch][i]);
+        }
     }
 
     return encodedBits;
