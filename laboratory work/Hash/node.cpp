@@ -6,6 +6,12 @@ node::node()
 	m_value = "";
 }
 
+node::node(int key, std::string value)
+{
+	m_key = key;
+	m_value = value;
+}
+
 node::~node()
 {
 
@@ -28,4 +34,21 @@ const int node::getKey() const
 int node::getKey()
 {
 	return m_key;
+}
+
+
+
+node* node::getNext()
+{
+	return m_next;
+}
+
+void node::setNext(node* next)
+{
+	m_next = next;
+}
+
+node* node::getNext() const
+{
+	return m_next;
 }

@@ -9,6 +9,11 @@ public:
 	hashTable(int size);
 	~hashTable();
 
+	void insert(int key, std::string value);
+
+private:
+	int hashFunction(int key);
+
 
 private:
 	int m_size;

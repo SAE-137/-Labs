@@ -4,10 +4,18 @@ class node
 {
 public:
 	node();
+	node(int key, std::string value);
 	~node();
 
 	int getKey();
 	const int getKey() const;
+
+	
+	node* getNext();
+	node* getNext() const;
+
+
+	void setNext(node* next);
 
 	std::string getValue();
 	const std::string getValue() const;
