@@ -9,7 +9,8 @@ int hashTable::hashFunction(int key) {
 
 hashTable::hashTable()
 {
-
+    int m_size = 0;
+    node** table = nullptr;
 }
 
 hashTable::hashTable(int size)
@@ -42,4 +43,18 @@ void hashTable::insert(int key, std::string value)
 
     newNode->setNext(table[index]);
     table[index] = newNode;
+}
+
+std::string hashTable::search(int key)
+{
+    int index = hashFunction(key);
+    node* current = table[index];
+
+    while (current != nullptr) {
+        if (current->getKey() == key) {
+            return current->getValue();
+        }
+        current = current->getNext();
+    }
+    return nullptr;  
 }

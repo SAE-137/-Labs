@@ -11,6 +11,8 @@ public:
 
 	void insert(int key, std::string value);
 
+	std::string search(int key);
+
 private:
 	int hashFunction(int key);
 
