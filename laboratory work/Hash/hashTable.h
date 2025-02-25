@@ -10,8 +10,12 @@ public:
 	~hashTable();
 
 	void insert(int key, std::string value);
+	void remove(int key);
+	void printTable();
 
 	std::string search(int key);
+
+	bool isEmpty(int key);
 
 private:
 	int hashFunction(int key);

@@ -1,4 +1,7 @@
+#include<stdexcept>
+#include<iostream>
 #include "hashTable.h"
+
 
 
 auto hashing= [](int a, int b) -> int { return a + b; };
@@ -9,7 +12,7 @@ int hashTable::hashFunction(int key) {
 
 hashTable::hashTable()
 {
-    int m_size = 0;
+    int m_size = 1;
     node** table = nullptr;
 }
 
@@ -56,5 +59,52 @@ std::string hashTable::search(int key)
         }
         current = current->getNext();
     }
-    return nullptr;  
+    return "";
+}
+
+void hashTable::remove(int key) {
+    int index = hashFunction(key);
+    node* current = table[index];
+    node* prev = nullptr;
+
+    while (current != nullptr) {
+        if (current->getKey() == key) {
+            if (prev == nullptr) {
+                
+                table[index] = current->getNext();
+            }
+            else {
+               
+                prev->setNext(current->getNext());
+            }
+
+            delete current; 
+            return;
+        }
+        prev = current;
+        current = current->getNext();
+    }
+
+    return;
+    //throw std::runtime_error("Key not found");
+}
+
+void hashTable::printTable() {
+    for (int i = 0; i < m_size; i++) {
+        std::cout << "[" << i << "]: "; 
+
+        node* current = table[i]; 
+        while (current != nullptr) {
+            std::cout << "(" << current->getKey() << ", " << current->getValue() << ") -> ";
+            current = current->getNext(); 
+        }
+
+        std::cout << "nullptr" << std::endl; 
+    }
+}
+
+bool hashTable::isEmpty(int key)
+{
+    if (search(key) == "") return true;
+    return false;
 }
