@@ -2,6 +2,7 @@
 #include "binaryTree.h"
 #include "node.h"
 #include<assert.h>
+#include<limits>
 binaryTree::binaryTree() 
 {
     m_root = nullptr;
@@ -111,6 +112,11 @@ int binaryTree::getAmountOfNodes(node* newNode) const {
     return 1 + getAmountOfNodes(newNode->getLeft()) + getAmountOfNodes(newNode->getRight());
 }
 
+int binaryTree::getAmountOfNodes() const
+{
+    return getAmountOfNodes(getRoot());
+}
+
 int binaryTree::getNodeLvl(int key) const {
     return findNodeLevel(m_root, key, 0);
 }
@@ -144,35 +150,39 @@ int binaryTree::findNodeLevel(int key) const {
 }
 
 int binaryTree::getMax() const {
-    if (m_root == nullptr) {
-        throw std::runtime_error("The tree is empty");
-    }
-
-    node* current = m_root;
-    while (current->getRight()) {
-        current = current->getRight();
-    }
-    return current->getKey();
+    return getMax(getRoot());
 }
 
 int binaryTree::getMin() const {
-    if (m_root == nullptr) {
-        throw std::runtime_error("The tree is empty");
-    }
-
-    node* current = m_root;
-    
-    while (current->getLeft()) {
-        current = current->getLeft();
-    }
-    return current->getKey();
+    return getMin(getRoot());
 }
 
-node* binaryTree::findMin(node* root) {
-    while (root && root->getLeft()) {
-        root = root->getLeft();
+int binaryTree::getMin(node* root) const{
+    if (root == nullptr) {
+        return -1; 
     }
-    return root;
+
+   
+    int currentKey = root->getKey();
+    int leftMin = getMin(root->getLeft());
+    int rightMin = getMin(root->getRight());
+
+    
+    return std::min({ currentKey, leftMin, rightMin });
+}
+
+int binaryTree::getMax(node* root) const{
+    if (root == nullptr) {
+        return -1;
+    }
+
+
+    int currentKey = root->getKey();
+    int leftMin = getMin(root->getLeft());
+    int rightMin = getMin(root->getRight());
+
+
+    return std::max({ currentKey, leftMin, rightMin });
 }
 
 node* binaryTree::deleteNodeRec(node* root, int key) {
@@ -212,8 +222,13 @@ node* binaryTree::deleteNodeRec(node* root, int key) {
     return root;
 }
 
-bool binaryTree::deleteNode(int key) const{
-    m_root = deleteNodeRec(m_root, key);
+bool binaryTree::deleteNode(int key) {
+    node* newNode = search(key);
+    if (!newNode) {
+        return false;
+    }
+
+    m_root = deleteNode(m_root, newNode);
     return true;
 }
 
@@ -259,7 +274,7 @@ void binaryTree::printByLevels() {
     }
 }
 
-void binaryTree::inOrderTraversal(node* root, std::vector<int>& keys) {
+void binaryTree::inOrderTraversal(node* root, std::vector<int>& keys) const{
     if (root == nullptr) return;
 
     inOrderTraversal(root->getLeft(), keys);  

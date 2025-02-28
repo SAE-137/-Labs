@@ -9,13 +9,14 @@ public:
     virtual ~binaryTree();
 
     int getAmountOfNodes(node* newNode) const;
+    int getAmountOfNodes() const;
     int getNodeLvl(int key) const;
     int getDepth(node* newNode) const;
     int getDepth() const;
     int findNodeLevel(node* root, int key, int level) const;
     int findNodeLevel(int key) const;
-    virtual int getMin() const; //TODO
-    virtual int getMax() const; //TODO
+    virtual int getMin() const; 
+    virtual int getMax() const; 
     int getMin(node* root) const;
     int getMax(node* root) const;
 
@@ -46,7 +47,7 @@ public:
 
     std::vector<int> getSortedKeys() const;
 
-    virtual binaryTree* copySubTree(int key);
+
     
     virtual binaryTree& operator=(const binaryTree& other);
 

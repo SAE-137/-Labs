@@ -1,11 +1,10 @@
 #include <iostream>
 #include<random>
-#include "binaryTree.h"
-#include "node.h"
 #include<vector>
-#include "binarySearchTree.h"
-#include "AVLTree.h"
 
+
+
+#include "binaryTreeTester.h"
 
 int randomValue(int min = 0, int max = 1000)
 {
@@ -34,33 +33,17 @@ void space(int amount)
 
 int main()
 {
-	int amount = 20;
-	AVLTree at;
-	binarySearchTree bst;
 
-	for (int i = 0; i < amount; ++i)
-	{
-		int value = randomValue(0, 1000);
-	
-		at.insert(value);
-	}
+
+	BinaryTreeTester test(true, true);
+
+
+	test.test(5);
 	
 
-	while (true)
-	{
-		if (!at.isEmpty()) {
-			at.show(at.getRoot());
-		}
-		else {
-			std::cout << "The tree is empty." << std::endl;
-		}
 
-		int value;
-		std::cin >> value;
-		at.remove(value);
-		space(5);
-	}
 
+	return 0;
 }
 
 
