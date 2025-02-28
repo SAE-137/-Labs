@@ -6,9 +6,7 @@ class binaryTree {
 public:
     binaryTree();
     binaryTree(const binaryTree& other);
-    ~binaryTree();
-
-
+    virtual ~binaryTree();
 
     int getAmountOfNodes(node* newNode) const;
     int getNodeLvl(int key) const;
@@ -16,60 +14,53 @@ public:
     int getDepth() const;
     int findNodeLevel(node* root, int key, int level) const;
     int findNodeLevel(int key) const;
-
-    virtual int getMin() const;
-    virtual int getMax() const;
+    virtual int getMin() const; //TODO
+    virtual int getMax() const; //TODO
 
     void test();
 
     void setRoot(node* newRoot);
     void show(node* root, int space = 0, int indent = 4) const;
-    void printLeafs(node* newNode) const;
     void printLeafs() const;
-
-   
-    void deleteTree(node* newNode);
     void deleteTree();
-
-    virtual void insert(int key);
-    void insertRandom(int key);
     void printCurrentLevel(node* root, int level);
     void printByLevels();
     void inOrderTraversal(node* root, std::vector<int>& keys);
-
-    virtual node* search(node* root, int key);
-    node* insertRec(node* newNode, int value);
-
+    virtual void insert(int key);
     
-    node* getRoot() const;
-    
-    node* insertRandomRec(node* newNode, int key);
+    node* search(int key) const;
+    node* getRoot() const; 
     node* findParent(node* root, node* currentNode) const;
     node* findParent(node* currentNode) const;
+    node* deleteNodeRec(node* root, int key);
+    node* deleteNode(node* root, node* currentNode);
+    node* deleteNode(node* currentNode);
+    node* findMin(node* root); //TODO
    
     bool isEmpty() const;
-    virtual bool deleteNode(int key);
     bool isBalanced(node* root) const;
     bool isBalanced() const;
+    virtual bool deleteNode(int key) const;
 
-    std::vector<int> getSortedKeys();
-
+    std::vector<int> getSortedKeys() const;
 
     virtual binaryTree* copySubTree(int key);
     
-    node* deleteNodeRec(node* root, int key);
-    node* findMin(node* root);
-
     virtual binaryTree& operator=(const binaryTree& other);
 
-    binaryTree clone() const; //TODO
-    binaryTree clone(node* root) const; //TODO
+    binaryTree copy() const; 
+    binaryTree copy(node* root) const; 
 
 protected:
     binaryTree* newTree();
 
-    node* copy(node* currentNode) const;
-    node* copy() const; //TODO
+    node* insert(node* newNode, int value);
+    node* _copy(node* currentNode) const;
+    node* _copy() const; 
+    virtual node* search(node* root, int key) const;
+
+    void deleteTree(node* newNode);
+    void printLeafs(node* newNode) const;
 
 protected:
     node* m_root;

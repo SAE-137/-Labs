@@ -1,7 +1,7 @@
 #include <iostream>
 #include "binaryTree.h"
 #include "node.h"
-
+#include<assert.h>
 binaryTree::binaryTree() 
 {
     m_root = nullptr;
@@ -54,40 +54,41 @@ void binaryTree::deleteTree(node* newNode) {
 }
 
 
-node* binaryTree::insertRec(node* newNode, int key) {
-    if (newNode == nullptr) {
-        return new node(key);
-    }
-
-    if (key <= newNode->getKey()) {
-        newNode->setLeft(insertRec(newNode->getLeft(), key));
-    }
-    else {
-        newNode->setRight(insertRec(newNode->getRight(), key));
+node* binaryTree::insert(node* newNode, int key) {
+     if (!newNode) {
+         newNode = new node(key);
+    } else if (rand() % 2) {
+        newNode->setLeft(insert(newNode->getLeft(), key));
+    } else {
+        newNode->setRight(insert(newNode->getRight(), key));
     }
 
     return newNode;
 }
 
 void binaryTree::insert(int key) {
-    m_root = insertRec(m_root, key);
+    m_root = insert(m_root, key);
 }
 
-node* binaryTree::search(node* root, int key) {
-    if (root == nullptr || root->getKey() == key) {
-        return root;
-    }
+node* binaryTree::search(node* root, int key) const
+{
 
-    if (key < root->getKey()) {
-        return search(root->getLeft(), key);
-    }
+    if (root == nullptr) return nullptr;
 
-    return search(root->getRight(), key);
+    if (root->getKey() == key) return root;
+
+    node* rightResult = search(root->getRight(), key);
+    if (rightResult != nullptr) return rightResult; 
+
+    node* leftResult = search(root->getLeft(), key);
+    if (leftResult != nullptr) return leftResult; 
+
+    return nullptr;
 }
 
-//node* binaryTree::search(int key) {
-//    return search(getRoot(), key);
-//}
+node* binaryTree::search(int key) const{
+    return search(getRoot(), key);
+}
 
 void binaryTree::printLeafs(node* newNode) const {
     if (newNode == nullptr) return;
@@ -211,30 +212,11 @@ node* binaryTree::deleteNodeRec(node* root, int key) {
     return root;
 }
 
-bool binaryTree::deleteNode(int key) {
+bool binaryTree::deleteNode(int key) const{
     m_root = deleteNodeRec(m_root, key);
     return true;
 }
 
-node* binaryTree::insertRandomRec(node* newNode, int key) {
-    if (newNode == nullptr) {
-        return new node(key);
-    }
-
-    
-    if (rand() % 2 == 0) {
-        newNode->setLeft(insertRandomRec(newNode->getLeft(), key));
-    }
-    else {
-        newNode->setRight(insertRandomRec(newNode->getRight(), key));
-    }
-
-    return newNode;
-}
-
-void binaryTree::insertRandom(int key) {
-    m_root = insertRandomRec(m_root, key);
-}
 
 
 
@@ -285,29 +267,29 @@ void binaryTree::inOrderTraversal(node* root, std::vector<int>& keys) {
     inOrderTraversal(root->getRight(), keys); 
 }
 
-std::vector<int> binaryTree::getSortedKeys() {
+std::vector<int> binaryTree::getSortedKeys() const{
     std::vector<int> keys;
     inOrderTraversal(m_root, keys);
     return keys;
 }
 
 
-node* binaryTree::copy(node* currentNode) const {
+node* binaryTree::_copy(node* currentNode) const {
     if (currentNode == nullptr) {
         return nullptr;
     }
     
     node* newNode = new node(currentNode->getKey());
 
-    newNode->setLeft(copy(currentNode->getLeft()));
-    newNode->setRight(copy(currentNode->getRight()));
+    newNode->setLeft(_copy(currentNode->getLeft()));
+    newNode->setRight(_copy(currentNode->getRight()));
 
     return newNode;
 }
 
-node* binaryTree::copy() const
+node* binaryTree::_copy() const
 {
-
+    return _copy(getRoot());
 }
 
 //binaryTree* binaryTree::copySubTree(int key) {
@@ -334,7 +316,7 @@ binaryTree::binaryTree(const binaryTree& other) {
         m_root = nullptr;
     }
     else {
-        m_root = copy(other.m_root); 
+        m_root = _copy(other.m_root); 
     }
 }
 
@@ -344,7 +326,7 @@ binaryTree& binaryTree::operator=(const binaryTree& other) {
     deleteTree();
 
     if (other.m_root != nullptr) {
-        m_root = copy(other.m_root);
+        m_root = _copy(other.m_root);
     }
     else {
         m_root = nullptr;
@@ -359,15 +341,16 @@ void binaryTree::test()
 }
 
 
-binaryTree binaryTree::clone() const
+binaryTree binaryTree::copy() const
 {
-
-
+    return copy(getRoot());
 }
 
-binaryTree binaryTree::clone(node* root) const
+binaryTree binaryTree::copy(node* root) const
 {
-
+    binaryTree newTree;
+    newTree.setRoot(_copy(root));
+    return newTree;
 
 }
 
@@ -387,4 +370,61 @@ node* binaryTree::findParent(node* root, node* currentNode) const
 node* binaryTree::findParent(node* currentNode) const
 {
     return findParent(getRoot(), currentNode);
+}
+
+node* binaryTree::deleteNode(node* root, node* currentNode)
+{
+    node* parent = findParent(root, currentNode);
+    node* replacement = deleteNode(currentNode);
+
+    if (!parent) {
+        return replacement;
+    }
+    else if (parent->getLeft() == currentNode) {
+        parent->setLeft(replacement);
+    }
+    else if (parent->getRight() == currentNode) {
+        parent->setRight(replacement);
+    }
+    else {
+        assert(false && "Invalid parent detection in remove");
+    }
+
+    return root;
+}
+
+node* binaryTree::deleteNode(node* currentNode)
+{
+    node* replacement = nullptr;
+
+    if (!currentNode) {
+        replacement = nullptr;
+    }
+    else if (!currentNode->getLeft()) {
+        replacement = currentNode->getRight();
+    }
+    else if (!currentNode->getRight()) {
+        replacement = currentNode->getLeft();
+    }
+    else {
+        replacement = currentNode->getLeft();
+        node* replacementParent = currentNode;
+        while (replacement->getLeft() || replacement->getRight()) {
+            replacementParent = replacement;
+            replacement = (replacement->getLeft() ? replacement->getLeft() : replacement->getRight());
+        }
+
+        if (replacement == replacementParent->getLeft()) {
+            replacementParent->setLeft(nullptr);
+        }
+        else {
+            replacementParent->setRight(nullptr);
+        }
+
+        replacement->setLeft(currentNode->getLeft());
+        replacement->setRight(currentNode->getRight());
+    }
+
+    delete currentNode;
+    return replacement;
 }
