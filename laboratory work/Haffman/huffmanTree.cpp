@@ -80,7 +80,7 @@ void huffman::buildHuffmanTree()
     }
 }
 
-void huffman::printLists()
+void huffman::printLists() const
 {
     node* current = m_head;
     while (current != nullptr) 
@@ -228,12 +228,12 @@ void huffman::decodeFromFile(const std::string& encodedFile, const std::string& 
     std::cout << "Decoded and has been wroyen in file output.txt " << outputFile << std::endl;
 }
 
-node* huffman::getHead()
+node* huffman::getHead() const
 {
     return m_head;
 }
 
-void huffman::printTree(node* root, int depth )
+void huffman::printTree(node* root, int depth ) const
 {
     if (root == nullptr)
         return;
@@ -254,7 +254,7 @@ void huffman::printTree(node* root, int depth )
     printTree(root->getLeft(), depth + 1);
 }
 
-void huffman::printTree()
+void huffman::printTree() const
 {
     printTree(getHead(), 0);
 }
