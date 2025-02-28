@@ -36,8 +36,8 @@ public:
     node* findParent(node* root, node* currentNode) const;
     node* findParent(node* currentNode) const;
     node* deleteNodeRec(node* root, int key);
-    node* deleteNode(node* root, node* currentNode);
-    node* deleteNode(node* currentNode);
+    virtual node* deleteNode(node* root, node* currentNode);
+    virtual node* deleteNode(node* currentNode);
     node* findMin(node* root); //TODO
    
     bool isEmpty() const;
@@ -57,7 +57,7 @@ public:
 protected:
     binaryTree* newTree();
 
-    node* insert(node* newNode, int value);
+    virtual node* insert(node* newNode, int value);
     node* _copy(node* currentNode) const;
     node* _copy() const; 
     virtual node* search(node* root, int key) const;

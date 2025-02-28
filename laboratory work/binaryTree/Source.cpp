@@ -38,7 +38,7 @@ int main()
 	BinaryTreeTester test(true, true);
 
 
-	test.test(5);
+	test.test(200);
 	
 
 

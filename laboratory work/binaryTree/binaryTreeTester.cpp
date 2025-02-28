@@ -154,7 +154,7 @@ void BinaryTreeTester::destructor()
         deallocateTree(tree);
     }
     std::cout << "BinaryTreeTester::destructor ended. Press any key to continue..." << std::endl;
-    getchar();
+    getchar(); // что это?
 
 }
 
