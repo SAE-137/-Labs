@@ -16,6 +16,8 @@ public:
     int findNodeLevel(int key) const;
     virtual int getMin() const; //TODO
     virtual int getMax() const; //TODO
+    int getMin(node* root) const;
+    int getMax(node* root) const;
 
     void test();
 
@@ -25,7 +27,7 @@ public:
     void deleteTree();
     void printCurrentLevel(node* root, int level);
     void printByLevels();
-    void inOrderTraversal(node* root, std::vector<int>& keys);
+    void inOrderTraversal(node* root, std::vector<int>& keys) const;
     virtual void insert(int key);
     
     node* search(int key) const;
@@ -40,7 +42,7 @@ public:
     bool isEmpty() const;
     bool isBalanced(node* root) const;
     bool isBalanced() const;
-    virtual bool deleteNode(int key) const;
+    virtual bool deleteNode(int key) ;
 
     std::vector<int> getSortedKeys() const;
 
