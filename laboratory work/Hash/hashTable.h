@@ -11,14 +11,14 @@ public:
 
 	void insert(int key, std::string value);
 	void remove(int key);
-	void printTable();
+	void printTable() const;
 
-	std::string search(int key);
+	std::string search(int key) const;
 
-	bool isEmpty(int key);
+	bool isEmpty(int key) const;
 
 private:
-	int hashFunction(int key);
+	int hashFunction(int key) const;
 
 
 private:

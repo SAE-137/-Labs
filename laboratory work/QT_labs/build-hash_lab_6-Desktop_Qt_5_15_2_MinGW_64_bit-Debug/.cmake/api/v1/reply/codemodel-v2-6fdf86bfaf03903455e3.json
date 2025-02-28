@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-154503f0c25796ae94f5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "hash_lab_6",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "hash_lab_6::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hash_lab_6-Debug-08baea1ae0db4ca38858.json",
+					"name" : "hash_lab_6",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hash_lab_6_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hash_lab_6_autogen-Debug-0dd5067f9331eb38724a.json",
+					"name" : "hash_lab_6_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hash_lab_6_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hash_lab_6_autogen_timestamp_deps-Debug-3e0bbb67d748e22002a1.json",
+					"name" : "hash_lab_6_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/admin/Desktop/QT Projects/build-hash_lab_6-Desktop_Qt_5_15_2_MinGW_64_bit-Debug",
+		"source" : "C:/Users/admin/Desktop/QT Projects/hash_lab_6"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

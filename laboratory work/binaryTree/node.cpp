@@ -22,7 +22,7 @@ node::node(int newKey)
 
 
 
-int node::getKey()
+const int node::getKey() const
 {
 	return m_key;
 }
@@ -32,10 +32,21 @@ node* node::getLeft()
 	return m_left;
 }
 
+const node* node::getLeft() const
+{
+	return m_left;
+}
+
 node* node::getRight()
 {
 	return m_right;
 }
+
+const node* node::getRight() const
+{
+	return m_left;
+}
+
 
 void node::setKey(int newKey)
 {

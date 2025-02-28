@@ -6,7 +6,8 @@
 
 auto hashing= [](int a, int b) -> int { return a + b; };
 
-int hashTable::hashFunction(int key) {
+int hashTable::hashFunction(int key) const 
+{
     return key % m_size;  
 }
 
@@ -48,7 +49,7 @@ void hashTable::insert(int key, std::string value)
     table[index] = newNode;
 }
 
-std::string hashTable::search(int key)
+std::string hashTable::search(int key) const
 {
     int index = hashFunction(key);
     node* current = table[index];
@@ -62,7 +63,8 @@ std::string hashTable::search(int key)
     return "";
 }
 
-void hashTable::remove(int key) {
+void hashTable::remove(int key) 
+{
     int index = hashFunction(key);
     node* current = table[index];
     node* prev = nullptr;
@@ -89,7 +91,8 @@ void hashTable::remove(int key) {
     //throw std::runtime_error("Key not found");
 }
 
-void hashTable::printTable() {
+void hashTable::printTable() const
+{
     for (int i = 0; i < m_size; i++) {
         std::cout << "[" << i << "]: "; 
 
@@ -103,7 +106,7 @@ void hashTable::printTable() {
     }
 }
 
-bool hashTable::isEmpty(int key)
+bool hashTable::isEmpty(int key) const
 {
     if (search(key) == "") return true;
     return false;
