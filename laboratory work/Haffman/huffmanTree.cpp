@@ -1,8 +1,21 @@
+#include <iostream>
+#include <fstream>
 #include "huffmanTree.h"
 
 huffman::huffman()
 {
-    m_head = nullptr;
+   
+}
+
+huffman::~huffman() {
+    clear(m_head);
+}
+
+void huffman::clear(node* root) {
+    if (root == nullptr) return;
+    clear(root->getLeft());
+    clear(root->getRight());
+    delete root;
 }
 
 void huffman::insert(int frequency, char ch)
@@ -146,6 +159,75 @@ BitVector huffman::encode(const std::string& str) {
     return encodedBits;
 }
 
+void huffman::encodeToFile(const std::string& inputFile, const std::string& outputFile) {
+    std::ifstream in(inputFile);
+    if (!in) {
+        std::cerr << "ERROR " << inputFile << std::endl;
+        return;
+    }
+
+    std::string text((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+    in.close();
+
+    
+    build(text);
+    BitVector encodedBits = encode(text);
+
+   
+    std::ofstream out(outputFile, std::ios::binary);
+    if (!out) {
+        std::cerr << "ERROR " << outputFile << std::endl;
+        return;
+    }
+
+    
+    int bitCount = encodedBits.size();
+    out.write(reinterpret_cast<const char*>(&bitCount), sizeof(bitCount));
+
+    
+    for (size_t i = 0; i < encodedBits.size(); ++i) {
+        uint8_t bit = encodedBits[i];
+        out.write(reinterpret_cast<const char*>(&bit), sizeof(bit));
+    }
+
+    out.close();
+    std::cout << "Endoded and wro " << outputFile << std::endl;
+}
+
+void huffman::decodeFromFile(const std::string& encodedFile, const std::string& outputFile) {
+    std::ifstream in(encodedFile, std::ios::binary);
+    if (!in) {
+        std::cerr << "ERROR " << encodedFile << std::endl;
+        return;
+    }
+
+    
+    int bitCount;
+    in.read(reinterpret_cast<char*>(&bitCount), sizeof(bitCount));
+
+    BitVector encodedBits;
+    for (int i = 0; i < bitCount; ++i) {
+        uint8_t bit;
+        in.read(reinterpret_cast<char*>(&bit), sizeof(bit));
+        encodedBits.append(bit);
+    }
+    in.close();
+
+    
+    std::string decodedText = decode(encodedBits);
+
+   
+    std::ofstream out(outputFile);
+    if (!out) {
+        std::cerr << "ERROR " << outputFile << std::endl;
+        return;
+    }
+
+    out << decodedText;
+    out.close();
+    std::cout << "Decoded and has been wroyen in file output.txt " << outputFile << std::endl;
+}
+
 node* huffman::getHead()
 {
     return m_head;
@@ -172,3 +254,22 @@ void huffman::printTree(node* root, int depth )
     printTree(root->getLeft(), depth + 1);
 }
 
+void huffman::printTree()
+{
+    printTree(getHead(), 0);
+}
+
+std::string huffman::decode(BitVector& encodedBits) {
+    std::string result;
+    node* current = m_head;
+
+    for (size_t i = 0; i < encodedBits.size(); i++) {
+        current = encodedBits[i] ? current->getRight() : current->getLeft();
+
+        if (!current->getLeft() && !current->getRight()) {
+            result += current->getChar();
+            current = m_head;
+        }
+    }
+    return result;
+}

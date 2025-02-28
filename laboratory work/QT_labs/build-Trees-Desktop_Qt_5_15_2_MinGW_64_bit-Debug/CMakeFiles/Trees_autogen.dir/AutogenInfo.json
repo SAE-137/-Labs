@@ -81,6 +81,18 @@
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
+		],
+		[
+			"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/Trees/treenodegraphicsitem.h",
+			"MU",
+			"EWIEGA46WW/moc_treenodegraphicsitem.cpp",
+			null
+		],
+		[
+			"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/Trees/treewidget.h",
+			"MU",
+			"EWIEGA46WW/moc_treewidget.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -145,6 +157,16 @@
 		],
 		[
 			"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/Trees/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/Trees/treenodegraphicsitem.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/Trees/treewidget.cpp",
 			"MU",
 			null
 		]

@@ -5,12 +5,14 @@ node::node()
 {
 	m_frequency = 0;
 	m_next = nullptr;
+	m_left = nullptr;
+	m_right = nullptr;
 	
 }
 
 node::~node()
 {
-	delete m_next;
+	
 }
 
 node* node::getNext()

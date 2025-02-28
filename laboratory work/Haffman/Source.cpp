@@ -1,33 +1,16 @@
-
-#include<iostream>
-#include"huffmanTree.h"
-#include "bit_array.h"
+#include "huffmanTree.h"
 #include <iostream>
-#include <fstream>
-
-
-
-
-
-
-
 
 int main() {
-    std::string text = "bfdbgb";
+    huffman tree;
 
-    huffman huff;
-    huff.build(text);
+   
+    tree.encodeToFile("input.txt", "output.bin");
 
-    std::cout << "Huffman Tree:" << std::endl;
-    huff.printTree(huff.getHead());
+   
+    tree.decodeFromFile("output.bin", "decoded.txt");
 
-    std::cout << "\nCharacter Codes:" << std::endl;
-    huff.printCodes();
-
-    BitVector encoded = huff.encode(text);
-
-    std::cout << "\nEncoded bit sequence: ";
-    encoded.print();
+    tree.printTree();
 
     return 0;
 }

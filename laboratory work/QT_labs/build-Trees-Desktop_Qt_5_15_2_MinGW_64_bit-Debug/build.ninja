@@ -81,6 +81,22 @@ build CMakeFiles/Trees.dir/binarytree.cpp.obj: CXX_COMPILER__Trees_Debug C$:/Use
   OBJECT_DIR = CMakeFiles\Trees.dir
   OBJECT_FILE_DIR = CMakeFiles\Trees.dir
 
+build CMakeFiles/Trees.dir/treenodegraphicsitem.cpp.obj: CXX_COMPILER__Trees_Debug C$:/Users/admin/Desktop/Algorithms/-Labs/laboratory$ work/QT_labs/Trees/treenodegraphicsitem.cpp || cmake_object_order_depends_target_Trees
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles\Trees.dir\treenodegraphicsitem.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -I"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/include" -isystem C:/Qt/5.15.2/mingw81_64/include -isystem C:/Qt/5.15.2/mingw81_64/include/QtWidgets -isystem C:/Qt/5.15.2/mingw81_64/include/QtGui -isystem C:/Qt/5.15.2/mingw81_64/include/QtANGLE -isystem C:/Qt/5.15.2/mingw81_64/include/QtCore -isystem C:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\Trees.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trees.dir
+
+build CMakeFiles/Trees.dir/treewidget.cpp.obj: CXX_COMPILER__Trees_Debug C$:/Users/admin/Desktop/Algorithms/-Labs/laboratory$ work/QT_labs/Trees/treewidget.cpp || cmake_object_order_depends_target_Trees
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles\Trees.dir\treewidget.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17
+  INCLUDES = -I"C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Trees_autogen/include" -isystem C:/Qt/5.15.2/mingw81_64/include -isystem C:/Qt/5.15.2/mingw81_64/include/QtWidgets -isystem C:/Qt/5.15.2/mingw81_64/include/QtGui -isystem C:/Qt/5.15.2/mingw81_64/include/QtANGLE -isystem C:/Qt/5.15.2/mingw81_64/include/QtCore -isystem C:/Qt/5.15.2/mingw81_64/./mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\Trees.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trees.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Trees
@@ -89,7 +105,7 @@ build CMakeFiles/Trees.dir/binarytree.cpp.obj: CXX_COMPILER__Trees_Debug C$:/Use
 #############################################
 # Link the executable Trees.exe
 
-build Trees.exe: CXX_EXECUTABLE_LINKER__Trees_Debug CMakeFiles/Trees.dir/Trees_autogen/mocs_compilation.cpp.obj CMakeFiles/Trees.dir/main.cpp.obj CMakeFiles/Trees.dir/mainwindow.cpp.obj CMakeFiles/Trees.dir/binarytree.cpp.obj | C$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a C$:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a C$:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a C$:/Qt/5.15.2/mingw81_64/lib/libqtmain.a || Trees_autogen Trees_autogen_timestamp_deps
+build Trees.exe: CXX_EXECUTABLE_LINKER__Trees_Debug CMakeFiles/Trees.dir/Trees_autogen/mocs_compilation.cpp.obj CMakeFiles/Trees.dir/main.cpp.obj CMakeFiles/Trees.dir/mainwindow.cpp.obj CMakeFiles/Trees.dir/binarytree.cpp.obj CMakeFiles/Trees.dir/treenodegraphicsitem.cpp.obj CMakeFiles/Trees.dir/treewidget.cpp.obj | C$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a C$:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a C$:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a C$:/Qt/5.15.2/mingw81_64/lib/libqtmain.a || Trees_autogen Trees_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a  C:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a  C:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a  C:/Qt/5.15.2/mingw81_64/lib/libqtmain.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -192,7 +208,7 @@ build Trees_autogen/timestamp Trees_autogen/mocs_compilation.cpp | ${cmake_ninja
 #############################################
 # Phony custom command for CMakeFiles\Trees_autogen_timestamp_deps
 
-build CMakeFiles/Trees_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Trees_autogen_timestamp_deps: phony C$:/Qt/5.15.2/mingw81_64/bin/moc.exe C$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a C$:/Qt/5.15.2/mingw81_64/bin/uic.exe
+build CMakeFiles/Trees_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/Trees_autogen_timestamp_deps: phony C$:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a C$:/Qt/5.15.2/mingw81_64/bin/uic.exe C$:/Qt/5.15.2/mingw81_64/bin/moc.exe
 
 
 #############################################
