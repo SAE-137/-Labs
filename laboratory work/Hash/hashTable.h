@@ -14,9 +14,12 @@ public:
 	void printTable() const;
 
 	std::string search(int key) const;
+	
 
 	bool isEmpty(int key) const;
 
+	std::string& operator[](int key) const;
+	hashTable& operator=(const hashTable& other);
 private:
 	int hashFunction(int key) const;
 

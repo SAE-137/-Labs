@@ -111,3 +111,58 @@ bool hashTable::isEmpty(int key) const
     if (search(key) == "") return true;
     return false;
 }
+
+hashTable& hashTable::operator=(const hashTable& other) {
+    if (this == &other) {
+        return *this; 
+    }
+
+   
+    for (int i = 0; i < m_size; i++) {
+        node* current = table[i];
+        while (current != nullptr) {
+            node* temp = current;
+            current = current->getNext();
+            delete temp;
+        }
+    }
+    delete[] table;
+
+   
+    m_size = other.m_size;
+    table = new node * [m_size];
+    for (int i = 0; i < m_size; i++) {
+        table[i] = nullptr;
+    }
+
+   
+    for (int i = 0; i < m_size; i++) {
+        node* current = other.table[i];
+        while (current != nullptr) {
+            insert(current->getKey(), current->getValue()); 
+            current = current->getNext();
+        }
+    }
+
+    return *this;
+}
+
+std::string& hashTable::operator[](int key) const{
+    int index = hashFunction(key);
+    node* current = table[index];
+
+   
+    while (current != nullptr) {
+        if (current->getKey() == key) {
+            return current->getValueRef(); 
+        }
+        current = current->getNext();
+    }
+
+    
+    node* newNode = new node(key, "");
+    newNode->setNext(table[index]);
+    table[index] = newNode;
+
+    return newNode->getValueRef(); 
+}

@@ -7,8 +7,8 @@ public:
 	node(int key, std::string value);
 	~node();
 
-	int getKey();
-	const int getKey() const;
+	
+	int getKey() const;
 
 	
 	node* getNext();
@@ -16,6 +16,8 @@ public:
 
 
 	void setNext(node* next);
+
+	std::string& getValueRef();
 
 	std::string getValue();
 	const std::string getValue() const;

@@ -26,14 +26,14 @@ const std::string node::getValue() const
 	return m_value;
 }
 
-const int node::getKey() const
+int node::getKey() const
 {
 	return m_key;
 }
 
-int node::getKey()
-{
-	return m_key;
+std::string& node::getValueRef()
+{ 
+	return m_value; 
 }
 
 
