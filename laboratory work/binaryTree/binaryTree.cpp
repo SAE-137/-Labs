@@ -466,3 +466,9 @@ bool binaryTree::deleteNode(int key)
     m_root = deleteNode(getRoot(), newNode);
     return true;
 }
+
+
+node* binaryTree::findMin(node* root)
+{
+    return search(getMin());
+}
