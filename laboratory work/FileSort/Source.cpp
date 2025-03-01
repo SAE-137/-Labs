@@ -2,6 +2,7 @@
 #include <fstream>
 #include <random>
 #include <string>
+#include "Header.h"
 
 bool createFileWithRandomNumbers(const std::string& fileName, const int numbersCount, const int maxNumberValue) {
     std::ofstream file(fileName, std::ios::binary);
@@ -58,24 +59,8 @@ int createAndSortFile(const std::string& fileName, const int numbersCount, const
     return 1;
 }
 
-int main() {
-    std::string fileName = "file.txt";
-    const int numbersCount = 1000000;
-    const int maxNumberValue = 100000;
-
-    for (int i = 0; i < 10; i++) {
-        switch (createAndSortFile(fileName, numbersCount, maxNumberValue)) {
-        case 1:
-            std::cout << "Test passed." << std::endl;
-            break;
-        case -1:
-            std::cout << "Test failed: can't create file." << std::endl;
-            break;
-        case -2:
-            std::cout << "Test failed: file isn't sorted." << std::endl;
-            break;
-        }
-    }
-
-    return 0;
+int main() 
+{
+    std::string name = "main.txt";
+    createMainFile(name,10000, 0, 10000000);
 }
