@@ -36,6 +36,11 @@ void binaryTree::show(node* root, int space, int indent) const {
     show(root->getLeft(), space);
 }
 
+void binaryTree::show()
+{
+    show(getRoot(), 0, 4);
+}
+
 bool binaryTree::isEmpty() const {
     return m_root == nullptr;
 }

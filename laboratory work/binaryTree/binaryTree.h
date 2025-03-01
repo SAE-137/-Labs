@@ -24,6 +24,7 @@ public:
 
     void setRoot(node* newRoot);
     void show(node* root, int space = 0, int indent = 4) const;
+    void show();
     void printLeafs() const;
     void deleteTree();
     void printCurrentLevel(node* root, int level) const;
