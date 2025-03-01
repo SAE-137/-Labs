@@ -132,6 +132,7 @@
     <ClInclude Include="binaryTree.h" />
     <ClInclude Include="binaryTreeTester.h" />
     <ClInclude Include="node.h" />
+    <ClInclude Include="SearchTreeTester.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AVLTree.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="binaryTree.cpp" />
     <ClCompile Include="binaryTreeTester.cpp" />
     <ClCompile Include="node.cpp" />
+    <ClCompile Include="SearchTreeTester.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

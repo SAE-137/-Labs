@@ -3,9 +3,7 @@
 
 
 
-binarySearchTree::~binarySearchTree() {
-   
-}
+
 
 int binarySearchTree::getMin() const{
     if (m_root == nullptr) {
@@ -108,6 +106,78 @@ node* binarySearchTree::deleteNode(node* root, node* currentNode)
     }
     else {
         root->setRight(deleteNode(root->getRight(), currentNode));
+    }
+
+    return root;
+}
+
+
+
+
+
+std::vector<int> binarySearchTree::getSortedKeys() const {
+    std::vector<int> result;
+    node* current = m_root;
+    std::vector<node*> stack;
+
+    while (!stack.empty() || current) {
+       
+        while (current) {
+            stack.push_back(current);
+            current = current->getRight();
+        }
+
+        current = stack.back();
+        stack.pop_back();
+
+        result.push_back(current->getKey());
+        current = current->getLeft();
+    }
+
+    return result;
+}
+
+int binarySearchTree::getNodeLvl(int key) const {
+    node* current = m_root;
+    int level = 0;
+
+    while (current) {
+        if (key == current->getKey()) {
+            return level;  
+        }
+        else if (key < current->getKey()) {
+            current = current->getLeft(); 
+        }
+        else {
+            current = current->getRight(); 
+        }
+        level++; 
+    }
+
+    return -1; 
+}
+
+
+bool binarySearchTree::deleteNode(int key) {
+    node* target = search(key); 
+    if (!target) {
+        return false; 
+    }
+
+    m_root = deleteNode(getRoot(), target);
+    return true;
+}
+
+node* binarySearchTree::insert(node* root, int key) {
+    if (root == nullptr) {
+        return new node(key); 
+    }
+
+    if (key < root->getKey()) {
+        root->setLeft(insert(root->getLeft(), key)); 
+    }
+    else if (key > root->getKey()) {
+        root->setRight(insert(root->getRight(), key)); 
     }
 
     return root;

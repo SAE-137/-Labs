@@ -4,7 +4,10 @@
 
 
 
+#include "searchTreeTester.h"
 #include "binaryTreeTester.h"
+#include "binarySearchTree.h"
+
 
 int randomValue(int min = 0, int max = 1000)
 {
@@ -31,19 +34,59 @@ void space(int amount)
 	}
 }
 
-int main()
-{
+#include <iostream>
+#include "SearchTreeTester.h"
 
+#include <iostream>
+#include "SearchTreeTester.h"
 
-	BinaryTreeTester test(true, true);
+int main() {
+    // Создаем объект тестера с выводом в консоль и включенными всеми тестами
+    SearchTreeTester tester(true, true);
 
+    // Запускаем все тесты с максимальным размером дерева 10
+    std::cout << "=== Running all tests ===" << std::endl;
+    tester.test(10);
 
-	test.test(200);
-	
+    // Дополнительные тесты (опционально)
+    std::cout << "\n=== Running additional tests ===" << std::endl;
 
+    // Тест на добавление и удаление
+    binarySearchTree tree;
+    tree.insert(5);
+    tree.insert(3);
+    tree.insert(7);
+    tree.insert(2);
+    tree.insert(4);
+    tree.insert(6);
+    tree.insert(8);
 
+    std::cout << "Tree after insertions:" << std::endl;
+    tree.printByLevels();
 
-	return 0;
+    tree.deleteNode(3);
+    std::cout << "\nTree after removing key 3:" << std::endl;
+    tree.printByLevels();
+
+    
+    std::cout << "\nMin key: " << tree.getMin() << std::endl;
+    std::cout << "Max key: " << tree.getMax() << std::endl;
+
+    
+    int searchKey = 6;
+    if (tree.search(searchKey)) {
+        std::cout << "Key " << searchKey << " found in the tree." << std::endl;
+    }
+    else {
+        std::cout << "Key " << searchKey << " not found in the tree." << std::endl;
+    }
+
+  
+
+    std::cout << "\n=== All tests completed ===" << std::endl;
+
+    return 0;
 }
+
 
 

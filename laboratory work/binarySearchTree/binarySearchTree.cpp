@@ -33,7 +33,8 @@ int binarySearchTree::getMin() const  {
     return current->getKey();
 }
 
-node* binarySearchTree::insert(node* newNode, int key) {
+node* binarySearchTree::insert(node* newNode, int key)
+{
     if (newNode == nullptr) return new node(key);
     if (key < newNode->getKey()) {
         newNode->m_left = insert(newNode->m_left, key);

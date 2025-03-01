@@ -10,7 +10,7 @@ public:
 
     int getAmountOfNodes(node* newNode) const;
     int getAmountOfNodes() const;
-    int getNodeLvl(int key) const;
+    virtual int getNodeLvl(int key) const;
     int getDepth(node* newNode) const;
     int getDepth() const;
     int findNodeLevel(node* root, int key, int level) const;
@@ -26,8 +26,8 @@ public:
     void show(node* root, int space = 0, int indent = 4) const;
     void printLeafs() const;
     void deleteTree();
-    void printCurrentLevel(node* root, int level);
-    void printByLevels();
+    void printCurrentLevel(node* root, int level) const;
+    void printByLevels() const;
     void inOrderTraversal(node* root, std::vector<int>& keys) const;
     virtual void insert(int key);
     
@@ -39,13 +39,15 @@ public:
     virtual node* deleteNode(node* root, node* currentNode);
     virtual node* deleteNode(node* currentNode);
     node* findMin(node* root); //TODO
+    node* find(node* root, int key) const;
+    node* find(int key) const;
    
     bool isEmpty() const;
     bool isBalanced(node* root) const;
     bool isBalanced() const;
     virtual bool deleteNode(int key) ;
 
-    std::vector<int> getSortedKeys() const;
+    virtual std::vector<int> getSortedKeys() const;
 
 
     
@@ -57,7 +59,7 @@ public:
 protected:
     binaryTree* newTree();
 
-    virtual node* insert(node* newNode, int value);
+    virtual node* insert(node* newNode, int key);
     node* _copy(node* currentNode) const;
     node* _copy() const; 
     virtual node* search(node* root, int key) const;

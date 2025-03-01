@@ -19,7 +19,7 @@ public:
 	void decodeFromFile(const std::string& encodedFile, const std::string& outputFile);
 	void printTree(node* root, int depth = 0) const;
 	void printLists() const;
-	void printCodes() ;
+	void printCodes();
 	void printTree() const;
 
 	std::string decode(BitVector& encodedBits);

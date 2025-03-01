@@ -222,15 +222,7 @@ node* binaryTree::deleteNodeRec(node* root, int key) {
     return root;
 }
 
-bool binaryTree::deleteNode(int key) {
-    node* newNode = search(key);
-    if (!newNode) {
-        return false;
-    }
 
-    m_root = deleteNode(m_root, newNode);
-    return true;
-}
 
 
 
@@ -255,7 +247,7 @@ bool binaryTree::isBalanced() const {
     return isBalanced(m_root);
 }
 
-void binaryTree::printCurrentLevel(node* root, int level) {
+void binaryTree::printCurrentLevel(node* root, int level) const{
     if (root == nullptr) return;
     if (level == 1) {
         std::cout << root->getKey() << " ";
@@ -266,7 +258,7 @@ void binaryTree::printCurrentLevel(node* root, int level) {
     }
 }
 
-void binaryTree::printByLevels() {
+void binaryTree::printByLevels() const{
     int h = getDepth(m_root); 
     for (int i = 1; i <= h; i++) {
         printCurrentLevel(m_root, i);
@@ -442,4 +434,35 @@ node* binaryTree::deleteNode(node* currentNode)
 
     delete currentNode;
     return replacement;
+}
+
+
+
+node* binaryTree::find(node* root, int key) const
+{
+    if (!root) {
+        return nullptr;
+    }
+    else if (root->getKey() == key) {
+        return root;
+    }
+
+    node* newNode = find(root->getLeft(), key);
+    return newNode ? newNode : find(root->getRight(), key);
+}
+
+node* binaryTree::find(int key) const
+{
+    return find(m_root, key);
+}
+
+bool binaryTree::deleteNode(int key)
+{
+    node* newNode = find(key);
+    if (!newNode) {
+        return false;
+    }
+
+    m_root = deleteNode(getRoot(), newNode);
+    return true;
 }
