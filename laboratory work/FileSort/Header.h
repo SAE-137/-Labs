@@ -53,4 +53,20 @@ bool isSorted(const std::string& fileName) {
 }
 
 
+bool createFiles(std::string& flowName, int amount) {
+    for (int i = 0; i < amount; ++i) {
+        std::string fileName = flowName + std::to_string(i) + ".txt";
+        std::ofstream file(fileName);
+
+        if (!file.is_open()) {
+            std::cerr << "ERROR: cant create file " << fileName << std::endl;
+            return false;
+        }
+
+        file.close(); 
+    }
+
+    return true;
+}
+
 
