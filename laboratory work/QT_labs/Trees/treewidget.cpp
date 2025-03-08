@@ -19,6 +19,10 @@ TreeWidget::TreeWidget(QWidget *parent) :
     connect(ui->pushButtonAdd, &QPushButton::clicked, this, [this](){
         addKey(ui->spinBoxKey->value());
     });
+
+    connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this](){
+        removeKey(ui->spinBoxKey->value());
+    });
 }
 
 TreeWidget::~TreeWidget()
@@ -48,6 +52,7 @@ void TreeWidget::addKey(int key)
 void TreeWidget::removeKey(int key)
 {
     //TODO: implement
+    m_tree->deleteNode(key);
     _redrawTree();
 }
 
