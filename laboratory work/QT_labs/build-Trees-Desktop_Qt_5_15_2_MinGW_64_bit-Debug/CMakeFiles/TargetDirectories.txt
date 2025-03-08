@@ -1,9 +1,0 @@
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Trees.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Trees_autogen_timestamp_deps.dir
-C:/Users/admin/Desktop/Algorithms/-Labs/laboratory work/QT_labs/build-Trees-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Trees_autogen.dir
