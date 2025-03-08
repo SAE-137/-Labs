@@ -163,31 +163,13 @@ int binaryTree::getMin() const {
 }
 
 int binaryTree::getMin(node* root) const{
-    if (root == nullptr) {
-        return -1; 
-    }
-
-   
-    int currentKey = root->getKey();
-    int leftMin = getMin(root->getLeft());
-    int rightMin = getMin(root->getRight());
-
-    
-    return std::min({ currentKey, leftMin, rightMin });
+   //TODO
+    return 0;
 }
 
 int binaryTree::getMax(node* root) const{
-    if (root == nullptr) {
-        return -1;
-    }
-
-
-    int currentKey = root->getKey();
-    int leftMin = getMin(root->getLeft());
-    int rightMin = getMin(root->getRight());
-
-
-    return std::max({ currentKey, leftMin, rightMin });
+    //TODO
+    return 0;
 }
 
 node* binaryTree::deleteNodeRec(node* root, int key) {

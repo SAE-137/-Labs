@@ -9,16 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../../binaryTree/binaryTree.cpp \
+    ../../binaryTree/node.cpp \
     main.cpp \
     treenodegraphicsitem.cpp \
     treewidget.cpp
 
 HEADERS += \
+    ../../binaryTree/binaryTree.h \
+    ../../binaryTree/node.h \
     treenodegraphicsitem.h \
     treewidget.h
 
 FORMS += \
-    treewidget.ui
+    ../../../../../../Downloads/TreeWidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

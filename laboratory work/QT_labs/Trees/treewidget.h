@@ -1,21 +1,40 @@
-#ifndef TREEWIDGET_H
-#define TREEWIDGET_H
+#pragma once
 
-#include <QMainWindow>
+#include <QWidget>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class treeWidget; }
-QT_END_NAMESPACE
+#include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
 
-class treeWidget : public QMainWindow
+class QGraphicsScene;
+
+namespace Ui {
+class TreeWidget;
+}
+
+class TreeWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    treeWidget(QWidget *parent = nullptr);
-    ~treeWidget();
+    explicit TreeWidget(QWidget *parent = nullptr);
+    ~TreeWidget();
+
+    void show();
+
+public slots:
+    void addKey(int key);
+    void removeKey(int key);
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
-    Ui::treeWidget *ui;
+    QPointF _drawTree(node *root, int leftBorderPos, int rightBorderPos, int yPos);
+    void _redrawTree();
+    void _updateSceneRect();
+
+private:
+    Ui::TreeWidget *ui;
+    int m_fontSize = 22;
+    binaryTree *m_tree = nullptr;
+    QGraphicsScene *m_scene = nullptr;
 };
-#endif // TREEWIDGET_H
