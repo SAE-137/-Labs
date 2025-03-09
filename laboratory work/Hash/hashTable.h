@@ -15,6 +15,8 @@ public:
 
 	std::string search(int key) const;
 	
+	node* getBucket(int key) const;
+	int getSize() const;
 
 	bool isEmpty(int key) const;
 

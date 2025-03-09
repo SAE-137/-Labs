@@ -112,6 +112,20 @@ bool hashTable::isEmpty(int key) const
     return false;
 }
 
+int hashTable::getSize() const
+{
+    return m_size;
+}
+
+node* hashTable::getBucket(int key) const
+{
+    if (key >= 0 && key < getSize())
+    {
+        return table[key];
+    }
+    return nullptr;
+}
+
 hashTable& hashTable::operator=(const hashTable& other) {
     if (this == &other) {
         return *this; 

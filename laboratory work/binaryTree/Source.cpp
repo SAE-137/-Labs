@@ -9,7 +9,7 @@
 #include "binarySearchTree.h"
 
 
-int randomValue(int min = 0, int max = 1000)
+int randomValue(int min = 0, int max = 10000)
 {
 	std::random_device rd;
 	std::mt19937 gen(rd());
@@ -42,13 +42,14 @@ void space(int amount)
 
 int main()
 {
+	int amount = 20;
+	binaryTree tree;
+	for (int i = 1; i <= amount; ++i)
+	{
+		tree.insert(i);
+	}
 
-	binarySearchTree tree;
-	tree.insert(1);
 	tree.show();
-
-	return 0;
-
 }
 
 
