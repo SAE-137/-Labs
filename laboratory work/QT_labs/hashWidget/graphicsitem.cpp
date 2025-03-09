@@ -56,18 +56,35 @@ void graphicsItem::setFillColor(const QColor &color)
 QRectF graphicsItem::boundingRect() const
 {
     QRectF rect = QGraphicsSimpleTextItem::boundingRect();
-    int padding = 3;
-    rect.adjust(-padding, -padding, padding, padding);
+
     return rect;
 }
 
 void graphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    QRectF textRect = QGraphicsSimpleTextItem::boundingRect();
-    textRect.moveTo((boundingRect().width() - textRect.width()) / 5,
-                    (boundingRect().height() - textRect.height()) / 5);
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+
+
     painter->setBrush(QBrush(m_fillColor));
+    painter->setPen(QPen(Qt::black));
+
+
     painter->drawRect(boundingRect());
-    painter->translate(textRect.x(), textRect.y());
-    QGraphicsSimpleTextItem::paint(painter, option, widget);
+
+
+    QFont font = this->font();
+    font.setPointSize(8);
+    font.setWeight(QFont::Normal);
+    painter->setFont(font);
+
+
+    painter->setPen(QPen(m_textColor));
+
+
+    QRectF textRect = boundingRect();
+    textRect.adjust(3, 3, -3, -3);
+
+
+    painter->drawText(textRect, Qt::AlignCenter, text());
 }

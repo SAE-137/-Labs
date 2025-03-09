@@ -15,33 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="binaryTree.h">
+    <ClInclude Include="AVLTree.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="node.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="..\binaryTree\node.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="binaryTreeTester.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="..\binaryTree\binaryTree.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="SearchTreeTester.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="..\binarySearchTree\binarySearchTree.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="binaryTree.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="node.cpp">
+    <ClCompile Include="AVLTree.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="binaryTreeTester.cpp">
+    <ClCompile Include="..\binaryTree\node.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SearchTreeTester.cpp">
+    <ClCompile Include="..\binaryTree\binaryTree.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="..\binarySearchTree\binarySearchTree.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include "binarySearchTree.h"
 
@@ -5,7 +6,7 @@
 
 
 
-int binarySearchTree::getMin() const{
+int binarySearchTree::getMin() const {
     if (m_root == nullptr) {
         return -1;
     }
@@ -32,7 +33,7 @@ int binarySearchTree::getMax() const {
 
 
 void binarySearchTree::insert(int key) {
-    setRoot(insert(getRoot(), key)); 
+    setRoot(insert(getRoot(), key));
 }
 
 node* binarySearchTree::search(node* root, int key) const {
@@ -121,7 +122,7 @@ std::vector<int> binarySearchTree::getSortedKeys() const {
     std::vector<node*> stack;
 
     while (!stack.empty() || current) {
-       
+
         while (current) {
             stack.push_back(current);
             current = current->getRight();
@@ -143,25 +144,25 @@ int binarySearchTree::getNodeLvl(int key) const {
 
     while (current) {
         if (key == current->getKey()) {
-            return level;  
+            return level;
         }
         else if (key < current->getKey()) {
-            current = current->getLeft(); 
+            current = current->getLeft();
         }
         else {
-            current = current->getRight(); 
+            current = current->getRight();
         }
-        level++; 
+        level++;
     }
 
-    return -1; 
+    return -1;
 }
 
 
 bool binarySearchTree::deleteNode(int key) {
-    node* target = search(key); 
+    node* target = search(key);
     if (!target) {
-        return false; 
+        return false;
     }
 
     m_root = deleteNode(getRoot(), target);
@@ -170,14 +171,14 @@ bool binarySearchTree::deleteNode(int key) {
 
 node* binarySearchTree::insert(node* root, int key) {
     if (root == nullptr) {
-        return new node(key); 
+        return new node(key);
     }
 
     if (key < root->getKey()) {
-        root->setLeft(insert(root->getLeft(), key)); 
+        root->setLeft(insert(root->getLeft(), key));
     }
     else if (key > root->getKey()) {
-        root->setRight(insert(root->getRight(), key)); 
+        root->setRight(insert(root->getRight(), key));
     }
 
     return root;
