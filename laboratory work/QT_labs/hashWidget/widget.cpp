@@ -66,34 +66,35 @@ void Widget::removeKey(int key)
 
 QPointF Widget::_drawHashTable()
 {
-    const int bucketWidth = 100;
-    const int bucketHeight = 50;
-    const int spacing = 20;
-    const int startX = 50;
-    const int startY = 50;
+    const int bucketWidth = 100;  // Ширина корзины
+    const int bucketHeight = 50;  // Высота корзины
+    const int spacing = 20;       // Отступ между корзинами и элементами
+    const int startX = 50;        // Начальная позиция по X
+    const int startY = 50;        // Начальная позиция по Y
 
     for (int i = 0; i < m_table->getSize(); ++i) {
-        int xPos = startX + i * (bucketWidth + spacing);
-        int yPos = startY;
+        int xPos = startX; // Корзины располагаются вертикально, поэтому xPos не меняется
+        int yPos = startY + i * (bucketHeight + spacing); // Сдвигаем корзины вниз
 
-
+        // Отрисовка корзины
         QGraphicsRectItem *bucketRect = m_scene->addRect(xPos, yPos, bucketWidth, bucketHeight, QPen(Qt::black));
         QGraphicsTextItem *bucketText = m_scene->addText(QString("Bucket %1").arg(i));
         bucketText->setPos(xPos + 10, yPos + 10);
 
-        // Отрисовка элементов корзины
+        // Отрисовка элементов корзины (горизонтально)
         node *current = m_table->getBucket(i);
-        yPos += bucketHeight + 10;
+        xPos += bucketWidth + spacing; // Сдвигаемся вправо для отрисовки элементов
 
         while (current != nullptr) {
+            // Создаем элемент для отрисовки узла
             graphicsItem *item = new graphicsItem(
                 QString("Key: %1\nValue: %2").arg(current->getKey()).arg(QString::fromStdString(current->getValue())));
             item->setFontSize(m_fontSize);
             m_scene->addItem(item);
-            item->setPos(xPos + 10, yPos);
-            yPos += item->boundingRect().height() + 10;
+            item->setPos(xPos, yPos); // Элементы располагаются горизонтально
+            xPos += item->boundingRect().width() + spacing; // Сдвигаемся вправо для следующего элемента
 
-            current = current->getNext();
+            current = current->getNext(); // Переходим к следующему узлу
         }
     }
 

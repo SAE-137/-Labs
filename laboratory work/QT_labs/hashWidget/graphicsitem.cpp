@@ -56,16 +56,16 @@ void graphicsItem::setFillColor(const QColor &color)
 QRectF graphicsItem::boundingRect() const
 {
     QRectF rect = QGraphicsSimpleTextItem::boundingRect();
-    int padding = 10; // Отступ вокруг текста
-    rect.adjust(-padding, -padding, padding, padding); // Увеличиваем прямоугольник на отступы
+    int padding = 3;
+    rect.adjust(-padding, -padding, padding, padding);
     return rect;
 }
 
 void graphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QRectF textRect = QGraphicsSimpleTextItem::boundingRect();
-    textRect.moveTo((boundingRect().width() - textRect.width()) / 2,
-                    (boundingRect().height() - textRect.height()) / 2);
+    textRect.moveTo((boundingRect().width() - textRect.width()) / 5,
+                    (boundingRect().height() - textRect.height()) / 5);
     painter->setBrush(QBrush(m_fillColor));
     painter->drawRect(boundingRect());
     painter->translate(textRect.x(), textRect.y());
