@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
@@ -28,6 +29,7 @@ public:
     QGraphicsView *graphicsView;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
+    QComboBox *comboBox;
     QSpinBox *spinBoxKey;
     QPushButton *pushButtonAdd;
     QPushButton *pushButtonRemove;
@@ -49,6 +51,11 @@ public:
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
+
+        comboBox = new QComboBox(TreeWidget);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+
+        horizontalLayout->addWidget(comboBox);
 
         spinBoxKey = new QSpinBox(TreeWidget);
         spinBoxKey->setObjectName(QString::fromUtf8("spinBoxKey"));

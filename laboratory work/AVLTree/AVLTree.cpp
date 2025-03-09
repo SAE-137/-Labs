@@ -33,6 +33,10 @@ node* AVLTree::rightRotate(node* y) {
     return x;
 }
 
+void AVLTree::insert(int key)
+{
+    setRoot(insert(getRoot(), key));
+}
 
 node* AVLTree::leftRotate(node* x) {
     node* y = x->m_right;

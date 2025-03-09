@@ -11,7 +11,7 @@ public:
 	int height(node* newNode);
     int balanceFactor(node* newNode);
    
-   
+    void insert(int key);
     void updateHeight(node* newNode);
     bool deleteNode(int key) override;
 

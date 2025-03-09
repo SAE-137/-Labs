@@ -170,14 +170,13 @@ bool binarySearchTree::deleteNode(int key) {
 }
 
 node* binarySearchTree::insert(node* root, int key) {
-    if (root == nullptr) {
-        return new node(key);
+    if (!root) {
+        root = new node(key);
     }
-
-    if (key < root->getKey()) {
+    else if (key < root->getKey()) {
         root->setLeft(insert(root->getLeft(), key));
     }
-    else if (key > root->getKey()) {
+    else {
         root->setRight(insert(root->getRight(), key));
     }
 

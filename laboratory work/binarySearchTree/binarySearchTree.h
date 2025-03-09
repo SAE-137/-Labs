@@ -16,7 +16,7 @@ public:
 
 	node* deleteNode(node* root, node* currentNode) override;
 	node* deleteNode(node* currentNode) override;
-	node* insert(node* newNode, int key) override;
+	virtual node* insert(node* newNode, int key) override;
 	node* search(node* root, int key) const override;
 	node* search(int key) const;
 
