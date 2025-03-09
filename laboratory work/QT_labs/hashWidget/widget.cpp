@@ -17,7 +17,7 @@
 Widget::Widget(QWidget *parent)
     : QWidget(parent),
     ui(new Ui::Widget),
-    m_table(new hashTable),
+    m_table(new hashTable(10)),
     m_scene(new QGraphicsScene(this))
 {
     ui->setupUi(this);
