@@ -64,33 +64,41 @@ node* binarySearchTree::_traverseToReplacement(node* replacementParent)
 
 node* binarySearchTree::deleteNode(node* currentNode)
 {
-    node* replacement = nullptr;
-
     if (!currentNode) {
-        replacement = nullptr;
+        return nullptr;
     }
-    else if (!currentNode->getLeft()) {
-        replacement = currentNode->getRight();
-    }
-    else if (!currentNode->getRight()) {
-        replacement = currentNode->getLeft();
-    }
-    else {
-        replacement = currentNode->getLeft();
-        node* replacementParent = _traverseToReplacement(replacement);
-        if (replacement != replacementParent) {
-            replacement = replacementParent->getRight();
 
-            replacementParent->setRight(replacement->getLeft());
-            replacement->setLeft(currentNode->getLeft());
-        }
+    if (!currentNode->getLeft()) {
+        node* temp = currentNode->getRight();
+        delete currentNode;
+        return temp;
+    }
 
+    if (!currentNode->getRight()) {
+        node* temp = currentNode->getLeft();
+        delete currentNode;
+        return temp;
+    }
+
+    node* replacementParent = currentNode;
+    node* replacement = currentNode->getRight();
+
+    while (replacement->getLeft()) {
+        replacementParent = replacement;
+        replacement = replacement->getLeft();
+    }
+
+    if (replacementParent != currentNode) {
+        replacementParent->setLeft(replacement->getRight());
         replacement->setRight(currentNode->getRight());
     }
+
+    replacement->setLeft(currentNode->getLeft());
 
     delete currentNode;
     return replacement;
 }
+
 
 node* binarySearchTree::deleteNode(node* root, node* currentNode)
 {

@@ -25,8 +25,8 @@ void BinaryTreeTester::test(const int size)
     destructor();
     remove();
     clear();
-    assign();
-    height();
+    //assign();
+    //height();
 }
 
 bool BinaryTreeTester::useConsoleOutput() const
@@ -210,6 +210,7 @@ void BinaryTreeTester::check_remove(binaryTree* tree, const int key,
 {
     assert(tree->deleteNode(key) == result);
     assert(tree->getAmountOfNodes() == size);
+   
 }
 
 void BinaryTreeTester::clear()

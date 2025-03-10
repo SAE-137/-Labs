@@ -24,6 +24,12 @@
     <ClInclude Include="..\binaryTree\binaryTree.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="SearchTreeTester.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\binaryTree\binaryTreeTester.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="binarySearchTree.cpp">
@@ -36,6 +42,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchTreeTester.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="..\binaryTree\binaryTreeTester.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

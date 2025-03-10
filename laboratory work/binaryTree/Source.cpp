@@ -4,9 +4,9 @@
 
 
 
-#include "searchTreeTester.h"
+
 #include "binaryTreeTester.h"
-#include "binarySearchTree.h"
+
 
 
 int randomValue(int min = 0, int max = 10000)
@@ -42,14 +42,14 @@ void space(int amount)
 
 int main()
 {
-	int amount = 20;
-	binaryTree tree;
-	for (int i = 1; i <= amount; ++i)
-	{
-		tree.insert(i);
-	}
+	const bool useConsoleOutput = true;  
+	const bool enableAllTests = true;   
+	const int testSize = 100;            
 
-	tree.show();
+	BinaryTreeTester tester(useConsoleOutput, enableAllTests);
+	tester.test(testSize);  
+
+	return 0;
 }
 
 
