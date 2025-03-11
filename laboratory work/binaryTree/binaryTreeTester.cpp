@@ -25,8 +25,8 @@ void BinaryTreeTester::test(const int size)
     destructor();
     remove();
     clear();
-    //assign();
-    //height();
+    assign();
+    height();
 }
 
 bool BinaryTreeTester::useConsoleOutput() const

@@ -5,8 +5,8 @@
 int main() {
     hashTable ht(10);
 
-    ht.insert(15, "apple");
-    ht.insert(25, "banana");
+    ht.insert(0, "apple");
+    ht.insert(7, "banana");
     ht.insert(35, "cherry");
     ht.insert(12, "apple");
     ht.insert(23, "banana");

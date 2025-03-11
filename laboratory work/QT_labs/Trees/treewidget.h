@@ -3,12 +3,14 @@
 #include <QWidget>
 
 #include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
+#include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binarySearchTree\binarySearchTree.h"
 
 class QGraphicsScene;
 
 namespace Ui {
 class TreeWidget;
 }
+
 
 class TreeWidget : public QWidget
 {
@@ -23,6 +25,8 @@ public:
 public slots:
     void addKey(int key);
     void removeKey(int key);
+    void changeTreeType(int id);
+    void onTabChanged(int index);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -32,9 +36,13 @@ private:
     void _redrawTree();
     void _updateSceneRect();
 
-private:
     Ui::TreeWidget *ui;
-    int m_fontSize = 22;
-    binaryTree *m_tree = nullptr;
     QGraphicsScene *m_scene = nullptr;
+    int m_fontSize = 22;
+
+    enum TreeType { STANDARD_TREE, SEARCH_TREE };
+    TreeType m_currentTreeType;
+
+    binaryTree *m_binaryTree = nullptr;
+    binarySearchTree *m_binarySearchTree = nullptr;
 };

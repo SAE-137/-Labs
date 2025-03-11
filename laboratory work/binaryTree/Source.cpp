@@ -35,10 +35,10 @@ void space(int amount)
 }
 
 #include <iostream>
-#include "SearchTreeTester.h"
 
-#include <iostream>
-#include "SearchTreeTester.h"
+
+
+
 
 int main()
 {

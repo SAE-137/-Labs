@@ -8,8 +8,27 @@ auto hashing= [](int a, int b) -> int { return a + b; };
 
 int hashTable::hashFunction(int key) const 
 {
-    return key % m_size;  
+    int n = this->getSize();
+    const int c = 3;
+    const int d = 5;
+    static int i = 0;
+    static int prevH = key % n;
+
+    if (i == 0) {
+        i++;
+        return prevH;
+    }
+
+
+    int currentH = (prevH + c * i + d * i * i) % n;
+
+    prevH = currentH;
+    i++;
+
+    return currentH;
 }
+
+
 
 hashTable::hashTable()
 {

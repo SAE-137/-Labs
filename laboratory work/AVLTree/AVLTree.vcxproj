@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClInclude Include="..\binarySearchTree\binarySearchTree.h" />
     <ClInclude Include="..\binaryTree\binaryTree.h" />
+    <ClInclude Include="..\binaryTree\binaryTreeTester.h" />
     <ClInclude Include="..\binaryTree\node.h" />
     <ClInclude Include="AVLTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\binarySearchTree\binarySearchTree.cpp" />
     <ClCompile Include="..\binaryTree\binaryTree.cpp" />
+    <ClCompile Include="..\binaryTree\binaryTreeTester.cpp" />
     <ClCompile Include="..\binaryTree\node.cpp" />
     <ClCompile Include="AVLTree.cpp" />
     <ClCompile Include="Source.cpp" />

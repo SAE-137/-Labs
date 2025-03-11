@@ -7,20 +7,27 @@
 #include "treewidget.h"
 #include "ui_TreeWidget.h"
 
+
 TreeWidget::TreeWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TreeWidget),
-    m_tree(new binaryTree),
-    m_scene(new QGraphicsScene(this))
+    m_scene(new QGraphicsScene(this)),
+    m_binaryTree(new binaryTree),
+    m_binarySearchTree(new binarySearchTree),
+    m_currentTreeType(STANDARD_TREE)
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(m_scene);
 
-    connect(ui->pushButtonAdd, &QPushButton::clicked, this, [this](){
+    // Подключаем переключение вкладок
+    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &TreeWidget::onTabChanged);
+
+    // Кнопки для работы с деревьями
+    connect(ui->pushButtonAdd, &QPushButton::clicked, this, [this]() {
         addKey(ui->spinBoxKey->value());
     });
 
-    connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this](){
+    connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey->value());
     });
 }
@@ -28,7 +35,19 @@ TreeWidget::TreeWidget(QWidget *parent) :
 TreeWidget::~TreeWidget()
 {
     delete ui;
-    delete m_tree;
+    delete m_scene;
+    delete m_binaryTree;
+    delete m_binarySearchTree;
+}
+
+void TreeWidget::onTabChanged(int index)
+{
+    if (index == 0) {
+        m_currentTreeType = STANDARD_TREE;
+    } else {
+        m_currentTreeType = SEARCH_TREE;
+    }
+    _redrawTree();
 }
 
 void TreeWidget::show()
@@ -45,14 +64,31 @@ void TreeWidget::resizeEvent(QResizeEvent *event)
 
 void TreeWidget::addKey(int key)
 {
-    m_tree->insert(key);
+    if (m_currentTreeType == STANDARD_TREE) {
+        m_binaryTree->insert(key);
+    } else {
+        m_binarySearchTree->insert(key);
+    }
     _redrawTree();
 }
 
 void TreeWidget::removeKey(int key)
 {
-    //TODO: implement
-    m_tree->deleteNode(key);
+    if (m_currentTreeType == STANDARD_TREE) {
+        m_binaryTree->deleteNode(key);
+    } else {
+        m_binarySearchTree->deleteNode(key);
+    }
+    _redrawTree();
+}
+
+void TreeWidget::changeTreeType(int id)
+{
+    if (id == 0) {
+        m_currentTreeType = STANDARD_TREE;
+    } else {
+        m_currentTreeType = SEARCH_TREE;
+    }
     _redrawTree();
 }
 
@@ -61,6 +97,7 @@ QPointF TreeWidget::_drawTree(node *root, int leftBorderPos, int rightBorderPos,
     if (root == nullptr) {
         return QPointF();
     }
+
     int xPos = (leftBorderPos + rightBorderPos) / 2;
     TreeNodeGraphicsItem *item = new TreeNodeGraphicsItem(QString::number(root->getKey()));
     item->setFontSize(m_fontSize);
@@ -86,14 +123,16 @@ QPointF TreeWidget::_drawTree(node *root, int leftBorderPos, int rightBorderPos,
 void TreeWidget::_redrawTree()
 {
     m_scene->clear();
-    _drawTree(m_tree->getRoot(), 0, m_scene->width(), 0);
+    if (m_currentTreeType == STANDARD_TREE) {
+        _drawTree(m_binaryTree->getRoot(), 0, m_scene->width(), 0);
+    } else {
+        _drawTree(m_binarySearchTree->getRoot(), 0, m_scene->width(), 0);
+    }
 }
 
 void TreeWidget::_updateSceneRect()
 {
     m_scene->setSceneRect(0, 0,
-                          //        ui->graphicsView->viewport()->width(),
-                          //        ui->graphicsView->viewport()->height()
                           qMax(int(m_scene->width()), ui->graphicsView->viewport()->width()),
                           qMax(int(m_scene->height()), ui->graphicsView->viewport()->height())
                           );
