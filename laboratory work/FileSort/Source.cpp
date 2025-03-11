@@ -3,6 +3,7 @@
 #include <random>
 #include <string>
 #include "multyPathSort.h"
+#include"Header.h"
 
 bool createFileWithRandomNumbers(const std::string& fileName, const int numbersCount, const int maxNumberValue) {
     std::ofstream file(fileName, std::ios::binary);
@@ -59,7 +60,7 @@ int createAndSortFile(const std::string& fileName, const int numbersCount, const
     return 1;
 }
 
-int main() {
+int mavvin() {
     std::string main = "main.txt";
     std::string inputPrefix = "input_";
     std::string outputPrefix = "output_";
@@ -73,3 +74,4 @@ int main() {
 
     return 0;
 }
+

@@ -42,12 +42,14 @@ void space(int amount)
 
 int main()
 {
-	const bool useConsoleOutput = true;  
-	const bool enableAllTests = true;   
-	const int testSize = 100;            
-
-	BinaryTreeTester tester(useConsoleOutput, enableAllTests);
-	tester.test(testSize);  
+	binaryTree bt;
+	for (int i = 0; i < 10; ++i)
+		bt.insert(randomValue(0, 100));
+	for (int i = 0; i < 10; ++i)
+		std::cout << bt.getSortedKeys().operator[](i) << " ";
+	std::cout << "min : " << bt.getMin() << std::endl;
+	std::cout << "max : " << bt.getMax() << std::endl;
+	std::cout << "min node : " << bt.findMin(bt.getRoot())->getKey();
 
 	return 0;
 }

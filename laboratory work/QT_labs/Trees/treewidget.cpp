@@ -1,9 +1,10 @@
 #include <QGraphicsScene>
 
+#include "qdebug.h"
 #include "treeNodeGraphicsItem.h"
 
 #include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
-
+#include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binarySearchTree\binarySearchTree.h"
 #include "treewidget.h"
 #include "ui_TreeWidget.h"
 
@@ -12,24 +13,34 @@ TreeWidget::TreeWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TreeWidget),
     m_scene(new QGraphicsScene(this)),
+    m_currentTreeType(STANDARD_TREE),
     m_binaryTree(new binaryTree),
-    m_binarySearchTree(new binarySearchTree),
-    m_currentTreeType(STANDARD_TREE)
+    m_binarySearchTree(new binarySearchTree)
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(m_scene);
+    ui->graphicsView_2->setScene(m_scene);
 
-    // Подключаем переключение вкладок
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &TreeWidget::onTabChanged);
 
-    // Кнопки для работы с деревьями
+
     connect(ui->pushButtonAdd, &QPushButton::clicked, this, [this]() {
         addKey(ui->spinBoxKey->value());
+    });
+
+    connect(ui->pushButtonAdd_2, &QPushButton::clicked, this, [this]() {
+        addKey(ui->spinBoxKey_2->value());
     });
 
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey->value());
     });
+
+    connect(ui->pushButtonRemove_2, &QPushButton::clicked, this, [this]() {
+        removeKey(ui->spinBoxKey_2->value());
+    });
+
+
 }
 
 TreeWidget::~TreeWidget()
@@ -59,15 +70,25 @@ void TreeWidget::show()
 void TreeWidget::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
+
+
+    ui->graphicsView->setFixedSize(ui->graphicsView->parentWidget()->width() - 10, ui->graphicsView->parentWidget()->height() - 50);
+    ui->graphicsView_2->setFixedSize(ui->graphicsView_2->parentWidget()->width() - 10, ui->graphicsView_2->parentWidget()->height() - 50);
+
+
     _updateSceneRect();
 }
+
 
 void TreeWidget::addKey(int key)
 {
     if (m_currentTreeType == STANDARD_TREE) {
         m_binaryTree->insert(key);
+        qDebug() << "Inserting key into BT: " << key;
     } else {
         m_binarySearchTree->insert(key);
+        qDebug() << "Inserting key into BST: " << key; ////// НЕ ВЫВОДИТ КЛЮЧИ
+
     }
     _redrawTree();
 }

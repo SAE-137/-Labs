@@ -39,7 +39,7 @@ public:
     node* deleteNodeRec(node* root, int key);
     virtual node* deleteNode(node* root, node* currentNode);
     virtual node* deleteNode(node* currentNode);
-    node* findMin(node* root); //TODO
+    node* findMin(node* root);
     node* find(node* root, int key) const;
     node* find(int key) const;
    

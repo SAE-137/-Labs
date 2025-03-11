@@ -18,7 +18,7 @@ bool createMainFile(const std::string& fileName, int amount, int min, int max)
 {
     std::ofstream file(fileName);
     if (!file.is_open()) {
-        std::cerr << "ERROR: cant open main file " << fileName << std::endl;
+        std::cerr << "ERROR " << fileName << std::endl;
         return false;
     }
 
@@ -33,7 +33,7 @@ bool createMainFile(const std::string& fileName, int amount, int min, int max)
 bool isSorted1(const std::string& fileName) {
     std::ifstream file(fileName);
     if (!file.is_open()) {
-        std::cerr << "ERROR: cant open file " << fileName << std::endl;
+        std::cerr << "ERROR " << fileName << std::endl;
         return false;
     }
 

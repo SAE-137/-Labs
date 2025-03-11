@@ -19,8 +19,9 @@ public:
 	void decodeFromFile(const std::string& encodedFile, const std::string& outputFile);
 	void printTree(node* root, int depth = 0) const;
 	void printLists() const;
-	void printCodes();
 	void printTree() const;
+	void printCodes();
+	
 
 	std::string decode(BitVector& encodedBits);
 

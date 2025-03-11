@@ -17,7 +17,7 @@
 Widget::Widget(QWidget *parent)
     : QWidget(parent),
     ui(new Ui::Widget),
-    m_table(new hashTable(10)),
+    m_table(new hashTable(100)), ///
     m_scene(new QGraphicsScene(this))
 {
     ui->setupUi(this);
@@ -49,6 +49,7 @@ void Widget::show()
 void Widget::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
+
     _updateSceneRect();
 }
 

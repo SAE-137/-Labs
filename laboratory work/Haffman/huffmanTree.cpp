@@ -4,7 +4,7 @@
 
 huffman::huffman()
 {
-   
+    m_head = nullptr;
 }
 
 huffman::~huffman() {

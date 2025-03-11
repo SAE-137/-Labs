@@ -3,6 +3,7 @@
 #include "node.h"
 #include<assert.h>
 #include<limits>
+#include <algorithm>
 binaryTree::binaryTree() 
 {
     m_root = nullptr;
@@ -162,14 +163,54 @@ int binaryTree::getMin() const {
     return getMin(getRoot());
 }
 
-int binaryTree::getMin(node* root) const{
-   //TODO
-    return 0;
+int binaryTree::getMin(node* root) const {
+    if (root == nullptr) {
+        return -1;
+    }
+
+    int minValue = root->getKey(); 
+
+    
+    if (root->getLeft() != nullptr) {
+        int leftMin = getMin(root->getLeft());
+        if (leftMin < minValue) {
+            minValue = leftMin;
+        }
+    }
+
+    
+    if (root->getRight() != nullptr) {
+        int rightMin = getMin(root->getRight());
+        if (rightMin < minValue) {
+            minValue = rightMin;
+        }
+    }
+
+    return minValue;
 }
 
-int binaryTree::getMax(node* root) const{
-    //TODO
-    return 0;
+int binaryTree::getMax(node* root) const {
+    if (root == nullptr) {
+        return -1;
+    }
+
+    int maxValue = root->getKey();
+   
+    if (root->getLeft() != nullptr) {
+        int leftMax = getMax(root->getLeft());
+        if (leftMax > maxValue) {
+            maxValue = leftMax;
+        }
+    }
+    
+    if (root->getRight() != nullptr) {
+        int rightMax = getMax(root->getRight());
+        if (rightMax > maxValue) {
+            maxValue = rightMax;
+        }
+    }
+
+    return maxValue;
 }
 
 node* binaryTree::deleteNodeRec(node* root, int key) {
@@ -264,6 +305,7 @@ void binaryTree::inOrderTraversal(node* root, std::vector<int>& keys) const{
 std::vector<int> binaryTree::getSortedKeys() const{
     std::vector<int> keys;
     inOrderTraversal(m_root, keys);
+    std::sort(keys.begin(), keys.end());
     return keys;
 }
 

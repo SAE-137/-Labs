@@ -4,8 +4,6 @@
 
 
 
-auto hashing= [](int a, int b) -> int { return a + b; };
-
 int hashTable::hashFunction(int key) const 
 {
     int n = this->getSize();

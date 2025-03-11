@@ -25,7 +25,7 @@ int binarySearchTree::getMax() const {
 
     node* current = m_root;
     while (current->getRight() != nullptr) {
-        current = current->getLeft();
+        current = current->getRight();
     }
     return current->getKey();
 }
@@ -130,17 +130,19 @@ std::vector<int> binarySearchTree::getSortedKeys() const {
     std::vector<node*> stack;
 
     while (!stack.empty() || current) {
-
+        
         while (current) {
             stack.push_back(current);
-            current = current->getRight();
+            current = current->getLeft();
         }
 
+        
         current = stack.back();
         stack.pop_back();
-
         result.push_back(current->getKey());
-        current = current->getLeft();
+
+       
+        current = current->getRight();
     }
 
     return result;

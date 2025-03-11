@@ -12,9 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollBar>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,32 +26,66 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QPushButton *pushButtonInsert;
-    QSpinBox *spinBoxKey;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QGraphicsView *graphicsView;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
     QLineEdit *lineEditValue;
     QPushButton *pushButtonRemove;
+    QSpinBox *spinBoxKey;
+    QPushButton *pushButtonInsert;
+    QScrollBar *verticalScrollBar;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(800, 600);
-        pushButtonInsert = new QPushButton(Widget);
-        pushButtonInsert->setObjectName(QString::fromUtf8("pushButtonInsert"));
-        pushButtonInsert->setGeometry(QRect(640, 540, 161, 61));
-        spinBoxKey = new QSpinBox(Widget);
-        spinBoxKey->setObjectName(QString::fromUtf8("spinBoxKey"));
-        spinBoxKey->setGeometry(QRect(480, 538, 161, 61));
-        graphicsView = new QGraphicsView(Widget);
+        Widget->resize(823, 600);
+        verticalLayoutWidget = new QWidget(Widget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(-1, -4, 801, 601));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        graphicsView = new QGraphicsView(verticalLayoutWidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(0, 0, 801, 531));
-        lineEditValue = new QLineEdit(Widget);
+
+        verticalLayout->addWidget(graphicsView);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        lineEditValue = new QLineEdit(verticalLayoutWidget);
         lineEditValue->setObjectName(QString::fromUtf8("lineEditValue"));
-        lineEditValue->setGeometry(QRect(10, 540, 251, 51));
-        pushButtonRemove = new QPushButton(Widget);
+
+        horizontalLayout->addWidget(lineEditValue);
+
+        pushButtonRemove = new QPushButton(verticalLayoutWidget);
         pushButtonRemove->setObjectName(QString::fromUtf8("pushButtonRemove"));
-        pushButtonRemove->setGeometry(QRect(310, 550, 83, 29));
+
+        horizontalLayout->addWidget(pushButtonRemove);
+
+        spinBoxKey = new QSpinBox(verticalLayoutWidget);
+        spinBoxKey->setObjectName(QString::fromUtf8("spinBoxKey"));
+
+        horizontalLayout->addWidget(spinBoxKey);
+
+        pushButtonInsert = new QPushButton(verticalLayoutWidget);
+        pushButtonInsert->setObjectName(QString::fromUtf8("pushButtonInsert"));
+
+        horizontalLayout->addWidget(pushButtonInsert);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        verticalScrollBar = new QScrollBar(Widget);
+        verticalScrollBar->setObjectName(QString::fromUtf8("verticalScrollBar"));
+        verticalScrollBar->setGeometry(QRect(800, 0, 20, 591));
+        verticalScrollBar->setOrientation(Qt::Vertical);
 
         retranslateUi(Widget);
 
@@ -57,8 +95,8 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
+        pushButtonRemove->setText(QCoreApplication::translate("Widget", "Delete", nullptr));
         pushButtonInsert->setText(QCoreApplication::translate("Widget", "Insert", nullptr));
-        pushButtonRemove->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));
     } // retranslateUi
 
 };
