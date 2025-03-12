@@ -5,6 +5,7 @@
 
 #include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
 #include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binarySearchTree\binarySearchTree.h"
+
 #include "treewidget.h"
 #include "ui_TreeWidget.h"
 
@@ -15,7 +16,8 @@ TreeWidget::TreeWidget(QWidget *parent) :
     m_scene(new QGraphicsScene(this)),
     m_currentTreeType(STANDARD_TREE),
     m_binaryTree(new binaryTree),
-    m_binarySearchTree(new binarySearchTree)
+    m_binarySearchTree(new binarySearchTree),
+    m_AVLTree(new AVLTree)
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(m_scene);
@@ -23,7 +25,7 @@ TreeWidget::TreeWidget(QWidget *parent) :
 
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &TreeWidget::onTabChanged);
 
-
+    // удаление
     connect(ui->pushButtonAdd, &QPushButton::clicked, this, [this]() {
         addKey(ui->spinBoxKey->value());
     });
@@ -32,12 +34,21 @@ TreeWidget::TreeWidget(QWidget *parent) :
         addKey(ui->spinBoxKey_2->value());
     });
 
+    connect(ui->pushButtonAdd_3, &QPushButton::clicked, this, [this]() {
+        addKey(ui->spinBoxKey_3->value());
+    });
+
+    //Добавлене
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey->value());
     });
 
     connect(ui->pushButtonRemove_2, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey_2->value());
+    });
+
+    connect(ui->pushButtonRemove_3, &QPushButton::clicked, this, [this]() {
+        removeKey(ui->spinBoxKey_3->value());
     });
 
 
@@ -49,17 +60,21 @@ TreeWidget::~TreeWidget()
     delete m_scene;
     delete m_binaryTree;
     delete m_binarySearchTree;
+    delete m_AVLTree;
 }
 
 void TreeWidget::onTabChanged(int index)
 {
     if (index == 0) {
         m_currentTreeType = STANDARD_TREE;
-    } else {
+    } else if (index == 1) {
         m_currentTreeType = SEARCH_TREE;
+    } else {
+        m_currentTreeType = AVL_TREE;
     }
     _redrawTree();
 }
+
 
 void TreeWidget::show()
 {
@@ -70,11 +85,6 @@ void TreeWidget::show()
 void TreeWidget::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-
-
-
-
-
     _updateSceneRect();
 }
 
@@ -84,23 +94,29 @@ void TreeWidget::addKey(int key)
     if (m_currentTreeType == STANDARD_TREE) {
         m_binaryTree->insert(key);
         qDebug() << "Inserting key into BT: " << key;
-    } else {
+    } else if (m_currentTreeType == SEARCH_TREE) {
         m_binarySearchTree->insert(key);
-        qDebug() << "Inserting key into BST: " << key; ////// НЕ ВЫВОДИТ КЛЮЧИ
-
+        qDebug() << "Inserting key into BST: " << key;
+    } else {
+        m_AVLTree->insert(key);
+        qDebug() << "Inserting key into AVL: " << key;
     }
     _redrawTree();
 }
+
 
 void TreeWidget::removeKey(int key)
 {
     if (m_currentTreeType == STANDARD_TREE) {
         m_binaryTree->deleteNode(key);
-    } else {
+    } else if (m_currentTreeType == SEARCH_TREE) {
         m_binarySearchTree->deleteNode(key);
+    } else {
+        m_AVLTree->deleteNode(key);
     }
     _redrawTree();
 }
+
 
 void TreeWidget::changeTreeType(int id)
 {
@@ -145,10 +161,13 @@ void TreeWidget::_redrawTree()
     m_scene->clear();
     if (m_currentTreeType == STANDARD_TREE) {
         _drawTree(m_binaryTree->getRoot(), 0, m_scene->width(), 0);
-    } else {
+    } else if (m_currentTreeType == SEARCH_TREE) {
         _drawTree(m_binarySearchTree->getRoot(), 0, m_scene->width(), 0);
+    } else {
+        _drawTree(m_AVLTree->getRoot(), 0, m_scene->width(), 0);
     }
 }
+
 
 void TreeWidget::_updateSceneRect()
 {
@@ -158,6 +177,6 @@ void TreeWidget::_updateSceneRect()
                           qMax(int(m_scene->height()), ui->graphicsView->viewport()->height())
                           );
     m_scene->update();
-    m_scene->setSceneRect(m_scene->itemsBoundingRect());
+    m_scene->setSceneRect(m_scene->itemsBoundingRect()); //РАБОТАЕТ ТОЛЬКО С ЭТИМ
     _redrawTree();
 }

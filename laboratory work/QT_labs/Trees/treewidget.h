@@ -4,6 +4,7 @@
 
 #include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
 #include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binarySearchTree\binarySearchTree.h"
+#include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\AVLTree\AVLTree.h"
 
 class QGraphicsScene;
 
@@ -40,9 +41,16 @@ private:
     QGraphicsScene *m_scene = nullptr;
     int m_fontSize = 22;
 
-    enum TreeType { STANDARD_TREE, SEARCH_TREE };
+    enum TreeType
+    {
+        STANDARD_TREE,
+        SEARCH_TREE,
+        AVL_TREE
+    };
+
     TreeType m_currentTreeType;
 
     binaryTree *m_binaryTree = nullptr;
     binarySearchTree *m_binarySearchTree = nullptr;
+    AVLTree *m_AVLTree = nullptr;
 };

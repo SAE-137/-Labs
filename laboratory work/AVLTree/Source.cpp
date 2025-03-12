@@ -11,6 +11,7 @@ int main()
 	for (int i = 0; i < 10; ++i)
 		tree.insert(5);
 	tree.show();
+	tree.deleteNode(5);
 	std::cout << tree.getAmountOfNodes();
 
 

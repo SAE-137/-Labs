@@ -76,15 +76,13 @@ node* AVLTree::balance(node* newNode) {
 node* AVLTree::insert(node* newNode, int key) {
     if (!newNode) return new node(key);
    
-    if (key < newNode->m_key) {
+    if (key <= newNode->m_key) {
         newNode->m_left = insert(newNode->m_left, key);
     }
     else if (key > newNode->m_key) {
         newNode->m_right = insert(newNode->m_right, key);
     }
-    else {
-        return newNode; 
-    }
+    
 
     return balance(newNode);
 }
