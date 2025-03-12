@@ -1,7 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 
-#include <QGraphicsScene>
+
 
 #include "graphicsitem.h"
 
@@ -10,18 +10,22 @@
 
 #include "widget.h"
 #include "ui_widget.h"
+#include <QScrollBar>
 #include <QGraphicsScene>
 #include <QGraphicsLineItem>
 
 
-Widget::Widget(QWidget *parent)
+Widget::Widget(QWidget *parent, int size)
     : QWidget(parent),
     ui(new Ui::Widget),
-    m_table(new hashTable(100)), ///
+    m_table(new hashTable(size)), ///
     m_scene(new QGraphicsScene(this))
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(m_scene);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    ui->graphicsView->setTransform(QTransform());
 
     connect(ui->pushButtonInsert, &QPushButton::clicked, this, [this]() {
         int key = ui->spinBoxKey->value();
@@ -32,6 +36,16 @@ Widget::Widget(QWidget *parent)
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey->value());
     });
+
+    ui->comboBox->addItem("Hi(k) = (Hi-1(k) + c * i + d * i * i) % n");
+    ui->comboBox->addItem("Hi(k) = ((Hi-1(k) * a * n) % n;");
+    ui->comboBox->addItem("Hi(k) = (Hi-1(k) + i * (1 + key % (n - 2))) % n");
+
+    connect(ui->comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [this](int index) {
+                m_table->setHashFunction(index + 1);
+            });
+
 }
 
 Widget::~Widget()
@@ -110,8 +124,19 @@ void Widget::_redrawHashTable()
 
 void Widget::_updateSceneRect()
 {
-    m_scene->setSceneRect(0, 0,
-                          qMax(int(m_scene->width()), ui->graphicsView->viewport()->width()),
-                          qMax(int(m_scene->height()), ui->graphicsView->viewport()->height()));
-    _redrawHashTable();
+    QRectF boundingRect = m_scene->itemsBoundingRect();
+
+
+    boundingRect.moveLeft(0);
+
+
+    m_scene->setSceneRect(boundingRect);
+
+
+    ui->graphicsView->setSceneRect(m_scene->sceneRect());
+
+
+    ui->graphicsView->horizontalScrollBar()->setValue(ui->graphicsView->horizontalScrollBar()->minimum());
 }
+
+
