@@ -72,8 +72,7 @@ void TreeWidget::resizeEvent(QResizeEvent *event)
     QWidget::resizeEvent(event);
 
 
-    ui->graphicsView->setFixedSize(ui->graphicsView->parentWidget()->width() - 10, ui->graphicsView->parentWidget()->height() - 50);
-    ui->graphicsView_2->setFixedSize(ui->graphicsView_2->parentWidget()->width() - 10, ui->graphicsView_2->parentWidget()->height() - 50);
+
 
 
     _updateSceneRect();
@@ -153,9 +152,12 @@ void TreeWidget::_redrawTree()
 
 void TreeWidget::_updateSceneRect()
 {
+
     m_scene->setSceneRect(0, 0,
                           qMax(int(m_scene->width()), ui->graphicsView->viewport()->width()),
                           qMax(int(m_scene->height()), ui->graphicsView->viewport()->height())
                           );
+    m_scene->update();
+    m_scene->setSceneRect(m_scene->itemsBoundingRect());
     _redrawTree();
 }

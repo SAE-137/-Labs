@@ -125,17 +125,9 @@ void Widget::_redrawHashTable()
 void Widget::_updateSceneRect()
 {
     QRectF boundingRect = m_scene->itemsBoundingRect();
-
-
     boundingRect.moveLeft(0);
-
-
     m_scene->setSceneRect(boundingRect);
-
-
     ui->graphicsView->setSceneRect(m_scene->sceneRect());
-
-
     ui->graphicsView->horizontalScrollBar()->setValue(ui->graphicsView->horizontalScrollBar()->minimum());
 }
 

@@ -297,8 +297,8 @@ bool mergeSortPass(const std::string& fromFilePrefix, const std::string& toFileP
         outputs[i].close();
     }
 
-    printFile(toFilePrefix, amount);
-    printFile(fromFilePrefix, amount);
+    //printFile(toFilePrefix, amount);
+    //printFile(fromFilePrefix, amount);
 
     
     delete[] inputs;
@@ -348,29 +348,27 @@ void multiwayMergeSort(const std::string& inputPrefix, const std::string& output
        
         if (isEmpty(fromPrefix, amount) && isSorted(fromPrefix + "0.txt")) {
             
-            printFile(fromPrefix + "0.txt", 1);
+            //printFile(fromPrefix + "0.txt", 1);
             break;
         }
     }
 
-    std::cout << "Sorted is end " << std::endl;
+    if (isSorted(fromPrefix + "0.txt")) std::cout << "Sorted is end " << std::endl;
 }
 
 
 
 
-void printSortingProcess(const std::string& main, const std::string& f, const std::string& g, int amount)
+void printSortingProcess(const std::string& main, const std::string& f, const std::string& g, int amount, bool printOnCmd)
 {
-    printFile(main, 1);
-
-    
+   //if(printOnCmd) printFile(main, 1);
     sequence(main, f, amount);
-    printFile(f, amount); 
-
-   
+   //if (printOnCmd)printFile(f, amount);
     multiwayMergeSort(f, g, amount);
 
 }
+
+
 
 
 

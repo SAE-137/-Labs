@@ -31,13 +31,15 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QSpinBox *spinBoxKey;
-    QPushButton *pushButtonRemove;
     QPushButton *pushButtonAdd;
+    QPushButton *pushButtonRemove;
     QWidget *SearchTreeTab;
     QGraphicsView *graphicsView_2;
-    QPushButton *pushButtonRemove_2;
-    QPushButton *pushButtonAdd_2;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_2;
     QSpinBox *spinBoxKey_2;
+    QPushButton *pushButtonAdd_2;
+    QPushButton *pushButtonRemove_2;
     QWidget *tab_2;
     QGraphicsView *graphicsView_3;
 
@@ -45,7 +47,7 @@ public:
     {
         if (TreeWidget->objectName().isEmpty())
             TreeWidget->setObjectName(QString::fromUtf8("TreeWidget"));
-        TreeWidget->resize(747, 623);
+        TreeWidget->resize(1162, 642);
         verticalLayout = new QVBoxLayout(TreeWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         tabWidget = new QTabWidget(TreeWidget);
@@ -54,12 +56,12 @@ public:
         BinaryTreeTab->setObjectName(QString::fromUtf8("BinaryTreeTab"));
         graphicsView = new QGraphicsView(BinaryTreeTab);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(-10, -10, 741, 471));
+        graphicsView->setGeometry(QRect(-10, -10, 1141, 571));
         graphicsView->setMouseTracking(true);
         graphicsView->setTabletTracking(true);
         horizontalLayoutWidget = new QWidget(BinaryTreeTab);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(433, 389, 291, 61));
+        horizontalLayoutWidget->setGeometry(QRect(0, 0, 291, 61));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -68,37 +70,49 @@ public:
 
         horizontalLayout->addWidget(spinBoxKey);
 
-        pushButtonRemove = new QPushButton(horizontalLayoutWidget);
-        pushButtonRemove->setObjectName(QString::fromUtf8("pushButtonRemove"));
-
-        horizontalLayout->addWidget(pushButtonRemove);
-
         pushButtonAdd = new QPushButton(horizontalLayoutWidget);
         pushButtonAdd->setObjectName(QString::fromUtf8("pushButtonAdd"));
 
         horizontalLayout->addWidget(pushButtonAdd);
+
+        pushButtonRemove = new QPushButton(horizontalLayoutWidget);
+        pushButtonRemove->setObjectName(QString::fromUtf8("pushButtonRemove"));
+
+        horizontalLayout->addWidget(pushButtonRemove);
 
         tabWidget->addTab(BinaryTreeTab, QString());
         SearchTreeTab = new QWidget();
         SearchTreeTab->setObjectName(QString::fromUtf8("SearchTreeTab"));
         graphicsView_2 = new QGraphicsView(SearchTreeTab);
         graphicsView_2->setObjectName(QString::fromUtf8("graphicsView_2"));
-        graphicsView_2->setGeometry(QRect(-10, -10, 531, 421));
-        pushButtonRemove_2 = new QPushButton(SearchTreeTab);
-        pushButtonRemove_2->setObjectName(QString::fromUtf8("pushButtonRemove_2"));
-        pushButtonRemove_2->setGeometry(QRect(440, 370, 83, 41));
-        pushButtonAdd_2 = new QPushButton(SearchTreeTab);
-        pushButtonAdd_2->setObjectName(QString::fromUtf8("pushButtonAdd_2"));
-        pushButtonAdd_2->setGeometry(QRect(360, 370, 83, 41));
-        spinBoxKey_2 = new QSpinBox(SearchTreeTab);
+        graphicsView_2->setGeometry(QRect(0, 0, 1131, 561));
+        horizontalLayoutWidget_2 = new QWidget(SearchTreeTab);
+        horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
+        horizontalLayoutWidget_2->setGeometry(QRect(0, 0, 291, 61));
+        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        spinBoxKey_2 = new QSpinBox(horizontalLayoutWidget_2);
         spinBoxKey_2->setObjectName(QString::fromUtf8("spinBoxKey_2"));
-        spinBoxKey_2->setGeometry(QRect(267, 370, 91, 41));
+
+        horizontalLayout_2->addWidget(spinBoxKey_2);
+
+        pushButtonAdd_2 = new QPushButton(horizontalLayoutWidget_2);
+        pushButtonAdd_2->setObjectName(QString::fromUtf8("pushButtonAdd_2"));
+
+        horizontalLayout_2->addWidget(pushButtonAdd_2);
+
+        pushButtonRemove_2 = new QPushButton(horizontalLayoutWidget_2);
+        pushButtonRemove_2->setObjectName(QString::fromUtf8("pushButtonRemove_2"));
+
+        horizontalLayout_2->addWidget(pushButtonRemove_2);
+
         tabWidget->addTab(SearchTreeTab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
         graphicsView_3 = new QGraphicsView(tab_2);
         graphicsView_3->setObjectName(QString::fromUtf8("graphicsView_3"));
-        graphicsView_3->setGeometry(QRect(140, 130, 256, 192));
+        graphicsView_3->setGeometry(QRect(620, 120, 256, 192));
         tabWidget->addTab(tab_2, QString());
 
         verticalLayout->addWidget(tabWidget);
@@ -106,7 +120,7 @@ public:
 
         retranslateUi(TreeWidget);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(TreeWidget);
@@ -115,11 +129,11 @@ public:
     void retranslateUi(QWidget *TreeWidget)
     {
         TreeWidget->setWindowTitle(QCoreApplication::translate("TreeWidget", "Form", nullptr));
-        pushButtonRemove->setText(QCoreApplication::translate("TreeWidget", "Delete", nullptr));
         pushButtonAdd->setText(QCoreApplication::translate("TreeWidget", "Insert", nullptr));
+        pushButtonRemove->setText(QCoreApplication::translate("TreeWidget", "Delete", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(BinaryTreeTab), QCoreApplication::translate("TreeWidget", "Tab 1", nullptr));
-        pushButtonRemove_2->setText(QCoreApplication::translate("TreeWidget", "Delete", nullptr));
         pushButtonAdd_2->setText(QCoreApplication::translate("TreeWidget", "Insert", nullptr));
+        pushButtonRemove_2->setText(QCoreApplication::translate("TreeWidget", "Delete", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(SearchTreeTab), QCoreApplication::translate("TreeWidget", "\320\241\321\202\321\200\320\260\320\275\320\270\321\206\320\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("TreeWidget", "Tab 2", nullptr));
     } // retranslateUi

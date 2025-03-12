@@ -111,11 +111,14 @@ hashTable::~hashTable() {
 
 void hashTable::insert(int key, std::string value)
 {
-    int index = computeHash(key);
-    node* newNode = new node(key, value);
+    if (value != "")
+    {
+        int index = computeHash(key);
+        node* newNode = new node(key, value);
 
-    newNode->setNext(table[index]);
-    table[index] = newNode;
+        newNode->setNext(table[index]);
+        table[index] = newNode;
+    }
 }
 
 std::string hashTable::search(int key) const
