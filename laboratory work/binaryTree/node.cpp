@@ -1,23 +1,8 @@
 #include "node.h"
 
-node::~node() {
-	
-	
-}
-
-node::node()
-{
-	m_left = nullptr;
-	m_right = nullptr;
-
-	m_key = 0;
-}
-
 node::node(int newKey)
 {
-	m_key = newKey;
-	m_left = nullptr;
-	m_right = nullptr;
+    m_key = newKey;
 }
 
 

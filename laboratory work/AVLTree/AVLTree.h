@@ -18,7 +18,7 @@ public:
     node* rightRotate(node* y);
     node* leftRotate(node* x);
     node* balance(node* newNode);
-    node* insert(node* newNode, int key) override;
+    node* insert(node* root, int key) override;
     node* remove(node* newNode, int key);
 
 private:

@@ -2,9 +2,7 @@
 class node
 {
 public:
-	node();
-	node(int newKey);
-	~node();
+    node(int newKey = 0);
 
 
 	void setKey(int newKey);
@@ -22,9 +20,9 @@ public:
 
 
 	int m_key = 0;
-	node* m_left;
-	node* m_right;
-	int height;
+    node* m_left = nullptr;
+    node* m_right = nullptr;
+    int height = 1;
 private:
 	
 

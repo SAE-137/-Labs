@@ -26,7 +26,7 @@ HEADERS += \
     treewidget.h
 
 FORMS += \
-    ../../../../../../Downloads/TreeWidget.ui
+    treewidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

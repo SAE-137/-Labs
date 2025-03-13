@@ -6,7 +6,7 @@
 #include "graphicsitem.h"
 
 #include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\Hash\hashTable.h"
-
+#include<QDebug>
 
 #include "widget.h"
 #include "ui_widget.h"
@@ -63,7 +63,6 @@ void Widget::show()
 void Widget::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-
     _updateSceneRect();
 }
 
@@ -82,10 +81,10 @@ void Widget::removeKey(int key)
 QPointF Widget::_drawHashTable()
 {
     const int bucketWidth = 100;
-    const int bucketHeight = 50;
+    const int bucketHeight = 57; // вот так вот
     const int spacing = 20;
-    const int startX = 50;
-    const int startY = 50;
+    const int startX = 0;
+    const int startY = 0;
 
     for (int i = 0; i < m_table->getSize(); ++i) {
         int xPos = startX;
@@ -94,7 +93,14 @@ QPointF Widget::_drawHashTable()
 
         QGraphicsRectItem *bucketRect = m_scene->addRect(xPos, yPos, bucketWidth, bucketHeight, QPen(Qt::black));
         QGraphicsTextItem *bucketText = m_scene->addText(QString("Bucket %1").arg(i));
-        bucketText->setPos(xPos + 10, yPos + 10);
+
+        qreal textWidth = bucketText->boundingRect().width();
+        qreal textHeight = bucketText->boundingRect().height();
+
+        qreal textX = xPos + (bucketWidth - textWidth) / 2;
+        qreal textY = yPos + (bucketHeight - textHeight) / 2;
+
+        bucketText->setPos(textX, textY);
 
 
         node *current = m_table->getBucket(i);
@@ -125,10 +131,13 @@ void Widget::_redrawHashTable()
 void Widget::_updateSceneRect()
 {
     QRectF boundingRect = m_scene->itemsBoundingRect();
-    boundingRect.moveLeft(0);
+    boundingRect.moveLeft(340); //???????
+
     m_scene->setSceneRect(boundingRect);
     ui->graphicsView->setSceneRect(m_scene->sceneRect());
     ui->graphicsView->horizontalScrollBar()->setValue(ui->graphicsView->horizontalScrollBar()->minimum());
+    _redrawHashTable();
+
 }
 
 

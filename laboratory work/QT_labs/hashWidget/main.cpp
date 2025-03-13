@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Widget ht(nullptr, 20);
+    Widget ht(nullptr, 50);
 
 
     ht.show();

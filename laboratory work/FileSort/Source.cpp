@@ -67,7 +67,7 @@ int main() {
     int amount = 5; 
 
    
-    createMainFile(main, 200, -1000000, 1000000);
+    createMainFile(main, 30, -1000, 1000);
     printSortingProcess(main, inputPrefix, outputPrefix, amount, false);
    
     

@@ -2,9 +2,7 @@
 
 #include <QWidget>
 
-#include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binaryTree\binaryTree.h"
-#include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\binarySearchTree\binarySearchTree.h"
-#include"C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\AVLTree\AVLTree.h"
+#include "C:\Users\admin\Desktop\Algorithms\-Labs\laboratory work\AVLTree\AVLTree.h"
 
 class QGraphicsScene;
 
@@ -26,16 +24,17 @@ public:
 public slots:
     void addKey(int key);
     void removeKey(int key);
-    void changeTreeType(int id);
     void onTabChanged(int index);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private:
+    void _setTreeType(int index);
     QPointF _drawTree(node *root, int leftBorderPos, int rightBorderPos, int yPos);
     void _redrawTree();
     void _updateSceneRect();
+    binaryTree* _currentTree();
 
     Ui::TreeWidget *ui;
     QGraphicsScene *m_scene = nullptr;
@@ -45,12 +44,11 @@ private:
     {
         STANDARD_TREE,
         SEARCH_TREE,
-        AVL_TREE
+        AVL_TREE,
+
+        COUNT
     };
 
     TreeType m_currentTreeType;
-
-    binaryTree *m_binaryTree = nullptr;
-    binarySearchTree *m_binarySearchTree = nullptr;
-    AVLTree *m_AVLTree = nullptr;
+    QVector<binaryTree*> m_trees;
 };
