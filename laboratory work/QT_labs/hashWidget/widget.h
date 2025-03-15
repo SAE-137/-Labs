@@ -22,6 +22,7 @@ public:
     void show();
     void insert(int key, const QString &value);
     void removeKey(int key);
+    void randomize();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

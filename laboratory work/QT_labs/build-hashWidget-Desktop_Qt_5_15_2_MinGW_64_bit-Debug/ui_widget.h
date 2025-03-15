@@ -28,6 +28,7 @@ class Ui_Widget
 public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
+    QLabel *label_6;
     QLineEdit *lineEditValue;
     QLabel *label_4;
     QSpinBox *spinBoxKey;
@@ -35,13 +36,15 @@ public:
     QPushButton *pushButtonRemove;
     QComboBox *comboBox;
     QHBoxLayout *horizontalLayout;
+    QLabel *label_5;
+    QLineEdit *lineEditKeys;
     QLabel *label;
-    QSpinBox *spinBox;
+    QSpinBox *spinBoxMin;
     QLabel *label_2;
-    QSpinBox *spinBox_2;
+    QSpinBox *spinBoxMax;
     QLabel *label_3;
-    QSpinBox *spinBox_3;
-    QPushButton *pushButton;
+    QSpinBox *spinBoxAmount;
+    QPushButton *pushButtonRand;
     QGraphicsView *graphicsView;
 
     void setupUi(QWidget *Widget)
@@ -53,6 +56,11 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_6 = new QLabel(Widget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        horizontalLayout_2->addWidget(label_6);
+
         lineEditValue = new QLineEdit(Widget);
         lineEditValue->setObjectName(QString::fromUtf8("lineEditValue"));
         lineEditValue->setTabletTracking(true);
@@ -97,6 +105,16 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_5 = new QLabel(Widget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        horizontalLayout->addWidget(label_5);
+
+        lineEditKeys = new QLineEdit(Widget);
+        lineEditKeys->setObjectName(QString::fromUtf8("lineEditKeys"));
+
+        horizontalLayout->addWidget(lineEditKeys);
+
         label = new QLabel(Widget);
         label->setObjectName(QString::fromUtf8("label"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
@@ -110,15 +128,15 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        spinBox = new QSpinBox(Widget);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        spinBoxMin = new QSpinBox(Widget);
+        spinBoxMin->setObjectName(QString::fromUtf8("spinBoxMin"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(spinBox->sizePolicy().hasHeightForWidth());
-        spinBox->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(spinBoxMin->sizePolicy().hasHeightForWidth());
+        spinBoxMin->setSizePolicy(sizePolicy2);
 
-        horizontalLayout->addWidget(spinBox);
+        horizontalLayout->addWidget(spinBoxMin);
 
         label_2 = new QLabel(Widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -127,10 +145,10 @@ public:
 
         horizontalLayout->addWidget(label_2);
 
-        spinBox_2 = new QSpinBox(Widget);
-        spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
+        spinBoxMax = new QSpinBox(Widget);
+        spinBoxMax->setObjectName(QString::fromUtf8("spinBoxMax"));
 
-        horizontalLayout->addWidget(spinBox_2);
+        horizontalLayout->addWidget(spinBoxMax);
 
         label_3 = new QLabel(Widget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -139,15 +157,15 @@ public:
 
         horizontalLayout->addWidget(label_3);
 
-        spinBox_3 = new QSpinBox(Widget);
-        spinBox_3->setObjectName(QString::fromUtf8("spinBox_3"));
+        spinBoxAmount = new QSpinBox(Widget);
+        spinBoxAmount->setObjectName(QString::fromUtf8("spinBoxAmount"));
 
-        horizontalLayout->addWidget(spinBox_3);
+        horizontalLayout->addWidget(spinBoxAmount);
 
-        pushButton = new QPushButton(Widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButtonRand = new QPushButton(Widget);
+        pushButtonRand->setObjectName(QString::fromUtf8("pushButtonRand"));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(pushButtonRand);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -173,15 +191,17 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
+        label_6->setText(QCoreApplication::translate("Widget", "values", nullptr));
         lineEditValue->setText(QString());
         label_4->setText(QCoreApplication::translate("Widget", "Key", nullptr));
         pushButtonInsert->setText(QCoreApplication::translate("Widget", "Insert", nullptr));
         pushButtonRemove->setText(QCoreApplication::translate("Widget", "Delete", nullptr));
         comboBox->setCurrentText(QCoreApplication::translate("Widget", "Hash function", nullptr));
+        label_5->setText(QCoreApplication::translate("Widget", "Keys", nullptr));
         label->setText(QCoreApplication::translate("Widget", "Min", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "Max", nullptr));
         label_3->setText(QCoreApplication::translate("Widget", "Amount", nullptr));
-        pushButton->setText(QCoreApplication::translate("Widget", "Randomize", nullptr));
+        pushButtonRand->setText(QCoreApplication::translate("Widget", "Randomize", nullptr));
     } // retranslateUi
 
 };

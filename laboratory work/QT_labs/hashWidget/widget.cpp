@@ -31,12 +31,50 @@ Widget::Widget(QWidget *parent, int size)
         int key = ui->spinBoxKey->value();
         QString value = ui->lineEditValue->text();
         insert(key, value);
+
+        ///
+        ///
+
+
+
+
+            for (QString val : value.split(' ', Qt::SkipEmptyParts))
+            {
+                insert(key, value);
+            }
+
     });
 
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey->value());
     });
 
+    connect(ui->pushButtonRand, &QPushButton::clicked, this, [this]() {
+        QString stringWords;
+        QString stringKeys;
+        QSet<int> usedKeys;
+        int min = ui->spinBoxMin->value();
+        int max = ui->spinBoxMax->value();
+
+        for (int i = 0; i < ui->spinBoxAmount->value(); ++i) {
+
+            int key;
+            do {
+                key = min + rand() % (max - min + 1);
+            } while (usedKeys.contains(key));
+            usedKeys.insert(key);
+            int wordLength = 4 + rand() % 9;
+            QString word;
+            for (int j = 0; j < wordLength; ++j) {
+                char randomChar = 'a' + rand() % 26;
+                word += randomChar;
+            }
+            stringWords += word + ' ';
+            stringKeys += QString::number(key) + ' ';
+        }
+        ui->lineEditValue->setText(stringWords.trimmed());
+        ui->lineEditKeys->setText(stringKeys.trimmed());
+    });
     ui->comboBox->addItem("Hi(k) = (Hi-1(k) + c * i + d * i * i) % n");
     ui->comboBox->addItem("Hi(k) = ((Hi-1(k) * a * n) % n;");
     ui->comboBox->addItem("Hi(k) = (Hi-1(k) + i * (1 + key % (n - 2))) % n");
