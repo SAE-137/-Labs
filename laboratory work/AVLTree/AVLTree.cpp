@@ -75,15 +75,13 @@ node* AVLTree::balance(node* newNode) {
 
 node* AVLTree::insert(node* root, int key) {
     if (!root) return new node(key);
-   
-    if (key <= root->m_key) {
+
+    if (key < root->m_key) {
         root->m_left = insert(root->m_left, key);
-    }
-    else if (key > root->m_key) {
+    } else {
         root->m_right = insert(root->m_right, key);
     }
     
-
     return balance(root);
 }
 
@@ -99,16 +97,11 @@ node* AVLTree::remove(node* newNode, int key) {
     else {
         if (!newNode->m_left || !newNode->m_right) {
             node* temp = newNode->m_left ? newNode->m_left : newNode->m_right;
-            if (!temp) {
-                temp = newNode;
-                newNode = nullptr;
-            }
-            else {
-                *newNode = *temp;
-            }
-            delete temp;
+            delete newNode;
+            return temp;
         }
         else {
+           
             node* temp = findMin(newNode->m_right);
             newNode->m_key = temp->m_key;
             newNode->m_right = remove(newNode->m_right, temp->m_key);
@@ -117,12 +110,15 @@ node* AVLTree::remove(node* newNode, int key) {
 
     if (!newNode) return nullptr;
 
+    updateHeight(newNode);
     return balance(newNode);
 }
 
-bool AVLTree::deleteNode(int key)
-{
-    if (remove(getRoot(), key) == nullptr) return false;
-    return true;
+
+
+
+bool AVLTree::deleteNode(int key) {
+    setRoot(remove(getRoot(), key));
+    return getRoot() != nullptr;
 }
 

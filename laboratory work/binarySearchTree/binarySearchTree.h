@@ -22,6 +22,7 @@ public:
 
 	bool deleteNode(int key) override;
 
+	node* findMin(node* root) override;
 	virtual node* _traverseToReplacement(node* replacementParent);
 
 	std::vector<int> getSortedKeys() const override;

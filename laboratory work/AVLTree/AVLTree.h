@@ -13,7 +13,7 @@ public:
    
     void insert(int key);
     void updateHeight(node* newNode);
-    bool deleteNode(int key) override;
+    bool deleteNode(int key);
 
     node* rightRotate(node* y);
     node* leftRotate(node* x);

@@ -165,12 +165,12 @@ int binaryTree::getMin() const {
 
 int binaryTree::getMin(node* root) const {
     if (root == nullptr) {
-        return -1;
+        throw std::runtime_error("Tree is empty"); 
     }
 
     int minValue = root->getKey(); 
 
-    
+  
     if (root->getLeft() != nullptr) {
         int leftMin = getMin(root->getLeft());
         if (leftMin < minValue) {
@@ -178,7 +178,7 @@ int binaryTree::getMin(node* root) const {
         }
     }
 
-    
+   
     if (root->getRight() != nullptr) {
         int rightMin = getMin(root->getRight());
         if (rightMin < minValue) {
@@ -186,7 +186,7 @@ int binaryTree::getMin(node* root) const {
         }
     }
 
-    return minValue;
+    return minValue; 
 }
 
 int binaryTree::getMax(node* root) const {

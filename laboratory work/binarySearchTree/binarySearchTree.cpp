@@ -148,6 +148,14 @@ std::vector<int> binarySearchTree::getSortedKeys() const {
     return result;
 }
 
+node* binarySearchTree::findMin(node* root) {
+    if (!root) return nullptr;
+    while (root->getLeft()) {
+        root = root->getLeft();
+    }
+    return root;
+}
+
 int binarySearchTree::getNodeLvl(int key) const {
     node* current = m_root;
     int level = 0;

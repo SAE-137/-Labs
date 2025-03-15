@@ -64,10 +64,10 @@ int main() {
     std::string main = "main.txt";
     std::string inputPrefix = "input_";
     std::string outputPrefix = "output_";
-    int amount = 5; 
+    int amount = 100; 
 
    
-    createMainFile(main, 30, -1000, 1000);
+    createMainFile(main, 10000, 0, 99999);
     printSortingProcess(main, inputPrefix, outputPrefix, amount, false);
    
     
