@@ -45,6 +45,9 @@ public:
     QLabel *label_3;
     QSpinBox *spinBoxAmount;
     QPushButton *pushButtonRand;
+    QLabel *label_7;
+    QSpinBox *spinBoxSize;
+    QPushButton *pushButtonCreate;
     QGraphicsView *graphicsView;
 
     void setupUi(QWidget *Widget)
@@ -167,6 +170,21 @@ public:
 
         horizontalLayout->addWidget(pushButtonRand);
 
+        label_7 = new QLabel(Widget);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        horizontalLayout->addWidget(label_7);
+
+        spinBoxSize = new QSpinBox(Widget);
+        spinBoxSize->setObjectName(QString::fromUtf8("spinBoxSize"));
+
+        horizontalLayout->addWidget(spinBoxSize);
+
+        pushButtonCreate = new QPushButton(Widget);
+        pushButtonCreate->setObjectName(QString::fromUtf8("pushButtonCreate"));
+
+        horizontalLayout->addWidget(pushButtonCreate);
+
 
         verticalLayout->addLayout(horizontalLayout);
 
@@ -202,6 +220,8 @@ public:
         label_2->setText(QCoreApplication::translate("Widget", "Max", nullptr));
         label_3->setText(QCoreApplication::translate("Widget", "Amount", nullptr));
         pushButtonRand->setText(QCoreApplication::translate("Widget", "Randomize", nullptr));
+        label_7->setText(QCoreApplication::translate("Widget", "size", nullptr));
+        pushButtonCreate->setText(QCoreApplication::translate("Widget", "create", nullptr));
     } // retranslateUi
 
 };

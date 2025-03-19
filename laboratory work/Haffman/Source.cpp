@@ -6,8 +6,6 @@ int main() {
 
    
     tree.encodeToFile("input.txt", "output.bin");
-
-   
     tree.decodeFromFile("output.bin", "decoded.txt");
 
     tree.printTree();

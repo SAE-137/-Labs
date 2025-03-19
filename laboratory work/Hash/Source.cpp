@@ -2,22 +2,34 @@
 #include "hashTable.h"
 
 
+#include <iostream>
+#include "hashTable.h"
+
 int main() {
-    hashTable ht(5);
-    ht.setHashFunction(3);
-    ht.insert(0, "apple");
-    ht.insert(1, "banana");
-    ht.insert(2, "cherry");
-    ht.insert(3, "apple");
-    ht.insert(4, "banana");
-    ht.insert(5, "cherry");
-    ht.insert(6, "apple");
-    ht.insert(7, "banana");
-    ht.insert(8, "cherry");
+   
+    hashTable table(10);
 
-    ht.printTable();
+   
+    
 
     
-    
+    table.insert(1, "1");
+    table.insert(2, "2");
+    table.insert(3, "3");
+    table.insert(4, "4");
+    table.insert(5, "5");
+    table.insert(6, "6");
+    table.insert(7, "7");
+    table.insert(8, "8");
+    table.insert(9, "9");
+    table.insert(10, "10");
+
+    for (int i = 0; i < 10; ++i)
+    {
+        table.remove(i + 1);
+        std::cout << "deliting -> " << i+1 << std::endl;
+        table.printTable();
+    }
+
     return 0;
 }

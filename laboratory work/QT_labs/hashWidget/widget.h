@@ -32,7 +32,7 @@ private:
     hashTable *m_table;
     QGraphicsScene *m_scene;
     int m_fontSize = 14;
-
+    int m_size = 1;
     void _redrawHashTable();
     void _updateSceneRect();
     QPointF _drawHashTable();

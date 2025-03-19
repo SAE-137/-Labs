@@ -53,7 +53,7 @@ void binaryTree::deleteTree() {
 
 void binaryTree::deleteTree(node* newNode) {
     if (!newNode) return;
-
+    
     deleteTree(newNode->getLeft());
     deleteTree(newNode->getRight());
 
@@ -190,24 +190,22 @@ int binaryTree::getMin(node* root) const {
 }
 
 int binaryTree::getMax(node* root) const {
+   
     if (root == nullptr) {
-        return -1;
+        throw std::runtime_error("ERROR");
+       
     }
 
+   
     int maxValue = root->getKey();
+
    
     if (root->getLeft() != nullptr) {
-        int leftMax = getMax(root->getLeft());
-        if (leftMax > maxValue) {
-            maxValue = leftMax;
-        }
+        maxValue = std::max(maxValue, getMax(root->getLeft()));
     }
-    
+
     if (root->getRight() != nullptr) {
-        int rightMax = getMax(root->getRight());
-        if (rightMax > maxValue) {
-            maxValue = rightMax;
-        }
+        maxValue = std::max(maxValue, getMax(root->getRight()));
     }
 
     return maxValue;

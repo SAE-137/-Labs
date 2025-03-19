@@ -164,6 +164,23 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>size</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBoxSize"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonCreate">
+       <property name="text">
+        <string>create</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

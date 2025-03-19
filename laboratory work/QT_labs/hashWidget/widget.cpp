@@ -13,13 +13,15 @@
 #include <QScrollBar>
 #include <QGraphicsScene>
 #include <QGraphicsLineItem>
+#include<QMessageBox>
 
 
 Widget::Widget(QWidget *parent, int size)
     : QWidget(parent),
     ui(new Ui::Widget),
     m_table(new hashTable(size)), ///
-    m_scene(new QGraphicsScene(this))
+    m_scene(new QGraphicsScene(this)),
+    m_size(size)
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(m_scene);
@@ -28,25 +30,38 @@ Widget::Widget(QWidget *parent, int size)
     ui->graphicsView->setTransform(QTransform());
 
     connect(ui->pushButtonInsert, &QPushButton::clicked, this, [this]() {
-        int key = ui->spinBoxKey->value();
-        QString value = ui->lineEditValue->text();
-        insert(key, value);
+        QString values = ui->lineEditValue->text();
+        QString keys = ui->lineEditKeys->text();
 
-        ///
-        ///
-
+        QStringList valueList = values.split(' ', Qt::SkipEmptyParts);
+        QStringList keyList = keys.split(' ', Qt::SkipEmptyParts);
 
 
+        if (valueList.size() != keyList.size()) {
+            QMessageBox::warning(this, "Ошибка", "Количество ключей и значений не совпадает.");
+            return;
+        }
 
-            for (QString val : value.split(' ', Qt::SkipEmptyParts))
-            {
-                insert(key, value);
-            }
 
+        for (int i = 0; i < valueList.size(); ++i) {
+            int key = keyList[i].toInt();
+            QString value = valueList[i];
+            insert(key, value);
+        }
     });
 
     connect(ui->pushButtonRemove, &QPushButton::clicked, this, [this]() {
         removeKey(ui->spinBoxKey->value());
+        m_size--;
+    });
+
+    connect(ui->pushButtonCreate, &QPushButton::clicked, this, [this](){
+        int size = ui->spinBoxSize->value();
+        if(size > 0){
+        m_table->resizeTable(size);
+            m_size = size;
+        _updateSceneRect();
+        }
     });
 
     connect(ui->pushButtonRand, &QPushButton::clicked, this, [this]() {
@@ -55,7 +70,7 @@ Widget::Widget(QWidget *parent, int size)
         QSet<int> usedKeys;
         int min = ui->spinBoxMin->value();
         int max = ui->spinBoxMax->value();
-
+        m_size += ui->spinBoxAmount->value();
         for (int i = 0; i < ui->spinBoxAmount->value(); ++i) {
 
             int key;
@@ -76,8 +91,7 @@ Widget::Widget(QWidget *parent, int size)
         ui->lineEditKeys->setText(stringKeys.trimmed());
     });
     ui->comboBox->addItem("Hi(k) = (Hi-1(k) + c * i + d * i * i) % n");
-    ui->comboBox->addItem("Hi(k) = ((Hi-1(k) * a * n) % n;");
-    ui->comboBox->addItem("Hi(k) = (Hi-1(k) + i * (1 + key % (n - 2))) % n");
+
 
     connect(ui->comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this](int index) {
@@ -168,14 +182,18 @@ void Widget::_redrawHashTable()
 
 void Widget::_updateSceneRect()
 {
-    QRectF boundingRect = m_scene->itemsBoundingRect();
-    boundingRect.moveLeft(340); //???????
+    // Устанавливаем размер сцены
+    int sceneWidth = qMax(int(m_scene->width()), ui->graphicsView->viewport()->width());
+    int sceneHeight = qMax(int(m_scene->height()), ui->graphicsView->viewport()->height());
 
-    m_scene->setSceneRect(boundingRect);
-    ui->graphicsView->setSceneRect(m_scene->sceneRect());
-    ui->graphicsView->horizontalScrollBar()->setValue(ui->graphicsView->horizontalScrollBar()->minimum());
+    // Добавляем дополнительный отступ (например, 20 пикселей)
+    int padding = 72 * m_size;
+    m_scene->setSceneRect(0, 0, sceneWidth + padding, sceneHeight + padding);
+
+    // Перерисовываем хэш-таблицу (если это необходимо)
     _redrawHashTable();
-
 }
+
+
 
 

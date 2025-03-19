@@ -8,29 +8,18 @@
 int hashTable::hashFunction_1(int key) const 
 {
     int n = this->getSize();
-    const int c = 3;
-    const int d = 5;
-    static int i = 0;
-    static int prevH = key % n;
+    const int c = 1;
+    const int d = 4;
+    int i = 1;
+    int prevH = key % n;
 
-    if (i == 0) {
-        i++;
-        return prevH;
-    }
-
-
-    int currentH = (prevH + c * i + d * i * i) % n;
-
-    prevH = currentH;
-    i++;
-
-    return currentH;
+    return (prevH + c * i + d * i * i) % n;
 }
 
 int hashTable::hashFunction_2(int key) const {
     int n = this->getSize();
-    static int i = 0;
-    static int prevH = key % n;
+    int i = 0;
+    int prevH = key % n;
 
     if (i == 0) {
         i++;
@@ -52,8 +41,8 @@ int hashTable::hashFunction_2(int key) const {
 
 int hashTable::hashFunction_3(int key) const {
     int n = this->getSize(); 
-    static int i = 0; 
-    static int prevH = key % n;
+    int i = 0; 
+    int prevH = key % n;
 
     if (i == 0) {
         i++;
@@ -65,6 +54,21 @@ int hashTable::hashFunction_3(int key) const {
     i++; 
     return h1; 
 }
+
+
+
+///
+int hashTable::hash(int key) const {
+    return key % getSize();
+}
+
+// Квадратичное опробование
+int hashTable::quadraticProbing(int key, int i) const {
+    const int c = 1;
+    const int d = 4;
+    return (hash(key) + c * i + d * i * i) % getSize();
+}
+///
 
 void hashTable::setHashFunction(int choice) {
     switch (choice) {
@@ -135,7 +139,7 @@ std::string hashTable::search(int key) const
     return "";
 }
 
-void hashTable::remove(int key) 
+void hashTable::remove(int key)
 {
     int index = computeHash(key);
     node* current = table[index];
@@ -144,15 +148,15 @@ void hashTable::remove(int key)
     while (current != nullptr) {
         if (current->getKey() == key) {
             if (prev == nullptr) {
-                
+
                 table[index] = current->getNext();
             }
             else {
-               
+
                 prev->setNext(current->getNext());
             }
 
-            delete current; 
+            delete current;
             return;
         }
         prev = current;
@@ -162,6 +166,7 @@ void hashTable::remove(int key)
     return;
     //throw std::runtime_error("Key not found");
 }
+
 
 void hashTable::printTable() const
 {
@@ -251,4 +256,35 @@ std::string& hashTable::operator[](int key) const{
     table[index] = newNode;
 
     return newNode->getValueRef(); 
+}
+
+
+void hashTable::resizeTable(int newSize) {
+    if (newSize <= 0) {
+        throw std::invalid_argument("ERROR");
+    }
+
+    node** newTable = new node * [newSize];
+    for (int i = 0; i < newSize; ++i) {
+        newTable[i] = nullptr;
+    }
+
+   
+    for (int i = 0; i < m_size; ++i) {
+        node* current = table[i];
+        while (current) {
+            int newIndex = (this->*hashFunc)(current->getKey()) % newSize;
+            node* nextNode = current->getNext();
+
+            current->setNext(newTable[newIndex]);
+            newTable[newIndex] = current;
+
+            current = nextNode;
+        }
+    }
+
+    
+    delete[] table;
+    table = newTable;
+    m_size = newSize;
 }

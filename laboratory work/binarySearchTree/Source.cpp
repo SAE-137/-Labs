@@ -74,16 +74,32 @@ int randomValue(int min = 0, int max = 10000)
 
 }
 
+void space(int amount)
+{
+    for (int i = 0; i < amount; ++i)
+        std::cout << std::endl;
+}
+
 
 int main() {
     binarySearchTree bt;
-    for (int i = 0; i < 10; ++i)
-        bt.insert(randomValue(0, 100));
-    for (int i = 0; i < 10; ++i)
-        std::cout << bt.getSortedKeys().operator[](i) << " ";
-    std::cout << "min : " << bt.getMin() << std::endl;
-    std::cout << "max : " << bt.getMax() << std::endl;
-    std::cout << "min node : " << bt.findMin(bt.getRoot())->getKey();
+    int iteration = 0;
+    while (iteration < 10)
+    {
+        iteration++;
+        for (int i = 0; i < 40; ++i)
+            bt.insert(randomValue(0, 1000));
+        for (int i = 0; i < 40; ++i)
+            std::cout << bt.getSortedKeys().operator[](i) << " ";
+        space(1);
+        std::cout << "min node : " << bt.findMin(bt.getRoot())->getKey() << std::endl;
+        std::cout << "min : " << bt.getMin() << std::endl;
+        std::cout << "max : " << bt.getMax() << std::endl;
+       
+
+
+        bt.deleteTree();
+    }
 
     return 0;
 }

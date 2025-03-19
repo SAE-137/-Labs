@@ -13,6 +13,7 @@ public:
 	void remove(int key);
 	void printTable() const;
 	void setHashFunction(int choice);
+	void resizeTable(int newSize);
 
 	std::string search(int key) const;
 	
@@ -24,6 +25,14 @@ public:
 
 	std::string& operator[](int key) const;
 	hashTable& operator=(const hashTable& other);
+
+
+
+
+	int hash(int key) const;
+
+	
+	int quadraticProbing(int key, int i) const;
 private:
 	int hashFunction_1(int key) const;
 	int hashFunction_2(int key) const;
